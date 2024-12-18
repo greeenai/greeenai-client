@@ -1,6 +1,6 @@
-import { getDefaultConfig, mergeConfig } from '@react-native/metro-config';
-import path from 'path';
-import withStorybook from '@storybook/react-native/metro/withStorybook';
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const path = require('path');
+const withStorybook = require('@storybook/react-native/metro/withStorybook');
 
 const defaultConfig = getDefaultConfig(__dirname);
 
@@ -34,7 +34,7 @@ const config = {
 const finalConfig = mergeConfig(defaultConfig, config);
 
 // Apply Storybook settings only if enabled
-export default withStorybook(finalConfig, {
+module.exports = withStorybook(finalConfig, {
   enabled: process.env.STORYBOOK_ENABLED === 'true',
   configPath: path.resolve(__dirname, './.ondevice'),
 });
