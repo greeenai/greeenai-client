@@ -31,7 +31,7 @@ importers:
     dependencies:
       '@gorhom/bottom-sheet':
         specifier: ^4.6.4
-        version: 4.6.4(@types/react@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.5)(react-native@0.75.3)(react@18.3.1)
+        version: 4.6.4(@types/react-native@0.73.0)(@types/react@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.5)(react-native@0.75.3)(react@18.3.1)
       '@react-native-async-storage/async-storage':
         specifier: ^2.0.0
         version: 2.1.0(react-native@0.75.3)
@@ -156,6 +156,9 @@ importers:
       '@types/react':
         specifier: ^18.2.6
         version: 18.3.1
+      '@types/react-native':
+        specifier: ^0.73.0
+        version: 0.73.0(@babel/core@7.26.0)(@babel/preset-env@7.26.0)(@types/react@18.3.1)(react@18.3.1)(typescript@5.0.4)
       '@types/react-test-renderer':
         specifier: ^18.0.0
         version: 18.3.1
@@ -2239,7 +2242,7 @@ packages:
       levn: 0.4.1
     dev: true
 
-  /@gorhom/bottom-sheet@4.6.4(@types/react@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.5)(react-native@0.75.3)(react@18.3.1):
+  /@gorhom/bottom-sheet@4.6.4(@types/react-native@0.73.0)(@types/react@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.5)(react-native@0.75.3)(react@18.3.1):
     resolution: {integrity: sha512-0itLMblLBvepE065w3a60S030c2rNUsGshPC7wbWDm31VyqoaU2xjzh/ojH62YIJOcobBr5QoC30IxBBKDGovQ==}
     peerDependencies:
       '@types/react': '*'
@@ -2256,6 +2259,7 @@ packages:
     dependencies:
       '@gorhom/portal': 1.0.14(react-native@0.75.3)(react@18.3.1)
       '@types/react': 18.3.1
+      '@types/react-native': 0.73.0(@babel/core@7.26.0)(@babel/preset-env@7.26.0)(@types/react@18.3.1)(react@18.3.1)(typescript@5.0.4)
       invariant: 2.2.4
       react: 18.3.1
       react-native: 0.75.3(@babel/core@7.26.0)(@babel/preset-env@7.26.0)(@types/react@18.3.1)(react@18.3.1)(typescript@5.0.4)
@@ -3813,7 +3817,7 @@ packages:
       react: '*'
       react-native: '*'
     dependencies:
-      '@gorhom/bottom-sheet': 4.6.4(@types/react@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.5)(react-native@0.75.3)(react@18.3.1)
+      '@gorhom/bottom-sheet': 4.6.4(@types/react-native@0.73.0)(@types/react@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.5)(react-native@0.75.3)(react@18.3.1)
       '@react-native-community/datetimepicker': 8.2.0(react-native@0.75.3)(react@18.3.1)
       '@react-native-community/slider': 4.5.5
       '@storybook/addon-controls': 8.4.7(storybook@8.4.7)
@@ -4430,7 +4434,7 @@ packages:
       react-native-safe-area-context: '*'
       react-native-svg: '>=14'
     dependencies:
-      '@gorhom/bottom-sheet': 4.6.4(@types/react@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.5)(react-native@0.75.3)(react@18.3.1)
+      '@gorhom/bottom-sheet': 4.6.4(@types/react-native@0.73.0)(@types/react@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.5)(react-native@0.75.3)(react@18.3.1)
       '@storybook/core': 8.4.7(prettier@2.8.8)
       '@storybook/react': 8.4.7(react-dom@18.3.1)(react@18.3.1)(storybook@8.4.7)(typescript@5.0.4)
       '@storybook/react-native-theming': 8.4.3(react-native@0.75.3)(react@18.3.1)
@@ -4466,7 +4470,7 @@ packages:
       react-native-gesture-handler: '>=2'
       react-native-safe-area-context: '*'
     dependencies:
-      '@gorhom/bottom-sheet': 4.6.4(@types/react@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.5)(react-native@0.75.3)(react@18.3.1)
+      '@gorhom/bottom-sheet': 4.6.4(@types/react-native@0.73.0)(@types/react@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.5)(react-native@0.75.3)(react@18.3.1)
       '@storybook/core': 8.4.7(prettier@2.8.8)
       '@storybook/csf': 0.1.12
       '@storybook/global': 5.0.0
@@ -4913,6 +4917,22 @@ packages:
     dependencies:
       '@types/react': 19.0.1
     dev: true
+
+  /@types/react-native@0.73.0(@babel/core@7.26.0)(@babel/preset-env@7.26.0)(@types/react@18.3.1)(react@18.3.1)(typescript@5.0.4):
+    resolution: {integrity: sha512-6ZRPQrYM72qYKGWidEttRe6M5DZBEV5F+MHMHqd4TTYx0tfkcdrUFGdef6CCxY0jXU7wldvd/zA/b0A/kTeJmA==}
+    deprecated: This is a stub types definition. react-native provides its own type definitions, so you do not need this installed.
+    dependencies:
+      react-native: 0.75.3(@babel/core@7.26.0)(@babel/preset-env@7.26.0)(@types/react@18.3.1)(react@18.3.1)(typescript@5.0.4)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@babel/preset-env'
+      - '@types/react'
+      - bufferutil
+      - encoding
+      - react
+      - supports-color
+      - typescript
+      - utf-8-validate
 
   /@types/react-test-renderer@18.3.1:
     resolution: {integrity: sha512-vAhnk0tG2eGa37lkU9+s5SoroCsRI08xnsWFiAXOuPH2jqzMbcXvKExXViPi1P5fIklDeCvXqyrdmipFaSkZrA==}
