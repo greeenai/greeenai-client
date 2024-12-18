@@ -1,4 +1,4 @@
-const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 const path = require('path');
 const withStorybook = require('@storybook/react-native/metro/withStorybook');
 
@@ -36,8 +36,10 @@ const config = {
   watchFolders: [path.join(__dirname, '..', '..')],
 };
 
+// Merge the final configuration
 const finalConfig = mergeConfig(defaultConfig, config);
 
+// Apply Storybook settings only if enabled
 module.exports = withStorybook(finalConfig, {
   enabled: process.env.STORYBOOK_ENABLED === 'true',
   configPath: path.resolve(__dirname, './.ondevice'),
