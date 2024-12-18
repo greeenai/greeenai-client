@@ -19,6 +19,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@types/next": "^9.0.0"
+    "@types/next": "^9.0.0",
+    "@vanilla-extract/next-plugin": "^2.4.7"
   }
 }
