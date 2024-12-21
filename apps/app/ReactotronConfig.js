@@ -1,4 +1,4 @@
-import Reactotron from 'reactotron-react-native';
+import Reactotron, {networking} from 'reactotron-react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 Reactotron.setAsyncStorageHandler(AsyncStorage)
@@ -8,4 +8,5 @@ Reactotron.setAsyncStorageHandler(AsyncStorage)
   .useReactNative({
     asyncStorage: true,
   })
+  .use(networking())
   .connect();
