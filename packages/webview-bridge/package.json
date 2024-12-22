@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "test:react": "jest --config jest.react.config.ts",
+    "test:react-native": "jest --config jest.react-native.config.ts"
   },
   "dependencies": {
     "react": "^19.0.0"
