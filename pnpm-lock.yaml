@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@types/jest':
+        specifier: ^29.2.1
+        version: 29.5.14
       '@types/node':
         specifier: ^22.10.2
         version: 22.10.2
