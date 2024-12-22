@@ -11,12 +11,14 @@
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "test": "jest"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
-    "@turbo/gen": "^1.12.4"
+    "@turbo/gen": "^1.12.4",
+    "jest-environment-jsdom": "^29.7.0"
   },
   "dependencies": {
     "react": "^19.0.0",
