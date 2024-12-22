@@ -8,10 +8,10 @@ importers:
 
   .:
     devDependencies:
-      '@repo/eslint-config':
+      '@greeenai/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
-      '@repo/typescript-config':
+      '@greeenai/typescript-config':
         specifier: workspace:*
         version: link:packages/typescript-config
       '@types/jest':
@@ -162,7 +162,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@repo/ui':
+      '@greeenai/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       next:
