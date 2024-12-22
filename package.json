@@ -1,5 +1,5 @@
 {
-  "name": "greeen-ai",
+  "name": "greeenai",
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -12,8 +12,8 @@
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@greeenai/eslint-config": "workspace:*",
+    "@greeenai/typescript-config": "workspace:*",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.11",
     "prettier": "^3.2.5",
