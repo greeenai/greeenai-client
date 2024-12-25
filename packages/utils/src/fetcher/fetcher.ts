@@ -39,7 +39,7 @@ class Fetcher {
   private headersConfig: HeadersConfig;
   private interceptors: Interceptors;
 
-  constructor({ baseUrl = "", defaultHeaders = {} }) {
+  constructor({ baseUrl = "", defaultHeaders = {} } = {}) {
     this.baseUrlConfig = this.createBaseUrlConfig(baseUrl);
     this.headersConfig = this.createHeadersConfig(defaultHeaders);
     this.interceptors = this.createInterceptors();
@@ -113,9 +113,15 @@ class Fetcher {
   }
 
   public async interceptRequests(options: RequestInit): Promise<RequestInit> {
-    let interceptedOptions = options;
+    let interceptedOptions: RequestInit = {
+      ...options,
+      headers: {
+        ...(this.headersConfig.value || {}),
+        ...(options.headers || {}),
+      },
+    };
     for (const interceptor of this.interceptors.request.handlers) {
-      interceptedOptions = await interceptor(options);
+      interceptedOptions = await interceptor(interceptedOptions);
     }
     return interceptedOptions;
   }
