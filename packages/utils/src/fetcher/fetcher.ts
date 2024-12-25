@@ -34,10 +34,10 @@ interface Interceptors {
   };
 }
 
-type ErrorHandler = {
+interface ErrorHandler {
   handler: (error: Error) => void | Promise<void>;
   set: (handler: (error: Error) => void | Promise<void>) => void;
-};
+}
 
 class Fetcher {
   private baseUrlConfig: BaseUrlConfig;
@@ -48,11 +48,16 @@ class Fetcher {
   constructor({
     baseUrl = "",
     defaultHeaders = {},
+    requestInterceptors = [],
+    responseInterceptors = [],
     errorHandler = () => {},
   } = {}) {
     this.baseUrlConfig = this.createBaseUrlConfig(baseUrl);
     this.headersConfig = this.createHeadersConfig(defaultHeaders);
-    this.interceptors = this.createInterceptors();
+    this.interceptors = this.createInterceptors(
+      requestInterceptors,
+      responseInterceptors
+    );
     this.errorHandler = this.createErrorHandler(errorHandler);
   }
 
@@ -80,10 +85,13 @@ class Fetcher {
     };
   }
 
-  private createInterceptors() {
+  private createInterceptors(
+    requestInterceptors: RequestInterceptor[],
+    responseInterceptors: ResponseInterceptor[]
+  ) {
     return {
       request: {
-        handlers: [],
+        handlers: requestInterceptors,
         add: (interceptor: RequestInterceptor) => {
           if (!this.interceptors.request.handlers.includes(interceptor)) {
             this.interceptors.request.handlers.push(interceptor);
@@ -98,7 +106,7 @@ class Fetcher {
         },
       },
       response: {
-        handlers: [],
+        handlers: responseInterceptors,
         add: (interceptor: ResponseInterceptor) => {
           if (!this.interceptors.response.handlers.includes(interceptor)) {
             this.interceptors.response.handlers.push(interceptor);
