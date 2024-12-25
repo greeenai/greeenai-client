@@ -104,40 +104,50 @@ class Fetcher {
     };
   }
 
-  // 요청 인터셉터 추가
-  public addRequestInterceptors() {}
+  public addRequestInterceptor(interceptor: RequestInterceptor): void {
+    this.interceptors.request.add(interceptor);
+  }
 
-  // 요청 인터셉터 삭제
-  public removeRequestInterceptors() {}
+  public removeRequestInterceptors(interceptor: RequestInterceptor): void {
+    this.interceptors.request.remove(interceptor);
+  }
 
-  // 요청 인터셉터 실행
-  public interceptRequest() {}
+  public async interceptRequests(options: RequestInit): Promise<RequestInit> {
+    let interceptedOptions = options;
+    for (const interceptor of this.interceptors.request.handlers) {
+      interceptedOptions = await interceptor(options);
+    }
+    return interceptedOptions;
+  }
 
-  // 응답 인터셉터 추가
-  public addResponseInterceptors() {}
+  public addResponseInterceptor(interceptor: ResponseInterceptor): void {
+    this.interceptors.response.add(interceptor);
+  }
 
-  // 응답 인터셉터 삭제
-  public removeResponseInterceptors() {}
+  public removeResponseInterceptors(interceptor: ResponseInterceptor): void {
+    this.interceptors.response.remove(interceptor);
+  }
 
-  // 응답 인터셉터 실행
-  public interceptResponse() {}
+  public async interceptResponses<T>(
+    response: Response
+  ): Promise<ApiResponse<T>> {
+    let interceptedResponse = response;
+    for (const interceptor of this.interceptors.response.handlers) {
+      interceptedResponse = await interceptor(interceptedResponse);
+    }
+    return interceptedResponse;
+  }
 
-  // 전체 요청
   public request() {}
 
-  // GET
   public get() {}
 
-  // POST
   public post() {}
 
-  // PUT
   public put() {}
 
-  // PATCH
   public patch() {}
 
-  // DELETE
   public delete() {}
 }
 
