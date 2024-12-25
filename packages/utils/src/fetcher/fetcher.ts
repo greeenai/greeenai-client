@@ -34,15 +34,26 @@ interface Interceptors {
   };
 }
 
+type ErrorHandler = {
+  handler: (error: Error) => void | Promise<void>;
+  set: (handler: (error: Error) => void | Promise<void>) => void;
+};
+
 class Fetcher {
   private baseUrlConfig: BaseUrlConfig;
   private headersConfig: HeadersConfig;
   private interceptors: Interceptors;
+  private errorHandler: ErrorHandler;
 
-  constructor({ baseUrl = "", defaultHeaders = {} } = {}) {
+  constructor({
+    baseUrl = "",
+    defaultHeaders = {},
+    errorHandler = () => {},
+  } = {}) {
     this.baseUrlConfig = this.createBaseUrlConfig(baseUrl);
     this.headersConfig = this.createHeadersConfig(defaultHeaders);
     this.interceptors = this.createInterceptors();
+    this.errorHandler = this.createErrorHandler(errorHandler);
   }
 
   private createBaseUrlConfig(baseUrl: string) {
@@ -104,6 +115,17 @@ class Fetcher {
     };
   }
 
+  private createErrorHandler(
+    errorHandler: (error: Error) => void | Promise<void>
+  ) {
+    return {
+      handler: errorHandler,
+      set: (handler: (error: Error) => void | Promise<void>) => {
+        this.errorHandler.handler = handler;
+      },
+    };
+  }
+
   public addRequestInterceptor(interceptor: RequestInterceptor): void {
     this.interceptors.request.add(interceptor);
   }
@@ -144,7 +166,70 @@ class Fetcher {
     return interceptedResponse;
   }
 
-  public request() {}
+  public async request<T>(
+    url: string,
+    options: RequestInit
+  ): Promise<ApiResponse<T>> {
+    try {
+      const interceptedOptions = await this.interceptRequests(options);
+      const fetchOptions: RequestInit = {
+        ...interceptedOptions,
+        credentials: "include",
+      };
+      const requestUrl = this.baseUrlConfig.value + url;
+
+      let response: ApiResponse<any> = await fetch(requestUrl, fetchOptions);
+
+      const data = await this.parseResponseData(response);
+      const error = await this.handleError(response, data);
+
+      if (error) {
+        throw error;
+      }
+
+      response = await this.interceptResponses(response);
+      response.data = data;
+
+      return response;
+    } catch (error) {
+      if (error instanceof Error) {
+        this.errorHandler.handler(error);
+      }
+
+      throw error;
+    }
+  }
+
+  private async parseResponseData(response: Response) {
+    const contentType = response.headers.get("Content-Type") || "";
+
+    if (contentType.includes("application/json")) {
+      return response.json();
+    } else if (
+      contentType.startsWith("image/") ||
+      contentType.startsWith("application/octet-stream")
+    ) {
+      return response.blob();
+    }
+
+    return response.text();
+  }
+
+  private async handleError(
+    response: Response,
+    data: {
+      errorCodeName: string;
+      errorMessage: string;
+    }
+  ) {
+    if (!response.ok) {
+      const error = new Error();
+      error.message = data.errorMessage;
+      error.name = data.errorCodeName;
+
+      return error;
+    }
+  }
 
   public get() {}
 
