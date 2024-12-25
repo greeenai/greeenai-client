@@ -61,7 +61,7 @@ class Fetcher {
     this.errorHandler = this.createErrorHandler(errorHandler);
   }
 
-  private createBaseUrlConfig(baseUrl: string) {
+  private createBaseUrlConfig(baseUrl: string): BaseUrlConfig {
     return {
       value: baseUrl,
       set: (url: string) => {
@@ -70,7 +70,7 @@ class Fetcher {
     };
   }
 
-  private createHeadersConfig(defaultHeaders: HeadersInit) {
+  private createHeadersConfig(defaultHeaders: HeadersInit): HeadersConfig {
     return {
       value: defaultHeaders,
       set: (headers: HeadersInit) => {
@@ -88,7 +88,7 @@ class Fetcher {
   private createInterceptors(
     requestInterceptors: RequestInterceptor[],
     responseInterceptors: ResponseInterceptor[]
-  ) {
+  ): Interceptors {
     return {
       request: {
         handlers: requestInterceptors,
@@ -125,7 +125,7 @@ class Fetcher {
 
   private createErrorHandler(
     errorHandler: (error: Error) => void | Promise<void>
-  ) {
+  ): ErrorHandler {
     return {
       handler: errorHandler,
       set: (handler: (error: Error) => void | Promise<void>) => {
@@ -189,7 +189,7 @@ class Fetcher {
       let response: ApiResponse<any> = await fetch(requestUrl, fetchOptions);
 
       const data = await this.parseResponseData(response);
-      const error = await this.handleError(response, data);
+      const error = this.handleError(response);
 
       if (error) {
         throw error;
@@ -208,11 +208,13 @@ class Fetcher {
     }
   }
 
-  private async parseResponseData(response: Response) {
+  private async parseResponseData<T>(
+    response: Response
+  ): Promise<T | Blob | string> {
     const contentType = response.headers.get("Content-Type") || "";
 
     if (contentType.includes("application/json")) {
-      return response.json();
+      return response.json() as Promise<T>;
     } else if (
       contentType.startsWith("image/") ||
       contentType.startsWith("application/octet-stream")
@@ -223,31 +225,114 @@ class Fetcher {
     return response.text();
   }
 
-  private async handleError(
-    response: Response,
-    data: {
-      errorCodeName: string;
-      errorMessage: string;
-    }
-  ) {
+  private handleError(response: Response): Error | undefined {
     if (!response.ok) {
       const error = new Error();
-      error.message = data.errorMessage;
-      error.name = data.errorCodeName;
+
+      switch (response.status) {
+        case 400:
+          error.name = "Bad Request";
+          error.message = "The request was invalid or cannot be served.";
+          break;
+        case 401:
+          error.name = "Unauthorized";
+          error.message =
+            "Authentication is required and has failed or has not yet been provided.";
+          break;
+        case 403:
+          error.name = "Forbidden";
+          error.message =
+            "The request was valid, but the server is refusing action.";
+          break;
+        case 404:
+          error.name = "Not Found";
+          error.message = "The requested resource could not be found.";
+          break;
+        case 500:
+          error.name = "Internal Server Error";
+          error.message = "An error occurred on the server.";
+          break;
+        case 502:
+          error.name = "Bad Gateway";
+          error.message =
+            "The server received an invalid response from the upstream server.";
+          break;
+        case 503:
+          error.name = "Service Unavailable";
+          error.message =
+            "The server is currently unable to handle the request.";
+          break;
+        default:
+          error.name = "HTTP Error";
+          error.message = `An unexpected HTTP error occurred: ${response.status}`;
+          break;
+      }
 
       return error;
     }
   }
 
-  public get() {}
+  public get<T>(
+    url: string,
+    options: RequestInit = {},
+    params: Record<string, any> = {}
+  ): Promise<ApiResponse<T>> {
+    const queryString =
+      params && Object.keys(params).length
+        ? `?${new URLSearchParams(params).toString()}`
+        : "";
+    const fullUrl = `${url}${queryString}`;
 
-  public post() {}
+    return this.request(fullUrl, { ...options, method: "GET" });
+  }
 
-  public put() {}
+  public post<T>(
+    url: string,
+    body = {},
+    options: RequestInit = {}
+  ): Promise<ApiResponse<T>> {
+    return this.request(url, {
+      ...options,
+      method: "POST",
+      body: JSON.stringify(body),
+    });
+  }
 
-  public patch() {}
+  public put<T>(
+    url: string,
+    body = {},
+    options: RequestInit = {}
+  ): Promise<ApiResponse<T>> {
+    return this.request(url, {
+      ...options,
+      method: "PUT",
+      body: JSON.stringify(body),
+    });
+  }
 
-  public delete() {}
+  public patch<T>(
+    url: string,
+    body = {},
+    options: RequestInit = {}
+  ): Promise<ApiResponse<T>> {
+    return this.request(url, {
+      ...options,
+      method: "PATCH",
+      body: JSON.stringify(body),
+    });
+  }
+
+  public delete<T>(
+    url: string,
+    body = {},
+    options: RequestInit = {}
+  ): Promise<ApiResponse<T>> {
+    return this.request(url, {
+      ...options,
+      method: "DELETE",
+      body: JSON.stringify(body),
+    });
+  }
 }
 
 export default Fetcher;
