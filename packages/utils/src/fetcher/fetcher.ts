@@ -10,6 +10,17 @@ type ResponseInterceptor<T = any> = (
   response: Response
 ) => ApiResponse<T> | Promise<ApiResponse<T>>;
 
+interface BaseUrlConfig {
+  value: string;
+  set: (url: string) => void;
+}
+
+interface HeadersConfig {
+  value: HeadersInit;
+  set: (headers: HeadersInit) => void;
+  merge: (headers: HeadersInit) => void;
+}
+
 interface Interceptors {
   request: {
     handlers: RequestInterceptor[];
@@ -24,17 +35,42 @@ interface Interceptors {
 }
 
 class Fetcher {
-  private baseUrl: string;
-  private defaultHeaders: HeadersInit;
+  private baseUrlConfig: BaseUrlConfig;
+  private headersConfig: HeadersConfig;
   private interceptors: Interceptors;
 
-  constructor({
-    baseUrl = "",
-    defaultHeaders = { "Content-Type": "application/json" },
-  }) {
-    this.baseUrl = baseUrl;
-    this.defaultHeaders = defaultHeaders;
-    this.interceptors = {
+  constructor({ baseUrl = "", defaultHeaders = {} }) {
+    this.baseUrlConfig = this.createBaseUrlConfig(baseUrl);
+    this.headersConfig = this.createHeadersConfig(defaultHeaders);
+    this.interceptors = this.createInterceptors();
+  }
+
+  private createBaseUrlConfig(baseUrl: string) {
+    return {
+      value: baseUrl,
+      set: (url: string) => {
+        this.baseUrlConfig.value = url;
+      },
+    };
+  }
+
+  private createHeadersConfig(defaultHeaders: HeadersInit) {
+    return {
+      value: defaultHeaders,
+      set: (headers: HeadersInit) => {
+        this.headersConfig.value = headers;
+      },
+      merge: (headers: HeadersInit) => {
+        this.headersConfig.value = {
+          ...this.headersConfig.value,
+          ...headers,
+        };
+      },
+    };
+  }
+
+  private createInterceptors() {
+    return {
       request: {
         handlers: [],
         add: (interceptor: RequestInterceptor) => {
@@ -69,28 +105,40 @@ class Fetcher {
   }
 
   // 요청 인터셉터 추가
+  public addRequestInterceptors() {}
 
   // 요청 인터셉터 삭제
+  public removeRequestInterceptors() {}
 
   // 요청 인터셉터 실행
+  public interceptRequest() {}
 
   // 응답 인터셉터 추가
+  public addResponseInterceptors() {}
 
   // 응답 인터셉터 삭제
+  public removeResponseInterceptors() {}
 
-  // 응답 인터셉터 삭제
+  // 응답 인터셉터 실행
+  public interceptResponse() {}
 
   // 전체 요청
+  public request() {}
 
   // GET
+  public get() {}
 
   // POST
+  public post() {}
 
   // PUT
+  public put() {}
 
   // PATCH
+  public patch() {}
 
   // DELETE
+  public delete() {}
 }
 
 export default Fetcher;
