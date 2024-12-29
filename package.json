@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@greeenai/eslint-config": "workspace:*",
+    "@greeenai/types": "workspace:^",
     "@greeenai/typescript-config": "workspace:*",
     "@types/jest": "^29.2.1",
     "@types/node": "^22.10.2",

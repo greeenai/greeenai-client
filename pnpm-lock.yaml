@@ -11,6 +11,9 @@ importers:
       '@greeenai/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
+      '@greeenai/types':
+        specifier: workspace:^
+        version: link:packages/types
       '@greeenai/typescript-config':
         specifier: workspace:*
         version: link:packages/typescript-config
@@ -243,6 +246,8 @@ importers:
       typescript-eslint:
         specifier: ^8.15.0
         version: 8.18.1(eslint@9.17.0)(typescript@5.5.4)
+
+  packages/types: {}
 
   packages/typescript-config: {}
 
