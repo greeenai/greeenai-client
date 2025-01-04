@@ -1239,27 +1239,6 @@ PODS:
     - Yoga
   - react-native-safe-area-context (4.14.1):
     - React-Core
-  - react-native-slider (4.5.5):
-    - DoubleConversion
-    - glog
-    - hermes-engine
-    - RCT-Folly (= 2024.01.01.00)
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - Yoga
   - React-nativeconfig (0.75.3)
   - React-NativeModulesApple (0.75.3):
     - glog
@@ -1522,8 +1501,6 @@ PODS:
     - React-utils (= 0.75.3)
   - RNCAsyncStorage (2.1.0):
     - React-Core
-  - RNDateTimePicker (8.2.0):
-    - React-Core
   - RNGestureHandler (2.21.2):
     - DoubleConversion
     - glog
@@ -1545,6 +1522,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNPermissions (5.2.1):
+    - React-Core
   - RNReanimated (3.16.5):
     - DoubleConversion
     - glog
@@ -1676,7 +1655,6 @@ DEPENDENCIES:
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
-  - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -1704,8 +1682,8 @@ DEPENDENCIES:
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
-  - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -1788,8 +1766,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
-  react-native-slider:
-    :path: "../node_modules/@react-native-community/slider"
   React-nativeconfig:
     :path: "../node_modules/react-native/ReactCommon"
   React-NativeModulesApple:
@@ -1844,10 +1820,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
-  RNDateTimePicker:
-    :path: "../node_modules/@react-native-community/datetimepicker"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNPermissions:
+    :path: "../node_modules/react-native-permissions"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNSVG:
@@ -1892,7 +1868,6 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 714f2fae68edcabfc332b754e9fbaa8cfc68fdd4
   React-microtasksnativemodule: 4943ad8f99be8ccf5a63329fa7d269816609df9e
   react-native-safe-area-context: 141eca0fd4e4191288dfc8b96a7c7e1c2983447a
-  react-native-slider: 4a0f3386a38fc3d2d955efc515aef7096f7d1ee4
   React-nativeconfig: 4a9543185905fe41014c06776bf126083795aed9
   React-NativeModulesApple: 0506da59fc40d2e1e6e12a233db5e81c46face27
   React-perflogger: 3bbb82f18e9ac29a1a6931568e99d6305ef4403b
@@ -1920,9 +1895,9 @@ SPEC CHECKSUMS:
   ReactCodegen: ff95a93d5ab5d9b2551571886271478eaa168565
   ReactCommon: 289214026502e6a93484f4a46bcc0efa4f3f2864
   RNCAsyncStorage: cc6479c4acd84cc7004946946c8afe30b018184d
-  RNDateTimePicker: 40ffda97d071a98a10fdca4fa97e3977102ccd14
   RNGestureHandler: aa9690789023c9be8f06aa90e10ce637ea788f4d
-  RNReanimated: 3238ea254b287088a4ffeb1dcafb49cb1537797b
+  RNPermissions: bd4e8932db57d658a7fd0395bc0ea8a344e28405
+  RNReanimated: 7f86e4da79c34bac24f15635cf1537e4c8bbe264
   RNSVG: 7ff26379b2d1871b8571e6f9bc9630de6baf9bdf
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: 1354c027ab07c7736f99a3bef16172d6f1b12b47
