@@ -2,6 +2,7 @@ import {Platform} from 'react-native';
 import {
   PERMISSIONS,
   Permission,
+  PermissionStatus,
   RESULTS,
   checkMultiple,
   request,
@@ -87,20 +88,22 @@ const getPermissions = async (
     },
     [RESULTS.DENIED]: async (
       permissionName: string,
-      permission: Permission,
+      permission?: Permission,
     ) => {
       const message = `${permissionName} 권한이 거부되었습니다. 권한 요청을 시도합니다.`;
       console.log(message);
-      const requested = await request(permission);
+      if (permission) {
+        const requested = await request(permission);
 
-      if (requested === RESULTS.GRANTED) {
-        const successMessage = `${permissionName} 권한이 허용되었습니다.`;
-        console.log(successMessage);
-        onSuccess?.(successMessage);
-      } else {
-        const errorMessage = `${permissionName} 권한 요청이 거부되었습니다.`;
-        console.warn(errorMessage);
-        onError?.(errorMessage);
+        if (requested === RESULTS.GRANTED) {
+          const successMessage = `${permissionName} 권한이 허용되었습니다.`;
+          console.log(successMessage);
+          onSuccess?.(successMessage);
+        } else {
+          const errorMessage = `${permissionName} 권한 요청이 거부되었습니다.`;
+          console.warn(errorMessage);
+          onError?.(errorMessage);
+        }
       }
     },
     [RESULTS.LIMITED]: (permissionName: string) => {
@@ -120,8 +123,9 @@ const getPermissions = async (
     const handler = permissionsHandlers[result];
 
     if (handler) {
-      // 핸들러에 따라 인자 개수 수정 필요
-      handler(name, permission);
+      result === RESULTS.DENIED
+        ? await handler(name, permission)
+        : handler(name);
     } else {
       const message = `${name} 권한에 대한 처리가 정의되지 않았습니다.`;
       console.warn(message);
