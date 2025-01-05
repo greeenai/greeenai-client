@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import getPermissions from './src/utils/checkPermissions';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,6 +12,13 @@ const styles = StyleSheet.create({
 });
 
 function App() {
+  useEffect(() => {
+    getPermissions(
+      message => console.log('권한 요청 성공:', message),
+      message => console.warn('권한 요청 실패:', message),
+    );
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
