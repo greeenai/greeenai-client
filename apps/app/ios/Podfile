@@ -19,6 +19,13 @@ setup_permissions([
   'PhotoLibraryAddOnly',
 ])
 
+permissions_path = '../node_modules/react-native-permissions/ios'
+
+pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone"
+pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
+pod 'Permission-PhotoLibraryAddOnly', :path => "#{permissions_path}/PhotoLibraryAddOnly"
+
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
