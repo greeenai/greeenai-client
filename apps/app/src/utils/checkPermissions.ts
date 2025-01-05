@@ -6,16 +6,25 @@ import {
   checkMultiple,
   request,
 } from 'react-native-permissions';
+import {AndroidPermissionMap} from 'react-native-permissions/dist/typescript/permissions.android';
+import {IOSPermissionMap} from 'react-native-permissions/dist/typescript/permissions.ios';
 
-// 타입 명확하게 수정
-type PermissionsMap = {
-  [key: string]: {
-    name: string;
-    permission: Permission;
-  };
+// denied 시 설정 화면으로 ?
+
+interface PermissionMapValue {
+  name: string;
+  permission: Permission;
+}
+
+type AndroidPermissionsMap = {
+  [key in keyof Partial<AndroidPermissionMap>]: PermissionMapValue;
 };
 
-const androidPermissions: PermissionsMap = {
+type IosPermissionsMap = {
+  [key in keyof Partial<IOSPermissionMap>]: PermissionMapValue;
+};
+
+const androidPermissions: AndroidPermissionsMap = {
   CAMERA: {name: '카메라 권한', permission: PERMISSIONS.ANDROID.CAMERA},
   READ_EXTERNAL_STORAGE: {
     name: '외부 저장소 읽기 권한',
@@ -39,7 +48,7 @@ const androidPermissions: PermissionsMap = {
   },
 };
 
-const iosPermissions: PermissionsMap = {
+const iosPermissions: IosPermissionsMap = {
   CAMERA: {name: '카메라 권한', permission: PERMISSIONS.IOS.CAMERA},
   PHOTO_LIBRARY: {
     name: '사진 라이브러리 권한',
