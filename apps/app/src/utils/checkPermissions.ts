@@ -1,16 +1,13 @@
-import {Platform} from 'react-native';
+import {Linking, Platform} from 'react-native';
 import {
   PERMISSIONS,
   Permission,
-  PermissionStatus,
   RESULTS,
   checkMultiple,
   request,
 } from 'react-native-permissions';
 import {AndroidPermissionMap} from 'react-native-permissions/dist/typescript/permissions.android';
 import {IOSPermissionMap} from 'react-native-permissions/dist/typescript/permissions.ios';
-
-// denied 시 설정 화면으로 ?
 
 interface PermissionMapValue {
   name: string;
@@ -103,6 +100,10 @@ const getPermissions = async (
           const errorMessage = `${permissionName} 권한 요청이 거부되었습니다.`;
           console.warn(errorMessage);
           onError?.(errorMessage);
+
+          if (Platform.OS === 'ios') {
+            Linking.openURL('app-settings:');
+          }
         }
       }
     },
@@ -115,6 +116,12 @@ const getPermissions = async (
       const message = `${permissionName} 권한이 차단되었습니다. 기기 설정에서 권한을 허용해 주세요.`;
       console.error(message);
       onError?.(message);
+
+      if (Platform.OS === 'ios') {
+        Linking.openURL('app-settings:');
+      } else {
+        Linking.openSettings();
+      }
     },
   };
 
