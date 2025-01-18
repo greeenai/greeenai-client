@@ -6,6 +6,6 @@
     "access": "public"
   },
   "exports": {
-    "./palette": "./src/palette.ts"
+    ".": "./src/index.ts"
   }
 }
