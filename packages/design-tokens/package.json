@@ -1,0 +1,11 @@
+{
+  "name": "@greeenai/design-tokens",
+  "version": "0.0.0",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./palette": "./src/palette.ts"
+  }
+}
