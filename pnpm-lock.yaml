@@ -212,6 +212,8 @@ importers:
         specifier: ^8.4.7
         version: 8.4.7(prettier@3.4.2)
 
+  packages/design-tokens: {}
+
   packages/eslint-config:
     devDependencies:
       '@next/eslint-plugin-next':
