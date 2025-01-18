@@ -1,2 +1,1 @@
-export * as palette from "./palette";
-export * as typo from "./typo";
+export * as theme from "./theme";
