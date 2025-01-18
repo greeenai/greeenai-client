@@ -1,5 +1,5 @@
 {
-  "extends": "@greeenai/typescript-config/react-library.json",
+  "extends": "@greeenai/typescript-config/base.json",
   "compilerOptions": {
     "outDir": "dist"
   },
