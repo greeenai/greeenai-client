@@ -1,32 +1,32 @@
 export const typography = {
   ["headline-20"]: {
-    fontStyle: "SemiBold",
+    fontFamily: "Pretendard-SemiBold",
     fontSize: 20,
     lineHeight: 24,
-    letterSpacing: "-2%",
+    letterSpacing: -0.02,
   },
   ["body-18"]: {
-    fontStyle: "Medium",
+    fontFamily: "Pretendard-Medium",
     fontSize: 18,
     lineHeight: 20,
-    letterSpacing: "-2%",
+    letterSpacing: -0.02,
   },
   ["body-12"]: {
-    fontStyle: "Medium",
+    fontFamily: "Pretendard-Medium",
     fontSize: 12,
     lineHeight: 18,
-    letterSpacing: "-2%",
+    letterSpacing: -0.02,
   },
   ["button-14"]: {
-    fontStyle: "SemiBold",
+    fontFamily: "Pretendard-SemiBold",
     fontSize: 14,
     lineHeight: 24,
-    letterSpacing: "-2%",
+    letterSpacing: -0.02,
   },
   ["button-12"]: {
-    fontStyle: "SemiBold",
+    fontFamily: "Pretendard-SemiBold",
     fontSize: 12,
     lineHeight: 20,
-    letterSpacing: "-2%",
+    letterSpacing: -0.02,
   },
 };

@@ -1,4 +1,4 @@
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
 const path = require('path');
 const withStorybook = require('@storybook/react-native/metro/withStorybook');
 
@@ -13,21 +13,45 @@ const defaultConfig = getDefaultConfig(__dirname);
 const config = {
   resolver: {
     resolveRequest: (context, moduleName, platform) => {
-      const defaultResolveResult = context.resolveRequest(context, moduleName, platform);
+      const defaultResolveResult = context.resolveRequest(
+        context,
+        moduleName,
+        platform,
+      );
 
       if (
         process.env.STORYBOOK_ENABLED !== 'true' &&
         defaultResolveResult?.filePath?.includes?.('.ondevice/')
       ) {
-        return { type: 'empty' };
+        return {type: 'empty'};
       }
 
       return defaultResolveResult;
     },
+    extraNodeModules: {
+      '@babel/runtime': path.resolve(
+        __dirname,
+        'node_modules',
+        '@babel/runtime',
+      ),
+    },
     unstable_enableSymlinks: true,
     unstable_enablePackageExports: true,
+    assetExts: getDefaultConfig().resolver.assetExts.filter(
+      ext => ext !== 'svg',
+    ),
+    sourceExts: [...getDefaultConfig().resolver.sourceExts, 'svg'],
   },
   watchFolders: [path.join(__dirname, '..', '..')],
+  transformer: {
+    babelTransformerPath: require.resolve('react-native-svg-transformer'),
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: false,
+        inlineRequires: true,
+      },
+    }),
+  },
 };
 
 // Merge the final configuration
