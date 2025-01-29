@@ -1,15 +1,7 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import getPermissions from './src/utils/checkPermissions';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import RootNavigator from './src/navigators/RootNavigator';
 
 function App() {
   useEffect(() => {
@@ -20,9 +12,9 @@ function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <SafeAreaProvider>
+      <RootNavigator />
+    </SafeAreaProvider>
   );
 }
 
