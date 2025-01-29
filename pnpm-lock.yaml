@@ -53,6 +53,9 @@ importers:
 
   apps/app:
     dependencies:
+      '@greeenai/design-tokens':
+        specifier: workspace:^
+        version: link:../../packages/design-tokens
       '@react-native-async-storage/async-storage':
         specifier: ^2.1.0
         version: 2.1.0(react-native@0.75.3)
@@ -91,7 +94,7 @@ importers:
         version: 4.5.0(react-native@0.75.3)(react@18.3.1)
       react-native-svg:
         specifier: ^15.7.1
-        version: 15.10.1(react-native@0.75.3)(react@18.3.1)
+        version: 15.11.1(react-native@0.75.3)(react@18.3.1)
     devDependencies:
       '@babel/core':
         specifier: ^7.20.0
@@ -128,13 +131,13 @@ importers:
         version: 8.4.3(prettier@2.8.8)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)
       '@storybook/addon-ondevice-controls':
         specifier: ^8.3.5
-        version: 8.4.3(@gorhom/bottom-sheet@4.6.4)(@react-native-community/datetimepicker@8.2.0)(@react-native-community/slider@4.5.5)(prettier@2.8.8)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.10.1)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4)
+        version: 8.4.3(@gorhom/bottom-sheet@4.6.4)(@react-native-community/datetimepicker@8.2.0)(@react-native-community/slider@4.5.5)(prettier@2.8.8)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.11.1)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4)
       '@storybook/react':
         specifier: ^8.4.7
         version: 8.4.7(react-dom@18.3.1)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4)
       '@storybook/react-native':
         specifier: ^8.3.5
-        version: 8.4.3(@gorhom/bottom-sheet@4.6.4)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.10.1)(react-native@0.75.3)(react@18.3.1)(typescript@5.5.4)
+        version: 8.4.3(@gorhom/bottom-sheet@4.6.4)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.11.1)(react-native@0.75.3)(react@18.3.1)(typescript@5.5.4)
       '@types/react-native':
         specifier: ^0.73.0
         version: 0.73.0(@babel/core@7.26.0)(@babel/preset-env@7.26.0)(@types/react@19.0.1)(react@18.3.1)(typescript@5.5.4)
@@ -3839,7 +3842,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@storybook/addon-ondevice-controls@8.4.3(@gorhom/bottom-sheet@4.6.4)(@react-native-community/datetimepicker@8.2.0)(@react-native-community/slider@4.5.5)(prettier@2.8.8)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.10.1)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4):
+  /@storybook/addon-ondevice-controls@8.4.3(@gorhom/bottom-sheet@4.6.4)(@react-native-community/datetimepicker@8.2.0)(@react-native-community/slider@4.5.5)(prettier@2.8.8)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.11.1)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4):
     resolution: {integrity: sha512-iVO+14HCdbpLYFpBcdUJ3+b1Oc9mo4R5/VdX/qEM91MN0euw29N4EY7n2ja+fv+cprx4q5TWIE1vyZXCVwLweA==}
     peerDependencies:
       '@gorhom/bottom-sheet': '>=4'
@@ -3854,7 +3857,7 @@ packages:
       '@storybook/addon-controls': 8.4.7(storybook@8.4.7)
       '@storybook/core': 8.4.7(prettier@2.8.8)
       '@storybook/react-native-theming': 8.4.3(react-native@0.75.3)(react@18.3.1)
-      '@storybook/react-native-ui': 8.4.3(@gorhom/bottom-sheet@4.6.4)(prettier@2.8.8)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.10.1)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4)
+      '@storybook/react-native-ui': 8.4.3(@gorhom/bottom-sheet@4.6.4)(prettier@2.8.8)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.11.1)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4)
       deep-equal: 1.1.2
       prop-types: 15.8.1
       react: 18.3.1
@@ -4298,7 +4301,7 @@ packages:
       react-native: 0.75.3(@babel/core@7.26.0)(@babel/preset-env@7.26.0)(@types/react@19.0.1)(react@18.3.1)(typescript@5.5.4)
     dev: true
 
-  /@storybook/react-native-ui@8.4.3(@gorhom/bottom-sheet@4.6.4)(prettier@2.8.8)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.10.1)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4):
+  /@storybook/react-native-ui@8.4.3(@gorhom/bottom-sheet@4.6.4)(prettier@2.8.8)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.11.1)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4):
     resolution: {integrity: sha512-FJZKVIKolUfWBSGllxaIA8h0iyrEwMqpE9dULORaCmTTo+L2GdPBDQG4UsaAjDuNh1M6TZ3WufUNenn2tem5rA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -4322,7 +4325,7 @@ packages:
       react-native-gesture-handler: 2.21.2(react-native@0.75.3)(react@18.3.1)
       react-native-reanimated: 3.16.7(@babel/core@7.26.0)(react-native@0.75.3)(react@18.3.1)
       react-native-safe-area-context: 4.14.1(react-native@0.75.3)(react@18.3.1)
-      react-native-svg: 15.10.1(react-native@0.75.3)(react@18.3.1)
+      react-native-svg: 15.11.1(react-native@0.75.3)(react@18.3.1)
       store2: 2.14.3
     transitivePeerDependencies:
       - '@storybook/test'
@@ -4335,7 +4338,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@storybook/react-native@8.4.3(@gorhom/bottom-sheet@4.6.4)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.10.1)(react-native@0.75.3)(react@18.3.1)(typescript@5.5.4):
+  /@storybook/react-native@8.4.3(@gorhom/bottom-sheet@4.6.4)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.11.1)(react-native@0.75.3)(react@18.3.1)(typescript@5.5.4):
     resolution: {integrity: sha512-THO/Ynxh+ojiERrhbKr3vpd5POu7X3pFmU2khhuaY+BIXyQDenNyDwrri/PkUV1+PhE1t2UYkO44JUUcE9/pAw==}
     engines: {node: '>=8.0.0'}
     hasBin: true
@@ -4352,7 +4355,7 @@ packages:
       '@storybook/global': 5.0.0
       '@storybook/react': 8.4.7(react-dom@18.3.1)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4)
       '@storybook/react-native-theming': 8.4.3(react-native@0.75.3)(react@18.3.1)
-      '@storybook/react-native-ui': 8.4.3(@gorhom/bottom-sheet@4.6.4)(prettier@2.8.8)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.10.1)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4)
+      '@storybook/react-native-ui': 8.4.3(@gorhom/bottom-sheet@4.6.4)(prettier@2.8.8)(react-dom@18.3.1)(react-native-gesture-handler@2.21.2)(react-native-reanimated@3.16.7)(react-native-safe-area-context@4.14.1)(react-native-svg@15.11.1)(react-native@0.75.3)(react@18.3.1)(storybook@8.4.7)(typescript@5.5.4)
       chokidar: 3.6.0
       commander: 8.3.0
       dedent: 1.5.3
@@ -11559,8 +11562,8 @@ packages:
       warn-once: 0.1.1
     dev: false
 
-  /react-native-svg@15.10.1(react-native@0.75.3)(react@18.3.1):
-    resolution: {integrity: sha512-Hqz/doQciVFK/Df2v+wsW96oY5jxlta7rZ31KQYo78dlgvAHEaGr6paEOAMvlIruw7EHNQ0Vc1ZmJPJF2kfIPQ==}
+  /react-native-svg@15.11.1(react-native@0.75.3)(react@18.3.1):
+    resolution: {integrity: sha512-Qmwx/yJKt+AHUr4zjxx/Q69qwKtRfr1+uIfFMQoq3WFRhqU76aL9db1DyvPiY632DAsVGba1pHf92OZPkpjrdQ==}
     peerDependencies:
       react: '*'
       react-native: '*'
