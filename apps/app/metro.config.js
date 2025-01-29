@@ -37,8 +37,21 @@ const config = {
     },
     unstable_enableSymlinks: true,
     unstable_enablePackageExports: true,
+    assetExts: getDefaultConfig().resolver.assetExts.filter(
+      ext => ext !== 'svg',
+    ),
+    sourceExts: [...getDefaultConfig().resolver.sourceExts, 'svg'],
   },
   watchFolders: [path.join(__dirname, '..', '..')],
+  transformer: {
+    babelTransformerPath: require.resolve('react-native-svg-transformer'),
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: false,
+        inlineRequires: true,
+      },
+    }),
+  },
 };
 
 // Merge the final configuration
