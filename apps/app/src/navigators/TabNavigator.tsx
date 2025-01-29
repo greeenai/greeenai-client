@@ -6,47 +6,48 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '@greeenai/design-tokens';
 import Icon from '../components/Icon';
 import {RouteProp} from '@react-navigation/native';
-
-type TabNavigatorParamList = {
-  CreateDiary: undefined;
-  Home: undefined;
-  Setting: undefined;
-};
+import {
+  KeyOfTabNavigatorParamList,
+  TabNavigatorParamList,
+} from '../types/navigators';
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
-const tabBarIconMapping = {
+const TabBarIconMapping: Record<KeyOfTabNavigatorParamList, JSX.Element> = {
   Home: <Icon name={'Home'} />,
   Setting: <Icon name={'Setting'} />,
   CreateDiary: <Icon name={'Diary'} />,
 };
 
+const getScreenOptions = (
+  route: RouteProp<TabNavigatorParamList>,
+  insets: {top: number},
+) => ({
+  headerShown: true,
+  headerShadowVisible: false,
+  headerStyle: {
+    height: insets.top + 56,
+  },
+  headerTitleStyle: {
+    ...theme.typo['headline-20'],
+  },
+  tabBarStyle: {
+    height: 102,
+    paddingTop: 18,
+  },
+  tabBarLabel: '',
+  tabBarIcon: () => TabBarIconMapping[route.name],
+});
+
 function TabNavigator() {
   const insets = useSafeAreaInsets();
 
-  const screenOptions = ({
-    route,
-  }: {
-    route: RouteProp<TabNavigatorParamList>;
-  }) => ({
-    headerShown: true,
-    headerShadowVisible: false,
-    headerStyle: {
-      height: insets.top + 56,
-    },
-    headerTitleStyle: {
-      ...theme.typo['headline-20'],
-    },
-    tabBarStyle: {
-      height: 102,
-      paddingTop: 18,
-    },
-    tabBarLabel: '',
-    tabBarIcon: () => tabBarIconMapping[route.name],
-  });
-
   return (
-    <Tab.Navigator initialRouteName={'Home'} screenOptions={screenOptions}>
+    <Tab.Navigator
+      initialRouteName={'Home'}
+      screenOptions={({route}: {route: RouteProp<TabNavigatorParamList>}) =>
+        getScreenOptions(route, insets)
+      }>
       <Tab.Screen
         name={'CreateDiary'}
         component={CreateDiaryScreen}
