@@ -5,9 +5,9 @@ import {
 } from '@react-navigation/native-stack';
 import OnboardingScreen from '../screens/Onboarding';
 import TabNavigator from './TabNavigator';
-import {RootNavigatorParamList} from '../types/navigators';
+import {RootStackNavigatorParamList} from '../types/navigators';
 
-const Stack = createNativeStackNavigator<RootNavigatorParamList>();
+const Stack = createNativeStackNavigator<RootStackNavigatorParamList>();
 
 const screenOptions: NativeStackNavigationOptions = {
   headerShown: false,
