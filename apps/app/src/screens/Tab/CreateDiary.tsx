@@ -1,10 +1,11 @@
-import {SafeAreaView, Text} from 'react-native';
+import {Text} from 'react-native';
+import ScreenLayout from '../../components/ScreenLayout';
 
 function CreateDiaryScreen() {
   return (
-    <SafeAreaView>
+    <ScreenLayout>
       <Text>CreateDiary Screen</Text>
-    </SafeAreaView>
+    </ScreenLayout>
   );
 }
 

@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import getPermissions from './src/utils/checkPermissions';
 import RootNavigator from './src/navigators/RootNavigator';
+import {StyleSheet} from 'react-native';
 
 function App() {
   useEffect(() => {
@@ -12,9 +14,11 @@ function App() {
   }, []);
 
   return (
-    <SafeAreaProvider>
-      <RootNavigator />
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={rootStyle.gestureHandlerRootView}>
+      <SafeAreaProvider>
+        <RootNavigator />
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
 
@@ -29,3 +33,9 @@ if (__DEV__) {
 }
 
 export default AppEntryPoint;
+
+const rootStyle = StyleSheet.create({
+  gestureHandlerRootView: {
+    flex: 1,
+  },
+});
