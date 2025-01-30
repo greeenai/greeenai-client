@@ -11,6 +11,7 @@ const Stack = createNativeStackNavigator<RootStackNavigatorParamList>();
 
 const screenOptions: NativeStackNavigationOptions = {
   headerShown: false,
+  gestureEnabled: true,
 };
 
 function RootNavigator() {
