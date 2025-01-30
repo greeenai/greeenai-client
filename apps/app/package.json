@@ -66,5 +66,9 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "resolutions": {
+    "@types/react": "^19.0.1",
+    "@types/react-native": "^0.73.0"
   }
 }
