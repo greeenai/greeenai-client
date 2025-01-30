@@ -6,9 +6,9 @@ import {
   StyleSheet,
   View,
   ViewStyle,
-  ActivityIndicator,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import Loading from '../Loading';
 
 interface ScreenLayoutProps {
   children: ReactNode;
@@ -36,13 +36,7 @@ function ScreenLayout({
         {backgroundColor: theme.palette[backgroundColor]},
         style,
       ]}>
-      {isLoading ? (
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={theme.palette.primary} />
-        </View>
-      ) : (
-        children
-      )}
+      {isLoading ? <Loading /> : children}
     </ViewComponent>
   );
 
@@ -67,10 +61,5 @@ const screenLayoutStyle = StyleSheet.create({
   },
   keyboardAvoidingView: {
     flex: 1,
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
