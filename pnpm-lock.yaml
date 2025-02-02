@@ -68,6 +68,9 @@ importers:
       '@react-navigation/native-stack':
         specifier: ^7.2.0
         version: 7.2.0(@react-navigation/native@7.0.14)(react-native-safe-area-context@4.14.1)(react-native-screens@4.5.0)(react-native@0.75.3)(react@18.3.1)
+      '@use-funnel/react-navigation-native':
+        specifier: ^0.0.10
+        version: 0.0.10(@react-navigation/native@7.0.14)(react@18.3.1)
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -5316,6 +5319,25 @@ packages:
   /@ungap/structured-clone@1.2.1:
     resolution: {integrity: sha512-fEzPV3hSkSMltkw152tJKNARhOupqbH96MZWyRjNaYZOMIzbrTeQDG+MTc6Mr2pgzFQzFxAfmhGDNP5QK++2ZA==}
     dev: true
+
+  /@use-funnel/core@0.0.9(react@18.3.1):
+    resolution: {integrity: sha512-OSjsIV92pKAA1BrIsVZIPZdLw25XwMfeMT8HY3xTbEvkOvJS4MVBDjsVvP74Bbq+COQTsSIfeLpo6++lMt+6Hw==}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      react: 18.3.1
+    dev: false
+
+  /@use-funnel/react-navigation-native@0.0.10(@react-navigation/native@7.0.14)(react@18.3.1):
+    resolution: {integrity: sha512-g0yYvPKyCvdWY2frj7JSj/h7eGAbFiS/pmt1aCcN9Yu2JsBocyMRdV/8Pedh6p28U2KriTLZOpBhkZgzKYBbqg==}
+    peerDependencies:
+      '@react-navigation/native': '>=6'
+      react: '>=16.8'
+    dependencies:
+      '@react-navigation/native': 7.0.14(react-native@0.75.3)(react@18.3.1)
+      '@use-funnel/core': 0.0.9(react@18.3.1)
+      react: 18.3.1
+    dev: false
 
   /@vanilla-extract/babel-plugin-debug-ids@1.1.0:
     resolution: {integrity: sha512-Zy9bKjaL2P5zsrFYQJ8IjWGlFODmZrpvFmjFE0Zv8om55Pz1JtpJtL6DvlxlWUxbVaP1HKCqsmEfFOZN8fX/ZQ==}
