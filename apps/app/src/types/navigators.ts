@@ -3,10 +3,23 @@ export type RootStackNavigatorParamList = {
   Tab: undefined;
 };
 
+export type OnboardingStackNavigatorParamList = {
+  LoginScreen: undefined;
+  TermsAgreementScreen: undefined;
+  SelectPhotoScreen: undefined;
+  ChooseAnswerScreen: undefined;
+  ViewPastDiariesScreen: undefined;
+  ShareOnSNSScreen: undefined;
+};
+
 export type TabNavigatorParamList = {
   CreateDiary: undefined;
   Home: undefined;
   Setting: undefined;
 };
 
+export type KeyOfRootStackNavigatorParamList =
+  keyof RootStackNavigatorParamList;
+export type KeyOfOnboardingStackNavigatorParamList =
+  keyof OnboardingStackNavigatorParamList;
 export type KeyOfTabNavigatorParamList = keyof TabNavigatorParamList;
