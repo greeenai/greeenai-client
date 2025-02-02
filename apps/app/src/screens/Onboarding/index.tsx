@@ -1,12 +1,12 @@
 import {Text} from 'react-native';
 import ScreenLayout from '../../components/ScreenLayout';
 
-function OnboardingScreen() {
+function OnboardingFunnel() {
   return (
-    <ScreenLayout>
-      <Text>Onboarding Screen</Text>
+    <ScreenLayout isSafeArea>
+      <Text>OnboardingFunnel</Text>
     </ScreenLayout>
   );
 }
 
-export default OnboardingScreen;
+export default OnboardingFunnel;
