@@ -12,17 +12,35 @@ function OnboardingFunnel() {
     id: 'onboarding-funnel',
     initial: {
       step: 'LoginScreen',
-      context: {},
+      context: {
+        onNext: () => {},
+      },
     },
   });
 
   return (
     <funnel.Render
-      LoginScreen={() => <LoginScreen />}
-      TermsAgreementScreen={() => <TermsAgreementScreen />}
-      SelectPhotoScreen={() => <SelectPhotoScreen />}
-      ChooseAnswerScreen={() => <ChooseAnswerScreen />}
-      ViewPastDiariesScreen={() => <ViewPastDiariesScreen />}
+      LoginScreen={({history}) => (
+        <LoginScreen onNext={() => history.push('TermsAgreementScreen')} />
+      )}
+      TermsAgreementScreen={({history}) => (
+        <TermsAgreementScreen
+          onNext={() => history.push('SelectPhotoScreen')}
+        />
+      )}
+      SelectPhotoScreen={({history}) => (
+        <SelectPhotoScreen onNext={() => history.push('ChooseAnswerScreen')} />
+      )}
+      ChooseAnswerScreen={({history}) => (
+        <ChooseAnswerScreen
+          onNext={() => history.push('ViewPastDiariesScreen')}
+        />
+      )}
+      ViewPastDiariesScreen={({history}) => (
+        <ViewPastDiariesScreen
+          onNext={() => history.push('ShareOnSNSScreen')}
+        />
+      )}
       ShareOnSNSScreen={() => <ShareOnSNSScreen />}
     />
   );

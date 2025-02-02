@@ -1,12 +1,15 @@
-import {Text} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import ScreenLayout from '../../components/ScreenLayout';
 
-export type TermsAgreementScreenProps = {};
+export type TermsAgreementScreenProps = {onNext: () => void};
 
-function TermsAgreementScreen({}: TermsAgreementScreenProps) {
+function TermsAgreementScreen({onNext}: TermsAgreementScreenProps) {
   return (
     <ScreenLayout isSafeArea>
       <Text>TermsAgreement Screen</Text>
+      <TouchableOpacity onPress={onNext}>
+        <Text>다음</Text>
+      </TouchableOpacity>
     </ScreenLayout>
   );
 }
