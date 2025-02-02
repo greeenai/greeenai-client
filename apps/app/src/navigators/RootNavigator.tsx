@@ -5,7 +5,7 @@ import {
 } from '@react-navigation/native-stack';
 import TabNavigator from './TabNavigator';
 import {RootStackNavigatorParamList} from '../types/navigators';
-import OnboardingFunnel from '../screens/Onboarding';
+import OnboardingFunnel from '../screens/Onboarding/OnboardingFunnel';
 
 const Stack = createNativeStackNavigator<RootStackNavigatorParamList>();
 
