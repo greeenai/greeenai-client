@@ -11,18 +11,18 @@ type ResponseInterceptor<T = any> = (
   response: Response
 ) => ApiResponse<T> | Promise<ApiResponse<T>>;
 
-interface BaseUrlConfig {
+type BaseUrlConfig = {
   value: string;
   set: (url: string) => void;
-}
+};
 
-interface HeadersConfig {
+type HeadersConfig = {
   value: HeadersInit;
   set: (headers: HeadersInit) => void;
   merge: (headers: HeadersInit) => void;
-}
+};
 
-interface Interceptors {
+type Interceptors = {
   request: {
     handlers: RequestInterceptor[];
     add: (interceptor: RequestInterceptor) => void;
@@ -33,12 +33,12 @@ interface Interceptors {
     add: (interceptor: ResponseInterceptor) => void;
     remove: (interceptor: ResponseInterceptor) => void;
   };
-}
+};
 
-interface ErrorHandler {
+type ErrorHandler = {
   handler: (error: Error) => void | Promise<void>;
   set: (handler: (error: Error) => void | Promise<void>) => void;
-}
+};
 
 class Fetcher {
   private baseUrlConfig: BaseUrlConfig;

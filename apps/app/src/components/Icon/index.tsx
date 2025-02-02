@@ -3,14 +3,14 @@ import {KeyOfIcons} from '../../types/Icon';
 import {KeyOfPalette, theme} from '@greeenai/design-tokens';
 import * as Icons from '../../assets/icons';
 
-interface IconProps {
+type IconProps = {
   name: KeyOfIcons;
   width?: CSSProperties['width'];
   height?: CSSProperties['height'];
   fill?: KeyOfPalette;
   style?: CSSProperties | CSSProperties[];
   onPress?: (...args: any[]) => void;
-}
+};
 
 function Icon({
   name,

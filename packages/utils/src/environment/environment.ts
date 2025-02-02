@@ -1,4 +1,4 @@
-interface EnvironmentInfo {
+type EnvironmentInfo = {
   os: "Android" | "iOS" | "Windows" | "MacOS" | "Linux" | "Unknown";
   deviceType: "Mobile" | "Tablet" | "Desktop" | "Unknown";
   isWebView: boolean;
@@ -11,7 +11,7 @@ interface EnvironmentInfo {
   isMobile: boolean;
   isTablet: boolean;
   isDesktop: boolean;
-}
+};
 
 export const detectEnvironment = (): EnvironmentInfo => {
   const userAgent = navigator.userAgent || "";
