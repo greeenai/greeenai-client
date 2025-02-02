@@ -1,48 +1,66 @@
-import {useFunnel} from '@use-funnel/react-navigation-native';
-import {OnboardingFunnelScreenMap} from '../../types/OnboardingFunnelScreen';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationOptions,
+} from '@react-navigation/native-stack';
+import {OnboardingStackNavigatorParamList} from '../../types/navigators';
 import LoginScreen from './LoginScreen';
 import TermsAgreementScreen from './TermsAgreementScreen';
-import SelectPhotoScreen from './SelectPhotoScreen';
-import ChooseAnswerScreen from './ChooseAnswerScreen';
 import ViewPastDiariesScreen from './ViewPastDiariesScreen';
+import ChooseAnswerScreen from './ChooseAnswerScreen';
+import SelectPhotoScreen from './SelectPhotoScreen';
 import ShareOnSNSScreen from './ShareOnSNSScreen';
 
-function OnboardingFunnel() {
-  const funnel = useFunnel<OnboardingFunnelScreenMap>({
-    id: 'onboarding-funnel',
-    initial: {
-      step: 'LoginScreen',
-      context: {
-        onNext: () => {},
-      },
-    },
-  });
+const Stack = createNativeStackNavigator<OnboardingStackNavigatorParamList>();
 
+const screenOptions: NativeStackNavigationOptions = {
+  headerShown: false,
+  gestureEnabled: true,
+};
+
+function OnboardingFunnel() {
   return (
-    <funnel.Render
-      LoginScreen={({history}) => (
-        <LoginScreen onNext={() => history.push('TermsAgreementScreen')} />
-      )}
-      TermsAgreementScreen={({history}) => (
-        <TermsAgreementScreen
-          onNext={() => history.push('SelectPhotoScreen')}
-        />
-      )}
-      SelectPhotoScreen={({history}) => (
-        <SelectPhotoScreen onNext={() => history.push('ChooseAnswerScreen')} />
-      )}
-      ChooseAnswerScreen={({history}) => (
-        <ChooseAnswerScreen
-          onNext={() => history.push('ViewPastDiariesScreen')}
-        />
-      )}
-      ViewPastDiariesScreen={({history}) => (
-        <ViewPastDiariesScreen
-          onNext={() => history.push('ShareOnSNSScreen')}
-        />
-      )}
-      ShareOnSNSScreen={() => <ShareOnSNSScreen />}
-    />
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="LoginScreen">
+        {({navigation}) => (
+          <LoginScreen
+            onNext={() => navigation.navigate('TermsAgreementScreen')}
+          />
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="TermsAgreementScreen">
+        {({navigation}) => (
+          <TermsAgreementScreen
+            onNext={() => navigation.navigate('SelectPhotoScreen')}
+          />
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="SelectPhotoScreen">
+        {({navigation}) => (
+          <SelectPhotoScreen
+            onNext={() => navigation.navigate('ChooseAnswerScreen')}
+          />
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="ChooseAnswerScreen">
+        {({navigation}) => (
+          <ChooseAnswerScreen
+            onNext={() => navigation.navigate('ViewPastDiariesScreen')}
+          />
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="ViewPastDiariesScreen">
+        {({navigation}) => (
+          <ViewPastDiariesScreen
+            onNext={() => navigation.navigate('ShareOnSNSScreen')}
+          />
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="ShareOnSNSScreen">
+        {({navigation}) => (
+          <ShareOnSNSScreen onNext={() => navigation.navigate('Tab')} />
+        )}
+      </Stack.Screen>
+    </Stack.Navigator>
   );
 }
 
