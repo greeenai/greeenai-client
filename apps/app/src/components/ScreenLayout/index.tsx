@@ -10,14 +10,14 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Loading from '../Loading';
 
-interface ScreenLayoutProps {
+type ScreenLayoutProps = {
   children: ReactNode;
   isLoading?: boolean;
   isKeyboardAvoiding?: boolean;
   isSafeArea?: boolean;
   backgroundColor?: KeyOfPalette;
   style?: ViewStyle;
-}
+};
 
 function ScreenLayout({
   children,

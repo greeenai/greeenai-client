@@ -1,14 +1,12 @@
-import {ParamListBase} from '@react-navigation/native';
-
-export interface RootStackNavigatorParamList extends ParamListBase {
+export type RootStackNavigatorParamList = {
   Onboarding: undefined;
   Tab: undefined;
-}
+};
 
-export interface TabNavigatorParamList extends ParamListBase {
+export type TabNavigatorParamList = {
   CreateDiary: undefined;
   Home: undefined;
   Setting: undefined;
-}
+};
 
 export type KeyOfTabNavigatorParamList = keyof TabNavigatorParamList;
