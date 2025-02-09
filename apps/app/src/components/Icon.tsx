@@ -1,7 +1,7 @@
 import {CSSProperties} from 'react';
-import {KeyOfIcons} from '../../types/Icon';
 import {KeyOfPalette, theme} from '@greeenai/design-tokens';
-import * as Icons from '../../assets/icons';
+import {KeyOfIcons} from '../types/Icon';
+import * as Icons from '../assets/icons';
 
 type IconProps = {
   name: KeyOfIcons;
