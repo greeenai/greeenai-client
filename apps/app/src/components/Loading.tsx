@@ -1,10 +1,15 @@
-import {theme} from '@greeenai/design-tokens';
+import {KeyOfPalette} from '@greeenai/design-tokens';
 import {ActivityIndicator, View} from 'react-native';
 
-function Loading() {
+type LoadingProps = {
+  color?: KeyOfPalette;
+  size?: 'large' | 'medium' | 'small';
+};
+
+function Loading({color = 'white'}: LoadingProps) {
   return (
     <View style={loadingStyle.container}>
-      <ActivityIndicator size="large" color={theme.palette.primary} />
+      <ActivityIndicator size="small" color={color} />
     </View>
   );
 }

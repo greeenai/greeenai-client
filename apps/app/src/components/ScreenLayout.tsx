@@ -8,7 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Loading from '../Loading';
+import Loading from './Loading';
 
 type ScreenLayoutProps = {
   children: ReactNode;

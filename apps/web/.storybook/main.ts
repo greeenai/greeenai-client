@@ -10,13 +10,8 @@ function getAbsolutePath(value: string): string {
 }
 
 const config: StorybookConfig = {
-  stories: [
-    "../app/**/*.mdx",
-    "../app/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
-  addons: [
-    getAbsolutePath("@storybook/addon-essentials"),
-  ],
+  stories: ["../app/**/*.mdx", "../app/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  addons: [getAbsolutePath("@storybook/addon-essentials")],
   framework: {
     name: getAbsolutePath("@storybook/nextjs"),
     options: {},
