@@ -28,7 +28,7 @@ function SocialLoginButton({variant}: SocialLoginButtonProps, ref: Ref<View>) {
   return (
     <TouchableOpacity
       ref={ref}
-      style={[socialLoginButtonStyle.base, getButtonStyle(variant)]}>
+      style={[socialLoginButtonStyle.container, getButtonStyle(variant)]}>
       <Icon
         name={variant === 'kakao' ? 'KakaoLogo' : 'AppleLogo'}
         width={getIconSize(variant)}
@@ -42,7 +42,7 @@ function SocialLoginButton({variant}: SocialLoginButtonProps, ref: Ref<View>) {
 export default forwardRef(SocialLoginButton);
 
 const socialLoginButtonStyle = StyleSheet.create({
-  base: {
+  container: {
     width: 324,
     height: 49,
     borderRadius: 12,
