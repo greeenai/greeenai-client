@@ -1,5 +1,5 @@
 import {Text, TouchableOpacity} from 'react-native';
-import ScreenLayout from '../../components/ScreenLayout';
+import ScreenLayout from '../../components/@common/ScreenLayout';
 
 export type ChooseAnswerScreenProps = {
   onNext: () => void;

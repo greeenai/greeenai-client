@@ -4,13 +4,13 @@ import HomeScreen from '../screens/Tab/Home';
 import SettingScreen from '../screens/Tab/Setting';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '@greeenai/design-tokens';
-import Icon from '../components/Icon';
 import {RouteProp} from '@react-navigation/native';
 import {
   KeyOfTabNavigatorParamList,
   TabNavigatorParamList,
 } from '../types/navigators';
 import {KeyOfIcons} from '../types/Icon';
+import Icon from '../components/@common/Icon';
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 

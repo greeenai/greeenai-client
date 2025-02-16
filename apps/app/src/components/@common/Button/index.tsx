@@ -2,8 +2,8 @@ import {KeyOfPalette, theme} from '@greeenai/design-tokens';
 import {forwardRef, ReactNode, Ref} from 'react';
 import {StyleProp, TouchableOpacity, View, ViewStyle} from 'react-native';
 import Typography from '../Typography';
-import Loading from '../Loading';
 import {ButtonSize, ButtonVariant} from './Button.types';
+import Loading from '../Loading';
 
 type ButtonProps = {
   children: ReactNode;
