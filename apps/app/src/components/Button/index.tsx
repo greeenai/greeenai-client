@@ -1,6 +1,6 @@
 import {KeyOfPalette, theme} from '@greeenai/design-tokens';
-import {ReactNode} from 'react';
-import {TouchableOpacity, ViewStyle} from 'react-native';
+import {forwardRef, ReactNode, Ref} from 'react';
+import {TouchableOpacity, View, ViewStyle} from 'react-native';
 import Typography from '../Typography';
 import Loading from '../Loading';
 import {ButtonSize, ButtonVariant} from './Button.types';
@@ -35,18 +35,22 @@ const getTextColor = (backgroundColor: KeyOfPalette) =>
 const getLoadingColor = (backgroundColor: KeyOfPalette) =>
   backgroundColor === 'white' ? 'primary' : 'white';
 
-function Button({
-  children,
-  leftElement,
-  disabled = false,
-  size = 'lg',
-  variant = 'default',
-  isLoading,
-  backgroundColor = 'primary',
-  style,
-}: ButtonProps) {
+function Button(
+  {
+    children,
+    leftElement,
+    disabled = false,
+    size = 'lg',
+    variant = 'default',
+    isLoading,
+    backgroundColor = 'primary',
+    style,
+  }: ButtonProps,
+  ref: Ref<View>,
+) {
   return (
     <TouchableOpacity
+      ref={ref}
       disabled={disabled}
       style={[getButtonStyle(size, variant, disabled, backgroundColor), style]}>
       {isLoading ? (
@@ -63,7 +67,7 @@ function Button({
   );
 }
 
-export default Button;
+export default forwardRef(Button);
 
 const buttonBaseStyle: ViewStyle = {
   display: 'flex',
