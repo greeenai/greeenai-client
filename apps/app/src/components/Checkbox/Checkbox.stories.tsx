@@ -22,11 +22,11 @@ export const UnChecked = {
 export const Controlled = () => {
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleChangeIsChecked = () => {
+  const handleChangeCheckbox = () => {
     setIsChecked(prevIsChecked => !prevIsChecked);
   };
-  
-  return <Checkbox isChecked={isChecked} onChange={handleChangeIsChecked} />;
+
+  return <Checkbox isChecked={isChecked} onChange={handleChangeCheckbox} />;
 };
 
 export const Disabled = {
