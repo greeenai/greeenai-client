@@ -10,13 +10,21 @@ import {
   KeyOfTabNavigatorParamList,
   TabNavigatorParamList,
 } from '../types/navigators';
+import {KeyOfIcons} from '../types/Icon';
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
-const TabBarIconMapping: Record<KeyOfTabNavigatorParamList, JSX.Element> = {
-  Home: <Icon name={'Home'} />,
-  Setting: <Icon name={'Setting'} />,
-  CreateDiary: <Icon name={'Diary'} />,
+const getTabBarIcon = (
+  routeName: KeyOfTabNavigatorParamList,
+  focused: boolean,
+) => {
+  const iconNames: Record<KeyOfTabNavigatorParamList, KeyOfIcons> = {
+    Home: focused ? 'FilledHome' : 'Home',
+    Setting: focused ? 'FilledSetting' : 'Setting',
+    CreateDiary: focused ? 'FilledDiary' : 'Diary',
+  };
+
+  return <Icon name={iconNames[routeName]} />;
 };
 
 const getScreenOptions = (
@@ -36,7 +44,8 @@ const getScreenOptions = (
     paddingTop: 18,
   },
   tabBarLabel: '',
-  tabBarIcon: () => TabBarIconMapping[route.name],
+  tabBarIcon: ({focused}: {focused: boolean}) =>
+    getTabBarIcon(route.name, focused),
 });
 
 function TabNavigator() {
