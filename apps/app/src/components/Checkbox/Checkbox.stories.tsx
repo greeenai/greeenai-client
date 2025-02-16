@@ -25,6 +25,7 @@ export const Controlled = () => {
   const handleChangeIsChecked = () => {
     setIsChecked(prevIsChecked => !prevIsChecked);
   };
+  
   return <Checkbox isChecked={isChecked} onChange={handleChangeIsChecked} />;
 };
 
