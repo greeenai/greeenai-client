@@ -13,7 +13,8 @@ type ButtonProps = {
   variant?: ButtonVariant;
   isLoading?: boolean;
   backgroundColor?: KeyOfPalette;
-  style?: StyleProp<ViewStyle>
+  onPress: () => void;
+  style?: StyleProp<ViewStyle>;
 };
 
 const getButtonStyle = (
@@ -44,6 +45,7 @@ function Button(
     variant = 'default',
     isLoading,
     backgroundColor = 'primary',
+    onPress,
     style,
   }: ButtonProps,
   ref: Ref<View>,
@@ -52,6 +54,7 @@ function Button(
     <TouchableOpacity
       ref={ref}
       disabled={disabled}
+      onPress={onPress}
       style={[getButtonStyle(size, variant, disabled, backgroundColor), style]}>
       {isLoading ? (
         <Loading color={getLoadingColor(backgroundColor)} />
