@@ -60,12 +60,12 @@ function TabNavigator() {
       <Tab.Screen
         name={'CreateDiary'}
         component={CreateDiaryScreen}
-        options={{headerTitle: '새 일기 생성'}}
+        options={{headerTitle: '일기 생성'}}
       />
       <Tab.Screen
         name={'Home'}
         component={HomeScreen}
-        options={{headerTitle: '지난 일기 보기'}}
+        options={{headerTitle: '지난 일기'}}
       />
       <Tab.Screen
         name={'Setting'}
