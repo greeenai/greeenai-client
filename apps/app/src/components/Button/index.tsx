@@ -1,6 +1,6 @@
 import {KeyOfPalette, theme} from '@greeenai/design-tokens';
 import {forwardRef, ReactNode, Ref} from 'react';
-import {TouchableOpacity, View, ViewStyle} from 'react-native';
+import {StyleProp, TouchableOpacity, View, ViewStyle} from 'react-native';
 import Typography from '../Typography';
 import Loading from '../Loading';
 import {ButtonSize, ButtonVariant} from './Button.types';
@@ -13,7 +13,7 @@ type ButtonProps = {
   variant?: ButtonVariant;
   isLoading?: boolean;
   backgroundColor?: KeyOfPalette;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>
 };
 
 const getButtonStyle = (

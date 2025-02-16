@@ -1,5 +1,5 @@
 import {forwardRef, Ref, useState} from 'react';
-import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
+import {StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
 import Icon from '../Icon';
 import {theme} from '@greeenai/design-tokens';
 
@@ -8,7 +8,7 @@ type CheckboxProps = {
   defaultChecked?: boolean;
   isChecked?: boolean;
   onChange?: () => void;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>
 };
 
 function Checkbox(

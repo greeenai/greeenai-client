@@ -3,6 +3,7 @@ import {ReactNode} from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
+  StyleProp,
   StyleSheet,
   View,
   ViewStyle,
@@ -16,7 +17,7 @@ type ScreenLayoutProps = {
   isKeyboardAvoiding?: boolean;
   isSafeArea?: boolean;
   backgroundColor?: KeyOfPalette;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>
 };
 
 function ScreenLayout({
