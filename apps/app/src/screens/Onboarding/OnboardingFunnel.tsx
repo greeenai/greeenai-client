@@ -4,11 +4,13 @@ import {
 } from '@react-navigation/native-stack';
 import {OnboardingStackNavigatorParamList} from '../../types/navigators';
 import LoginScreen from './LoginScreen';
-import TermsAgreementScreen from './TermsAgreementScreen';
+import TermsAgreementScreen from './TermsAgreement/TermsAgreementScreen';
 import ViewPastDiariesScreen from './ViewPastDiariesScreen';
 import ChooseAnswerScreen from './ChooseAnswerScreen';
 import SelectPhotoScreen from './SelectPhotoScreen';
 import ShareOnSNSScreen from './ShareOnSNSScreen';
+import OptionalTermsScreen from './TermsAgreement/OptionalTermsScreen';
+import RequiredTermsScreen from './TermsAgreement/RequiredTermsScreen';
 
 const Stack = createNativeStackNavigator<OnboardingStackNavigatorParamList>();
 
@@ -27,13 +29,35 @@ function OnboardingFunnel() {
           />
         )}
       </Stack.Screen>
-      <Stack.Screen name="TermsAgreementScreen">
+      <Stack.Screen
+        name="TermsAgreementScreen"
+        options={{
+          headerShown: true,
+          headerTitle: '약관 동의',
+          headerBackVisible: false,
+        }}>
         {({navigation}) => (
           <TermsAgreementScreen
             onNext={() => navigation.navigate('SelectPhotoScreen')}
           />
         )}
       </Stack.Screen>
+      <Stack.Screen
+        name="RequiredTermsScreen"
+        options={{
+          headerShown: true,
+          headerTitle: '필수 이용약관',
+        }}
+        component={RequiredTermsScreen}
+      />
+      <Stack.Screen
+        name="OptionalTermsScreen"
+        options={{
+          headerShown: true,
+          headerTitle: '선택 이용약관',
+        }}
+        component={OptionalTermsScreen}
+      />
       <Stack.Screen name="SelectPhotoScreen">
         {({navigation}) => (
           <SelectPhotoScreen

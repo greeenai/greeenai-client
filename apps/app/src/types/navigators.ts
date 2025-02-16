@@ -6,6 +6,8 @@ export type RootStackNavigatorParamList = {
 export type OnboardingStackNavigatorParamList = {
   LoginScreen: undefined;
   TermsAgreementScreen: undefined;
+  RequiredTermsScreen: undefined;
+  OptionalTermsScreen: undefined;
   SelectPhotoScreen: undefined;
   ChooseAnswerScreen: undefined;
   ViewPastDiariesScreen: undefined;
