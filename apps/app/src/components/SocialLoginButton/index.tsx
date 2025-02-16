@@ -1,7 +1,8 @@
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import Typography from '../Typography';
 import Icon from '../Icon';
 import {theme} from '@greeenai/design-tokens';
+import {forwardRef, Ref} from 'react';
 
 type SocialLoginButtonVariant = 'kakao' | 'apple';
 
@@ -23,9 +24,10 @@ const getButtonStyle = (variant: SocialLoginButtonVariant) => ({
 const getIconSize = (variant: SocialLoginButtonVariant) =>
   variant === 'apple' ? 24 : 32;
 
-function SocialLoginButton({variant}: SocialLoginButtonProps) {
+function SocialLoginButton({variant}: SocialLoginButtonProps, ref: Ref<View>) {
   return (
     <TouchableOpacity
+      ref={ref}
       style={[socialLoginButtonStyle.base, getButtonStyle(variant)]}>
       <Icon
         name={variant === 'kakao' ? 'KakaoLogo' : 'AppleLogo'}
@@ -37,7 +39,7 @@ function SocialLoginButton({variant}: SocialLoginButtonProps) {
   );
 }
 
-export default SocialLoginButton;
+export default forwardRef(SocialLoginButton);
 
 const socialLoginButtonStyle = StyleSheet.create({
   base: {
