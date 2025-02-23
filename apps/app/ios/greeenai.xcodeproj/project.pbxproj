@@ -17,6 +17,7 @@
 		667AF8E76AD44497AEADE3A9 /* Pretendard-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17AA1F5FB130453F884AC6DE /* Pretendard-ExtraLight.ttf */; };
 		6A13F0C3C625295A98FB0779 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 34094185A21EF2E9A00C5BB2 /* PrivacyInfo.xcprivacy */; };
 		6AC544372D2A42470068401E /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 6AC544362D2A42470068401E /* main.jsbundle */; };
+		6AE3EA2E2D6AF85B00828507 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6AE3EA2D2D6AF85B00828507 /* Config.xcconfig */; };
 		71649A3BEEF14E4081B331D1 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA5EC0509AAE49CA90A388CF /* Pretendard-Medium.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8C88D46C95204D4493A5306D /* Pretendard-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62624F5205BC466B93DF26DC /* Pretendard-Thin.ttf */; };
@@ -48,21 +49,23 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = greeenai/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = greeenai/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = greeenai/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		17AA1F5FB130453F884AC6DE /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraLight.ttf"; path = "../../../packages/fonts/ttf/Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; };
+		17AA1F5FB130453F884AC6DE /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraLight.ttf"; path = "../../../packages/fonts/ttf/Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; };
 		34094185A21EF2E9A00C5BB2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = greeenai/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		362C032C3A71453F74073870 /* Pods-greeenai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greeenai.release.xcconfig"; path = "Target Support Files/Pods-greeenai/Pods-greeenai.release.xcconfig"; sourceTree = "<group>"; };
 		46E5F11AE8D518D2407023AA /* libPods-greeenai-greeenaiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-greeenai-greeenaiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		48AAC4AAFE7F4D93A5E1F128 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Light.ttf"; path = "../../../packages/fonts/ttf/Pretendard-Light.ttf"; sourceTree = "<group>"; };
-		57CFF83B6E16429F9BB39365 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Regular.ttf"; path = "../../../packages/fonts/ttf/Pretendard-Regular.ttf"; sourceTree = "<group>"; };
+		48AAC4AAFE7F4D93A5E1F128 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Light.ttf"; path = "../../../packages/fonts/ttf/Pretendard-Light.ttf"; sourceTree = "<group>"; };
+		57CFF83B6E16429F9BB39365 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Regular.ttf"; path = "../../../packages/fonts/ttf/Pretendard-Regular.ttf"; sourceTree = "<group>"; };
 		5B36F3FCF53C757FFA733F1A /* Pods-greeenai-greeenaiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greeenai-greeenaiTests.release.xcconfig"; path = "Target Support Files/Pods-greeenai-greeenaiTests/Pods-greeenai-greeenaiTests.release.xcconfig"; sourceTree = "<group>"; };
-		61EF2D680DA4411D85C0B24E /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Bold.ttf"; path = "../../../packages/fonts/ttf/Pretendard-Bold.ttf"; sourceTree = "<group>"; };
-		62624F5205BC466B93DF26DC /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Thin.ttf"; path = "../../../packages/fonts/ttf/Pretendard-Thin.ttf"; sourceTree = "<group>"; };
+		61EF2D680DA4411D85C0B24E /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Bold.ttf"; path = "../../../packages/fonts/ttf/Pretendard-Bold.ttf"; sourceTree = "<group>"; };
+		62624F5205BC466B93DF26DC /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Thin.ttf"; path = "../../../packages/fonts/ttf/Pretendard-Thin.ttf"; sourceTree = "<group>"; };
 		6AC544362D2A42470068401E /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		6AE3EA2A2D6AEB1A00828507 /* greeenai-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "greeenai-Bridging-Header.h"; sourceTree = "<group>"; };
+		6AE3EA2D2D6AF85B00828507 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = greeenai/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ECD2E9DE3F5ADE10E0EA427 /* Pods-greeenai-greeenaiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greeenai-greeenaiTests.debug.xcconfig"; path = "Target Support Files/Pods-greeenai-greeenaiTests/Pods-greeenai-greeenaiTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A257CF4D54FF429EA4D66C42 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-SemiBold.ttf"; path = "../../../packages/fonts/ttf/Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
-		AA5EC0509AAE49CA90A388CF /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Medium.ttf"; path = "../../../packages/fonts/ttf/Pretendard-Medium.ttf"; sourceTree = "<group>"; };
-		C7629B2BBDC8438D84125CC9 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraBold.ttf"; path = "../../../packages/fonts/ttf/Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; };
+		A257CF4D54FF429EA4D66C42 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-SemiBold.ttf"; path = "../../../packages/fonts/ttf/Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
+		AA5EC0509AAE49CA90A388CF /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Medium.ttf"; path = "../../../packages/fonts/ttf/Pretendard-Medium.ttf"; sourceTree = "<group>"; };
+		C7629B2BBDC8438D84125CC9 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraBold.ttf"; path = "../../../packages/fonts/ttf/Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FFB238ADB6703C536869686A /* Pods-greeenai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greeenai.debug.xcconfig"; path = "Target Support Files/Pods-greeenai/Pods-greeenai.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +119,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				34094185A21EF2E9A00C5BB2 /* PrivacyInfo.xcprivacy */,
+				6AE3EA2A2D6AEB1A00828507 /* greeenai-Bridging-Header.h */,
 			);
 			name = greeenai;
 			sourceTree = "<group>";
@@ -133,7 +137,6 @@
 				62624F5205BC466B93DF26DC /* Pretendard-Thin.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -156,6 +159,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				6AE3EA2D2D6AF85B00828507 /* Config.xcconfig */,
 				13B07FAE1A68108700A75B9A /* greeenai */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* greeenaiTests */,
@@ -247,7 +251,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1620;
 					};
 				};
 			};
@@ -287,6 +291,7 @@
 				6A13F0C3C625295A98FB0779 /* PrivacyInfo.xcprivacy in Resources */,
 				6AC544372D2A42470068401E /* main.jsbundle in Resources */,
 				B519D99FEC494EA394CE32A7 /* Pretendard-Bold.ttf in Resources */,
+				6AE3EA2E2D6AF85B00828507 /* Config.xcconfig in Resources */,
 				35E254383C8844EB911E4F46 /* Pretendard-ExtraBold.ttf in Resources */,
 				667AF8E76AD44497AEADE3A9 /* Pretendard-ExtraLight.ttf in Resources */,
 				8CAD83DFFF8C4DB19BC66182 /* Pretendard-Light.ttf in Resources */,
@@ -529,8 +534,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.greeenai;
 				PRODUCT_NAME = greeenai;
+				SWIFT_OBJC_BRIDGING_HEADER = "greeenai-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -555,8 +561,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.greeenai;
 				PRODUCT_NAME = greeenai;
+				SWIFT_OBJC_BRIDGING_HEADER = "greeenai-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -564,6 +571,7 @@
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AE3EA2D2D6AF85B00828507 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CC = "";
@@ -635,10 +643,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -648,6 +653,7 @@
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AE3EA2D2D6AF85B00828507 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CC = "";
@@ -711,10 +717,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

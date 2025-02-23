@@ -8,6 +8,7 @@ type SocialLoginButtonVariant = 'kakao' | 'apple';
 
 type SocialLoginButtonProps = {
   variant: SocialLoginButtonVariant;
+  onPress: () => void;
 };
 
 const label: Record<SocialLoginButtonVariant, string> = {
@@ -24,10 +25,14 @@ const getButtonStyle = (variant: SocialLoginButtonVariant) => ({
 const getIconSize = (variant: SocialLoginButtonVariant) =>
   variant === 'apple' ? 24 : 32;
 
-function SocialLoginButton({variant}: SocialLoginButtonProps, ref: Ref<View>) {
+function SocialLoginButton(
+  {variant, onPress}: SocialLoginButtonProps,
+  ref: Ref<View>,
+) {
   return (
     <TouchableOpacity
       ref={ref}
+      onPress={onPress}
       style={[socialLoginButtonStyle.container, getButtonStyle(variant)]}>
       <Icon
         name={variant === 'kakao' ? 'KakaoLogo' : 'AppleLogo'}
@@ -43,7 +48,7 @@ export default forwardRef(SocialLoginButton);
 
 const socialLoginButtonStyle = StyleSheet.create({
   container: {
-    width: 324,
+    width: 350,
     height: 49,
     borderRadius: 12,
     display: 'flex',
