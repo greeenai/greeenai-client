@@ -83,6 +83,9 @@ importers:
       react-native:
         specifier: 0.75.3
         version: 0.75.3(@babel/core@7.26.0)(@babel/preset-env@7.26.0)(@types/react@19.0.1)(react@18.3.1)(typescript@5.5.4)
+      react-native-config:
+        specifier: ^1.5.5
+        version: 1.5.5
       react-native-gesture-handler:
         specifier: ^2.21.2
         version: 2.21.2(react-native@0.75.3)(react@18.3.1)
@@ -10826,6 +10829,15 @@ packages:
 
   /react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
+
+  /react-native-config@1.5.5:
+    resolution: {integrity: sha512-dGdLnBU0cd5xL5bF0ROTmHYbsstZnQKOEPfglvZi1vStvAjpld14X25K6mY3KGPTMWAzx6TbjKeq5dR+ILuMMA==}
+    peerDependencies:
+      react-native-windows: '>=0.61'
+    peerDependenciesMeta:
+      react-native-windows:
+        optional: true
+    dev: false
 
   /react-native-gesture-handler@2.21.2(react-native@0.75.3)(react@18.3.1):
     resolution: {integrity: sha512-HcwB225K9aeZ8e/B8nFzEh+2T4EPWTeamO1l/y3PcQ9cyCDYO2zja/G31ITpYRIqkip7XzGs6wI/gnHOQn1LDQ==}
