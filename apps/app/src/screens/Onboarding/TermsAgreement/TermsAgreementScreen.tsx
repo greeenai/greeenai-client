@@ -82,7 +82,6 @@ const termsAgreementScreenStyle = StyleSheet.create({
     flex: 1,
   },
   bottomButtonContainer: {
-    padding: 15,
     marginBottom: 20,
     display: 'flex',
     alignItems: 'center',

@@ -17,7 +17,7 @@ type ScreenLayoutProps = {
   isKeyboardAvoiding?: boolean;
   isSafeArea?: boolean;
   backgroundColor?: KeyOfPalette;
-  style?: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>;
 };
 
 function ScreenLayout({
@@ -33,7 +33,7 @@ function ScreenLayout({
   const content = (
     <ViewComponent
       style={[
-        screenLayoutStyle.view,
+        screenLayoutStyle.base,
         {backgroundColor: theme.palette[backgroundColor]},
         style,
       ]}>
@@ -57,8 +57,11 @@ function ScreenLayout({
 export default ScreenLayout;
 
 const screenLayoutStyle = StyleSheet.create({
-  view: {
+  base: {
     flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    paddingVertical: 15,
   },
   keyboardAvoidingView: {
     flex: 1,

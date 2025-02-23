@@ -1,5 +1,6 @@
-import {Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import ScreenLayout from '../../components/@common/ScreenLayout';
+import Button from '../../components/@common/Button';
 
 export type ViewPastDiariesScreenProps = {
   onNext: () => void;
@@ -8,12 +9,23 @@ export type ViewPastDiariesScreenProps = {
 function ViewPastDiariesScreen({onNext}: ViewPastDiariesScreenProps) {
   return (
     <ScreenLayout isSafeArea>
-      <Text>ViewPastDiaries Screen</Text>
-      <TouchableOpacity onPress={onNext}>
-        <Text>다음</Text>
-      </TouchableOpacity>
+      <View style={viewPastDiariesScreenStyle.content} />
+      <View style={viewPastDiariesScreenStyle.bottomButtonContainer}>
+        <Button onPress={onNext}>다음</Button>
+      </View>
     </ScreenLayout>
   );
 }
 
 export default ViewPastDiariesScreen;
+
+const viewPastDiariesScreenStyle = StyleSheet.create({
+  content: {
+    flex: 1,
+  },
+  bottomButtonContainer: {
+    marginBottom: 20,
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
