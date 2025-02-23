@@ -43,7 +43,7 @@ export default forwardRef(SocialLoginButton);
 
 const socialLoginButtonStyle = StyleSheet.create({
   container: {
-    width: 324,
+    width: 350,
     height: 49,
     borderRadius: 12,
     display: 'flex',
