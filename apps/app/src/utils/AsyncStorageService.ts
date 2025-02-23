@@ -1,12 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-type KeyOfAsyncStorageService = 'accessToken';
-
 class AsyncStorageService {
-  static async setItem<T>(
-    key: KeyOfAsyncStorageService,
-    value: T,
-  ): Promise<void> {
+  static async setItem<T>(key: AsyncStorageKey, value: T): Promise<void> {
     try {
       await AsyncStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
@@ -15,7 +10,7 @@ class AsyncStorageService {
   }
 
   static async multiSet<T>(
-    keyValuePairs: {key: KeyOfAsyncStorageService; value: T}[],
+    keyValuePairs: {key: AsyncStorageKey; value: T}[],
   ): Promise<void> {
     try {
       const formattedPairs: [string, string][] = keyValuePairs.map(
@@ -27,7 +22,7 @@ class AsyncStorageService {
     }
   }
 
-  static async getItem<T>(key: KeyOfAsyncStorageService): Promise<T | null> {
+  static async getItem<T>(key: AsyncStorageKey): Promise<T | null> {
     try {
       const value = await AsyncStorage.getItem(key);
       return value !== null ? JSON.parse(value) : null;
@@ -38,7 +33,7 @@ class AsyncStorageService {
   }
 
   static async multiGet<T>(
-    keys: KeyOfAsyncStorageService[],
+    keys: AsyncStorageKey[],
   ): Promise<Record<string, T | null>> {
     try {
       const values = await AsyncStorage.multiGet(keys);
@@ -53,7 +48,7 @@ class AsyncStorageService {
     }
   }
 
-  static async removeItem(key: KeyOfAsyncStorageService): Promise<void> {
+  static async removeItem(key: AsyncStorageKey): Promise<void> {
     try {
       await AsyncStorage.removeItem(key);
     } catch (error) {
