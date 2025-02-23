@@ -14,6 +14,19 @@ class AsyncStorageService {
     }
   }
 
+  static async multiSet<T>(
+    keyValuePairs: {key: KeyOfAsyncStorageService; value: T}[],
+  ): Promise<void> {
+    try {
+      const formattedPairs: [string, string][] = keyValuePairs.map(
+        ({key, value}) => [key, JSON.stringify(value)],
+      );
+      await AsyncStorage.multiSet(formattedPairs);
+    } catch (error) {
+      console.error(`Error saving multiple data: `, error);
+    }
+  }
+
   static async getItem<T>(key: KeyOfAsyncStorageService): Promise<T | null> {
     try {
       const value = await AsyncStorage.getItem(key);
@@ -21,6 +34,22 @@ class AsyncStorageService {
     } catch (error) {
       console.log(`Error loading data [${key}]: `, error);
       return null;
+    }
+  }
+
+  static async multiGet<T>(
+    keys: KeyOfAsyncStorageService[],
+  ): Promise<Record<string, T | null>> {
+    try {
+      const values = await AsyncStorage.multiGet(keys);
+
+      return values.reduce((acc, [key, value]) => {
+        acc[key] = value ? JSON.parse(value) : null;
+        return acc;
+      }, {} as Record<string, T | null>);
+    } catch (error) {
+      console.error(`Error loading multiple data: `, error);
+      return {};
     }
   }
 
