@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">greeenai</string>
+    <string name="kakao_app_key">@string/NATIVE_APP_KEY</string>
 </resources>
