@@ -33,7 +33,7 @@ function ScreenLayout({
   const content = (
     <ViewComponent
       style={[
-        screenLayoutStyle.base,
+        screenLayoutStyle.container,
         {backgroundColor: theme.palette[backgroundColor]},
         style,
       ]}>
@@ -57,7 +57,7 @@ function ScreenLayout({
 export default ScreenLayout;
 
 const screenLayoutStyle = StyleSheet.create({
-  base: {
+  container: {
     flex: 1,
     display: 'flex',
     alignItems: 'center',
