@@ -1,15 +1,15 @@
 import {CSSProperties, forwardRef, Ref} from 'react';
 import {KeyOfPalette, theme} from '@greeenai/design-tokens';
-import {KeyOfIcons} from '../types/Icon';
-import * as Icons from '../assets/icons';
-import {View} from 'react-native';
+import {KeyOfIcons} from '../../types/Icon';
+import * as Icons from '../../assets/icons';
+import {StyleProp, View, ViewStyle} from 'react-native';
 
 type IconProps = {
   name: KeyOfIcons;
   width?: CSSProperties['width'];
   height?: CSSProperties['height'];
   fill?: KeyOfPalette;
-  style?: CSSProperties | CSSProperties[];
+  style?: StyleProp<ViewStyle>;
   onPress?: (...args: any[]) => void;
 };
 

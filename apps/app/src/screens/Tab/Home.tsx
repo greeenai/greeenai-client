@@ -1,5 +1,5 @@
 import {Text} from 'react-native';
-import ScreenLayout from '../../components/ScreenLayout';
+import ScreenLayout from '../../components/@common/ScreenLayout';
 
 function HomeScreen() {
   return (

@@ -11,6 +11,12 @@ export const typography = {
     lineHeight: 20,
     letterSpacing: -0.36,
   },
+  ["body-14"]: {
+    fontFamily: "Pretendard-Medium",
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: -0.28,
+  },
   ["body-12"]: {
     fontFamily: "Pretendard-Medium",
     fontSize: 12,

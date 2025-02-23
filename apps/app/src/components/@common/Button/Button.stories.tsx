@@ -1,5 +1,5 @@
 import Button from '.';
-import {Download, Share} from '../../assets/icons';
+import {Download, Share} from '../../../assets/icons';
 
 export default {
   title: 'UI/Button',

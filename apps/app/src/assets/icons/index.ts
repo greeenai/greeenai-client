@@ -10,3 +10,4 @@ export {default as Check} from './check.svg';
 export {default as FilledDiary} from './filled-diary.svg';
 export {default as FilledHome} from './filled-home.svg';
 export {default as FilledSetting} from './filled-setting.svg';
+export {default as RightChevron} from './right-chevron.svg';

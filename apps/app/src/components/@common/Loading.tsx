@@ -1,9 +1,10 @@
 import {KeyOfPalette} from '@greeenai/design-tokens';
-import {ActivityIndicator, View} from 'react-native';
+import {ActivityIndicator, StyleProp, View, ViewStyle} from 'react-native';
 
 type LoadingProps = {
   color?: KeyOfPalette;
   size?: 'large' | 'medium' | 'small';
+  style?: StyleProp<ViewStyle>
 };
 
 function Loading({color = 'white'}: LoadingProps) {

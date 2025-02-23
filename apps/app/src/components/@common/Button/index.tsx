@@ -1,9 +1,9 @@
 import {KeyOfPalette, theme} from '@greeenai/design-tokens';
 import {forwardRef, ReactNode, Ref} from 'react';
-import {TouchableOpacity, View, ViewStyle} from 'react-native';
+import {StyleProp, TouchableOpacity, View, ViewStyle} from 'react-native';
 import Typography from '../Typography';
-import Loading from '../Loading';
 import {ButtonSize, ButtonVariant} from './Button.types';
+import Loading from '../Loading';
 
 type ButtonProps = {
   children: ReactNode;
@@ -13,7 +13,8 @@ type ButtonProps = {
   variant?: ButtonVariant;
   isLoading?: boolean;
   backgroundColor?: KeyOfPalette;
-  style?: ViewStyle;
+  onPress: () => void;
+  style?: StyleProp<ViewStyle>;
 };
 
 const getButtonStyle = (
@@ -44,6 +45,7 @@ function Button(
     variant = 'default',
     isLoading,
     backgroundColor = 'primary',
+    onPress,
     style,
   }: ButtonProps,
   ref: Ref<View>,
@@ -52,6 +54,7 @@ function Button(
     <TouchableOpacity
       ref={ref}
       disabled={disabled}
+      onPress={onPress}
       style={[getButtonStyle(size, variant, disabled, backgroundColor), style]}>
       {isLoading ? (
         <Loading color={getLoadingColor(backgroundColor)} />
@@ -78,7 +81,7 @@ const buttonBaseStyle: ViewStyle = {
 };
 
 const sizeStyle: Record<ButtonSize, ViewStyle> = {
-  lg: {height: 49, width: 324},
+  lg: {height: 49, width: 350},
   sm: {height: 33, width: 144},
 };
 
