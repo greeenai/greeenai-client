@@ -67,7 +67,9 @@ function TermsAgreementScreen({onNext}: TermsAgreementScreenProps) {
         ))}
       </View>
       <View style={termsAgreementScreenStyle.bottomButtonContainer}>
-        <Button onPress={onNext}>다음</Button>
+        <Button onPress={onNext} disabled={!allTermsAgreed}>
+          다음
+        </Button>
       </View>
     </ScreenLayout>
   );
