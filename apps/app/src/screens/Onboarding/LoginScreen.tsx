@@ -5,10 +5,13 @@ import {
   loginWithKakaoAccount,
   getProfile,
 } from '@react-native-seoul/kakao-login';
+import useAuthStorage from '../../hooks/useAuthStorage';
 
 export type LoginScreenProps = {onNext: () => void};
 
 function LoginScreen({onNext}: LoginScreenProps) {
+  const {setAuthData} = useAuthStorage();
+
   const handlePressKakaoLoginButton = async () => {
     const {accessToken, refreshToken} = await loginWithKakaoAccount();
     const {
@@ -25,6 +28,11 @@ function LoginScreen({onNext}: LoginScreenProps) {
     };
 
     console.log(userData);
+
+    // TODO: API 연결
+
+    setAuthData(accessToken, refreshToken);
+    onNext();
   };
 
   const handlePressAppleLoginButton = () => {};
