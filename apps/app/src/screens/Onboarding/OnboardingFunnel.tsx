@@ -1,7 +1,8 @@
 import {
-  createNativeStackNavigator,
-  NativeStackNavigationOptions,
-} from '@react-navigation/native-stack';
+  createStackNavigator,
+  StackNavigationOptions,
+  StackNavigationProp,
+} from '@react-navigation/stack';
 import {OnboardingStackNavigatorParamList} from '../../types/navigators';
 import LoginScreen from './LoginScreen';
 import TermsAgreementScreen from './TermsAgreement/TermsAgreementScreen';
@@ -11,17 +12,49 @@ import SelectPhotoScreen from './SelectPhotoScreen';
 import ShareOnSNSScreen from './ShareOnSNSScreen';
 import OptionalTermsScreen from './TermsAgreement/OptionalTermsScreen';
 import RequiredTermsScreen from './TermsAgreement/RequiredTermsScreen';
+import Icon from '../../components/@common/Icon';
+import {theme} from '@greeenai/design-tokens';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {StyleSheet} from 'react-native';
 
-const Stack = createNativeStackNavigator<OnboardingStackNavigatorParamList>();
+const Stack = createStackNavigator<OnboardingStackNavigatorParamList>();
 
-const screenOptions: NativeStackNavigationOptions = {
+const getScreenOptions = (
+  routeName: keyof OnboardingStackNavigatorParamList,
+  navigation: StackNavigationProp<OnboardingStackNavigatorParamList>,
+  insets: {top: number},
+): StackNavigationOptions => ({
   headerShown: false,
   gestureEnabled: true,
-};
+  headerTitleStyle: {
+    ...theme.typo['headline-20'],
+  },
+  headerStyle: {
+    height: insets.top + 56,
+  },
+  headerLeft: () =>
+    (routeName === 'RequiredTermsScreen' ||
+      routeName === 'OptionalTermsScreen') && (
+      <Icon
+        name={'LeftChevron'}
+        width={26}
+        height={26}
+        onPress={() => {
+          navigation.goBack();
+        }}
+        style={onboardingFunnelStyle.headerLeft}
+      />
+    ),
+});
 
 function OnboardingFunnel() {
+  const insets = useSafeAreaInsets();
+
   return (
-    <Stack.Navigator screenOptions={screenOptions}>
+    <Stack.Navigator
+      screenOptions={({route, navigation}) =>
+        getScreenOptions(route.name, navigation, insets)
+      }>
       <Stack.Screen name="LoginScreen">
         {({navigation}) => (
           <LoginScreen
@@ -34,7 +67,6 @@ function OnboardingFunnel() {
         options={{
           headerShown: true,
           headerTitle: '약관 동의',
-          headerBackVisible: false,
         }}>
         {({navigation}) => (
           <TermsAgreementScreen
@@ -89,3 +121,9 @@ function OnboardingFunnel() {
 }
 
 export default OnboardingFunnel;
+
+const onboardingFunnelStyle = StyleSheet.create({
+  headerLeft: {
+    marginLeft: 16,
+  },
+});
