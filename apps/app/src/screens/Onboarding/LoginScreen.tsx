@@ -6,7 +6,7 @@ export type LoginScreenProps = {onNext: () => void};
 
 function LoginScreen({onNext}: LoginScreenProps) {
   return (
-    <ScreenLayout isSafeArea style={loginScreenStyle.base}>
+    <ScreenLayout isSafeArea>
       <View style={loginScreenStyle.logoContainer} />
       <View style={loginScreenStyle.socialLoginButtonContainer}>
         <SocialLoginButton variant={'kakao'} />
@@ -19,11 +19,6 @@ function LoginScreen({onNext}: LoginScreenProps) {
 export default LoginScreen;
 
 const loginScreenStyle = StyleSheet.create({
-  base: {
-    paddingVertical: 15,
-    display: 'flex',
-    alignItems: 'center',
-  },
   logoContainer: {
     flex: 1,
     borderWidth: 1,
