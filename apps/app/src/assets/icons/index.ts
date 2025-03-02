@@ -11,3 +11,6 @@ export {default as FilledDiary} from './filled-diary.svg';
 export {default as FilledHome} from './filled-home.svg';
 export {default as FilledSetting} from './filled-setting.svg';
 export {default as RightChevron} from './right-chevron.svg';
+export {default as DeleteAccount} from './delete-account.svg';
+export {default as LogOut} from './log-out.svg';
+export {default as TermsAgreement} from './terms-agreement.svg';
