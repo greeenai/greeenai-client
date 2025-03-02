@@ -1,5 +1,5 @@
 import {KeyOfPalette, theme} from '@greeenai/design-tokens';
-import {forwardRef, ReactNode, Ref} from 'react';
+import {ForwardedRef, forwardRef, ReactNode} from 'react';
 import {StyleProp, TouchableOpacity, View, ViewStyle} from 'react-native';
 import Typography from '../Typography';
 import {ButtonSize, ButtonVariant} from './Button.types';
@@ -14,6 +14,7 @@ type ButtonProps = {
   isLoading?: boolean;
   backgroundColor?: KeyOfPalette;
   onPress: () => void;
+  width?: ViewStyle['width'];
   style?: StyleProp<ViewStyle>;
 };
 
@@ -22,12 +23,14 @@ const getButtonStyle = (
   variant: ButtonVariant,
   disabled: boolean,
   backgroundColor: KeyOfPalette,
+  width: ViewStyle['width'],
 ) => ({
   ...buttonBaseStyle,
   ...sizeStyle[size],
   ...borderRadiusStyle[variant][size],
   ...getBorderStyle(backgroundColor),
   backgroundColor: getBackgroundColor(backgroundColor, disabled),
+  ...(width ? {width} : {}),
 });
 
 const getTextColor = (backgroundColor: KeyOfPalette) =>
@@ -46,16 +49,20 @@ function Button(
     isLoading,
     backgroundColor = 'primary',
     onPress,
+    width,
     style,
   }: ButtonProps,
-  ref: Ref<View>,
+  ref: ForwardedRef<View>,
 ) {
   return (
     <TouchableOpacity
       ref={ref}
       disabled={disabled}
       onPress={onPress}
-      style={[getButtonStyle(size, variant, disabled, backgroundColor), style]}>
+      style={[
+        getButtonStyle(size, variant, disabled, backgroundColor, width),
+        style,
+      ]}>
       {isLoading ? (
         <Loading color={getLoadingColor(backgroundColor)} />
       ) : (
