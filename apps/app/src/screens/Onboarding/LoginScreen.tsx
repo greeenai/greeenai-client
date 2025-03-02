@@ -1,24 +1,21 @@
 import {StyleSheet, View} from 'react-native';
 import ScreenLayout from '../../components/@common/ScreenLayout';
 import SocialLoginButton from '../../components/@common/SocialLoginButton';
-import {
-  loginWithKakaoAccount,
-  getProfile,
-} from '@react-native-seoul/kakao-login';
-import useAuthStorage from '../../hooks/useAuthStorage';
+// import useAuthStorage from '../../hooks/useAuthStorage';
+import kakaoClient from '../../apis/kakaoClient';
 
 export type LoginScreenProps = {onNext: () => void};
 
 function LoginScreen({onNext}: LoginScreenProps) {
-  const {setAuthData} = useAuthStorage();
+  // const {setAuthData} = useAuthStorage();
 
   const handlePressKakaoLoginButton = async () => {
-    const {accessToken, refreshToken} = await loginWithKakaoAccount();
+    await kakaoClient.loginWithKakaoAccount();
     const {
       nickname: username,
       email: userEmail,
       id: oauthId,
-    } = await getProfile();
+    } = await kakaoClient.getProfile();
 
     const userData = {
       username,
@@ -31,7 +28,7 @@ function LoginScreen({onNext}: LoginScreenProps) {
 
     // TODO: API 연결
 
-    setAuthData(accessToken, refreshToken);
+    // setAuthData(accessToken, refreshToken);
     onNext();
   };
 
