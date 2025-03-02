@@ -1,10 +1,25 @@
+import {useRef} from 'react';
+import {StyleSheet, TouchableOpacity} from 'react-native';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import ScreenLayout from '../../components/@common/ScreenLayout';
 import Typography from '../../components/@common/Typography';
 import Divider from '../../components/@common/Divider';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import Icon from '../../components/@common/Icon';
+import LogoutBottomSheet from '../../components/Setting/LogoutBottomSheet';
+import DeleteAccountBottomSheet from '../../components/Setting/DeleteAccountBottomSheet';
 
 function SettingScreen() {
+  const logoutBottomSheetRef = useRef<BottomSheetModal>(null);
+  const deleteAccountBottomSheetRef = useRef<BottomSheetModal>(null);
+
+  const handlePressLogoutButton = () => {
+    logoutBottomSheetRef.current?.present();
+  };
+
+  const handlePressDeleteAccountButton = () => {
+    deleteAccountBottomSheetRef.current?.present();
+  };
+
   return (
     <ScreenLayout style={settingScreenStyle.container}>
       <Typography color={'darkGray'} style={settingScreenStyle.categoryText}>
@@ -20,16 +35,22 @@ function SettingScreen() {
         회원 관리
       </Typography>
       <Divider />
-      <TouchableOpacity style={settingScreenStyle.menuItem}>
+      <TouchableOpacity
+        onPress={handlePressLogoutButton}
+        style={settingScreenStyle.menuItem}>
         <Icon name={'LogOut'} />
         <Typography type={'body-18'}>로그아웃</Typography>
       </TouchableOpacity>
       <Divider />
-      <TouchableOpacity style={settingScreenStyle.menuItem}>
+      <TouchableOpacity
+        onPress={handlePressDeleteAccountButton}
+        style={settingScreenStyle.menuItem}>
         <Icon name={'DeleteAccount'} />
         <Typography type={'body-18'}>회원 탈퇴</Typography>
       </TouchableOpacity>
       <Divider />
+      <LogoutBottomSheet ref={logoutBottomSheetRef} />
+      <DeleteAccountBottomSheet ref={deleteAccountBottomSheetRef} />
     </ScreenLayout>
   );
 }
