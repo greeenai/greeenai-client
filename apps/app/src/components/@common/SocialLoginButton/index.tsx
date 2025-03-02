@@ -9,6 +9,7 @@ type SocialLoginButtonVariant = 'kakao' | 'apple';
 type SocialLoginButtonProps = {
   variant: SocialLoginButtonVariant;
   onPress: () => void;
+  isVisible?: boolean;
 };
 
 const label: Record<SocialLoginButtonVariant, string> = {
@@ -26,9 +27,11 @@ const getIconSize = (variant: SocialLoginButtonVariant) =>
   variant === 'apple' ? 24 : 32;
 
 function SocialLoginButton(
-  {variant, onPress}: SocialLoginButtonProps,
+  {variant, onPress, isVisible = true}: SocialLoginButtonProps,
   ref: Ref<View>,
 ) {
+  if (!isVisible) return null;
+
   return (
     <TouchableOpacity
       ref={ref}
