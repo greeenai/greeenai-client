@@ -1,4 +1,4 @@
-import {KeyOfPalette} from '@greeenai/design-tokens';
+import {KeyOfPalette, theme} from '@greeenai/design-tokens';
 import {StyleProp, View, ViewStyle} from 'react-native';
 
 type DividerProps = {
@@ -18,7 +18,7 @@ function Divider({
     <View
       style={[
         {
-          backgroundColor: color,
+          backgroundColor: theme.palette[color],
           width: isHorizontal ? '100%' : thickness,
           height: isHorizontal ? thickness : '100%',
         },
