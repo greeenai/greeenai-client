@@ -50,7 +50,7 @@ const settingScreenStyle = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 15,
     paddingHorizontal: 25,
-    gap: 10,
+    gap: 12,
     width: '100%',
   },
   divider: {
