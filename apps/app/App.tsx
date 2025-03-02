@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import getPermissions from './src/utils/checkPermissions';
 import RootNavigator from './src/navigators/RootNavigator';
 import {StyleSheet} from 'react-native';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 function App() {
   useEffect(() => {
@@ -15,9 +16,11 @@ function App() {
 
   return (
     <GestureHandlerRootView style={rootStyle.gestureHandlerRootView}>
-      <SafeAreaProvider>
-        <RootNavigator />
-      </SafeAreaProvider>
+      <BottomSheetModalProvider>
+        <SafeAreaProvider>
+          <RootNavigator />
+        </SafeAreaProvider>
+      </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );
 }

@@ -1,4 +1,4 @@
-import {CSSProperties, forwardRef, Ref} from 'react';
+import {CSSProperties, ForwardedRef, forwardRef} from 'react';
 import {KeyOfPalette, theme} from '@greeenai/design-tokens';
 import {KeyOfIcons} from '../../types/Icon';
 import * as Icons from '../../assets/icons';
@@ -15,7 +15,7 @@ type IconProps = {
 
 function Icon(
   {name, width = 32, height = 32, fill = 'black', ...props}: IconProps,
-  ref: Ref<View>,
+  ref: ForwardedRef<View>,
 ) {
   const SvgIcon = Icons[name];
 

@@ -8,7 +8,7 @@ import {
 import {forwardRef, ReactNode, Ref, useImperativeHandle, useRef} from 'react';
 import {StyleProp, ViewStyle} from 'react-native';
 
-type BottomSheetRef = {
+export type BottomSheetRef = {
   present: () => void;
   dismiss: () => void;
 };

@@ -1,4 +1,4 @@
-import {forwardRef, Ref, useState} from 'react';
+import {ForwardedRef, forwardRef, useState} from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -23,7 +23,7 @@ function Checkbox(
     onChange,
     style,
   }: CheckboxProps,
-  ref: Ref<View>,
+  ref: ForwardedRef<View>,
 ) {
   const [internalChecked, setInternalChecked] = useState(defaultChecked);
 
