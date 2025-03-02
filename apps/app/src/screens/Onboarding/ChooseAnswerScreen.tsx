@@ -8,7 +8,7 @@ export type ChooseAnswerScreenProps = {
 
 function ChooseAnswerScreen({onNext}: ChooseAnswerScreenProps) {
   return (
-    <ScreenLayout isSafeArea>
+    <ScreenLayout>
       <View style={chooseAnswerScreenStyle.content} />
       <View style={chooseAnswerScreenStyle.bottomButtonContainer}>
         <Button onPress={onNext}>다음</Button>

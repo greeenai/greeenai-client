@@ -6,7 +6,7 @@ export type ShareOnSNSScreenProps = {onNext: () => void};
 
 function ShareOnSNSScreen({onNext}: ShareOnSNSScreenProps) {
   return (
-    <ScreenLayout isSafeArea>
+    <ScreenLayout>
       <View style={shareOnSNSScreenStyle.content} />
       <View style={shareOnSNSScreenStyle.bottomButtonContainer}>
         <Button onPress={onNext}>다음</Button>

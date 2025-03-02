@@ -8,7 +8,7 @@ export type ViewPastDiariesScreenProps = {
 
 function ViewPastDiariesScreen({onNext}: ViewPastDiariesScreenProps) {
   return (
-    <ScreenLayout isSafeArea>
+    <ScreenLayout>
       <View style={viewPastDiariesScreenStyle.content} />
       <View style={viewPastDiariesScreenStyle.bottomButtonContainer}>
         <Button onPress={onNext}>다음</Button>

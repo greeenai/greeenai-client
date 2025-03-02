@@ -8,7 +8,7 @@ export type SelectPhotoScreenProps = {
 
 function SelectPhotoScreen({onNext}: SelectPhotoScreenProps) {
   return (
-    <ScreenLayout isSafeArea>
+    <ScreenLayout>
       <View style={selectPhotoScreenStyle.content} />
       <View style={selectPhotoScreenStyle.bottomButtonContainer}>
         <Button onPress={onNext}>다음</Button>
