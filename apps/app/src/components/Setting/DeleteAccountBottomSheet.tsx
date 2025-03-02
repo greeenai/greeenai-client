@@ -1,14 +1,13 @@
 import {View} from 'react-native';
 import Typography from '../@common/Typography';
-import {forwardRef, Ref} from 'react';
-import BottomSheet from '../@common/BottomSheet';
-import {BottomSheetModal} from '@gorhom/bottom-sheet';
+import {ForwardedRef, forwardRef} from 'react';
+import BottomSheet, {BottomSheetRef} from '../@common/BottomSheet';
 
 type DeleteAccountBottomSheetProps = {};
 
 function DeleteAccountBottomSheet(
   _: DeleteAccountBottomSheetProps,
-  ref: Ref<BottomSheetModal>,
+  ref: ForwardedRef<BottomSheetRef>,
 ) {
   return (
     <BottomSheet ref={ref}>

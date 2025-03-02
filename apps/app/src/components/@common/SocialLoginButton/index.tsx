@@ -2,7 +2,7 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import Typography from '../Typography';
 import Icon from '../Icon';
 import {theme} from '@greeenai/design-tokens';
-import {forwardRef, Ref} from 'react';
+import {ForwardedRef, forwardRef} from 'react';
 
 type SocialLoginButtonVariant = 'kakao' | 'apple';
 
@@ -28,7 +28,7 @@ const getIconSize = (variant: SocialLoginButtonVariant) =>
 
 function SocialLoginButton(
   {variant, onPress, isVisible = true}: SocialLoginButtonProps,
-  ref: Ref<View>,
+  ref: ForwardedRef<View>,
 ) {
   if (!isVisible) return null;
 
