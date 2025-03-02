@@ -56,6 +56,9 @@ importers:
       '@greeenai/design-tokens':
         specifier: workspace:^
         version: link:../../packages/design-tokens
+      '@invertase/react-native-apple-authentication':
+        specifier: ^2.4.0
+        version: 2.4.0
       '@react-native-async-storage/async-storage':
         specifier: ^2.1.0
         version: 2.1.0(react-native@0.75.3)
@@ -2435,6 +2438,11 @@ packages:
     os: [win32]
     requiresBuild: true
     optional: true
+
+  /@invertase/react-native-apple-authentication@2.4.0:
+    resolution: {integrity: sha512-H29XdL/4JmMMA/b7CCEHpSKvyg3LdCJKMydE7ont01IAnDIW//uPuRMdL2RkxJKJtw449c/PY2K9ijWLxQAMIQ==}
+    engines: {node: '>=14'}
+    dev: false
 
   /@isaacs/ttlcache@1.4.1:
     resolution: {integrity: sha512-RQgQ4uQ+pLbqXfOmieB91ejmLwvSgv9nLx6sT6sD83s7umBypgg+OIBOBbEUiJXrfpnp9j0mRhYYdzp9uqq3lA==}
