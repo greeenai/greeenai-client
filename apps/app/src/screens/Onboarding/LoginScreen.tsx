@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import ScreenLayout from '../../components/@common/ScreenLayout';
 import SocialLoginButton from '../../components/@common/SocialLoginButton';
 // import useAuthStorage from '../../hooks/useAuthStorage';
@@ -45,6 +45,7 @@ function LoginScreen({onNext}: LoginScreenProps) {
         <SocialLoginButton
           variant={'apple'}
           onPress={handlePressAppleLoginButton}
+          isVisible={Platform.OS === 'ios'}
         />
       </View>
     </ScreenLayout>
