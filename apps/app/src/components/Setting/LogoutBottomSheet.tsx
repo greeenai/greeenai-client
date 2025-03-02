@@ -1,4 +1,4 @@
-import {ForwardedRef, forwardRef, Ref} from 'react';
+import {ForwardedRef, forwardRef} from 'react';
 import {StyleSheet, View} from 'react-native';
 import Typography from '../@common/Typography';
 import BottomSheet, {BottomSheetRef} from '../@common/BottomSheet';
