@@ -1,8 +1,8 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import Checkbox from '../@common/Checkbox';
-import Typography from '../@common/Typography';
 import {ReactNode} from 'react';
-import Icon from '../@common/Icon';
+import Checkbox from '../../@common/Checkbox';
+import Icon from '../../@common/Icon';
+import Typography from '../../@common/Typography';
 
 type TermsAgreementItemProps = {
   children: ReactNode;
