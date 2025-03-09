@@ -23,15 +23,6 @@ function SettingScreen() {
   return (
     <ScreenLayout style={settingScreenStyle.container}>
       <Typography color={'darkGray'} style={settingScreenStyle.categoryText}>
-        일반
-      </Typography>
-      <Divider />
-      <TouchableOpacity style={settingScreenStyle.menuItem}>
-        <Icon name={'TermsAgreement'} />
-        <Typography type={'body-18'}>약관</Typography>
-      </TouchableOpacity>
-      <Divider style={settingScreenStyle.divider} />
-      <Typography color={'darkGray'} style={settingScreenStyle.categoryText}>
         회원 관리
       </Typography>
       <Divider />
