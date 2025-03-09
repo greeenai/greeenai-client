@@ -1,8 +1,8 @@
 import {ForwardedRef, forwardRef} from 'react';
 import {StyleSheet, View} from 'react-native';
-import Typography from '../@common/Typography';
-import BottomSheet, {BottomSheetRef} from '../@common/BottomSheet';
-import Button from '../@common/Button';
+import BottomSheet, {BottomSheetRef} from '../../@common/BottomSheet';
+import Typography from '../../@common/Typography';
+import Button from '../../@common/Button';
 
 type DeleteAccountBottomSheetProps = {};
 

@@ -4,9 +4,9 @@ import ScreenLayout from '../../components/@common/ScreenLayout';
 import Typography from '../../components/@common/Typography';
 import Divider from '../../components/@common/Divider';
 import Icon from '../../components/@common/Icon';
-import LogoutBottomSheet from '../../components/Setting/LogoutBottomSheet';
-import DeleteAccountBottomSheet from '../../components/Setting/DeleteAccountBottomSheet';
 import {BottomSheetRef} from '../../components/@common/BottomSheet';
+import DeleteAccountBottomSheet from '../../components/BottomTab/Setting/DeleteAccountBottomSheet';
+import LogoutBottomSheet from '../../components/BottomTab/Setting/LogoutBottomSheet';
 
 function SettingScreen() {
   const logoutBottomSheetRef = useRef<BottomSheetRef>(null);

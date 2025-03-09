@@ -6,6 +6,7 @@ import {
 import TabNavigator from './TabNavigator';
 import {RootStackNavigatorParamList} from '../types/navigators';
 import OnboardingFunnel from '../screens/Onboarding/OnboardingFunnel';
+import CreateDiaryStackNavigator from './CreateDiaryStackNavigator';
 
 const Stack = createNativeStackNavigator<RootStackNavigatorParamList>();
 
@@ -14,7 +15,7 @@ const screenOptions: NativeStackNavigationOptions = {
   gestureEnabled: true,
 };
 
-function RootNavigator() {
+function RootStackNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -22,9 +23,13 @@ function RootNavigator() {
         screenOptions={screenOptions}>
         <Stack.Screen name={'Onboarding'} component={OnboardingFunnel} />
         <Stack.Screen name={'Tab'} component={TabNavigator} />
+        <Stack.Screen
+          name={'CreateDiaryStack'}
+          component={CreateDiaryStackNavigator}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-export default RootNavigator;
+export default RootStackNavigator;

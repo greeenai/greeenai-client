@@ -1,12 +1,29 @@
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {OnboardingStackNavigatorParamList} from '../types/navigators';
+import {
+  CreateDiaryStackNavigatorParamList,
+  OnboardingStackNavigatorParamList,
+  RootStackNavigatorParamList,
+  TabNavigatorParamList,
+} from '../types/navigators';
+import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 
 function useNavigator() {
+  const rootStackNavigation =
+    useNavigation<StackNavigationProp<RootStackNavigatorParamList>>();
   const onboardingStackNavigation =
     useNavigation<StackNavigationProp<OnboardingStackNavigatorParamList>>();
+  const createDiaryStackNavigation =
+    useNavigation<StackNavigationProp<CreateDiaryStackNavigatorParamList>>();
+  const bottomTabNavigation =
+    useNavigation<BottomTabNavigationProp<TabNavigatorParamList>>();
 
-  return {onboardingStackNavigation};
+  return {
+    rootStackNavigation,
+    onboardingStackNavigation,
+    createDiaryStackNavigation,
+    bottomTabNavigation,
+  };
 }
 
 export default useNavigator;
