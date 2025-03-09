@@ -23,30 +23,21 @@ function SettingScreen() {
   return (
     <ScreenLayout style={settingScreenStyle.container}>
       <Typography color={'darkGray'} style={settingScreenStyle.categoryText}>
-        일반
-      </Typography>
-      <Divider />
-      <TouchableOpacity style={settingScreenStyle.menuItem}>
-        <Icon name={'TermsAgreement'} />
-        <Typography type={'body-18'}>약관</Typography>
-      </TouchableOpacity>
-      <Divider style={settingScreenStyle.divider} />
-      <Typography color={'darkGray'} style={settingScreenStyle.categoryText}>
         회원 관리
       </Typography>
       <Divider />
       <TouchableOpacity
         onPress={handlePressLogoutButton}
         style={settingScreenStyle.menuItem}>
-        <Icon name={'LogOut'} />
-        <Typography type={'body-18'}>로그아웃</Typography>
+        <Icon name={'LogOut'} width={24} height={24} />
+        <Typography type={'body-16'}>로그아웃</Typography>
       </TouchableOpacity>
       <Divider />
       <TouchableOpacity
         onPress={handlePressDeleteAccountButton}
         style={settingScreenStyle.menuItem}>
-        <Icon name={'DeleteAccount'} />
-        <Typography type={'body-18'}>회원 탈퇴</Typography>
+        <Icon name={'DeleteAccount'} width={24} height={24} />
+        <Typography type={'body-16'}>회원 탈퇴</Typography>
       </TouchableOpacity>
       <Divider />
       <LogoutBottomSheet ref={logoutBottomSheetRef} />
