@@ -1,12 +1,12 @@
 import {Text} from 'react-native';
 import ScreenLayout from '../../components/@common/ScreenLayout';
 
-function HomeScreen() {
+function PastDiaryScreen() {
   return (
     <ScreenLayout>
-      <Text>Home Screen</Text>
+      <Text>PastDiary Screen</Text>
     </ScreenLayout>
   );
 }
 
-export default HomeScreen;
+export default PastDiaryScreen;

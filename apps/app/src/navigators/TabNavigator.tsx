@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/Tab/HomeScreen';
+import PastDiaryScreen from '../screens/Tab/PastDiaryScreen';
 import SettingScreen from '../screens/Tab/SettingScreen';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '@greeenai/design-tokens';
@@ -20,7 +20,7 @@ const getTabBarIcon = (
   focused: boolean,
 ) => {
   const iconNames: Record<KeyOfTabNavigatorParamList, KeyOfIcons> = {
-    Home: focused ? 'FilledDiary' : 'Diary',
+    PastDiary: focused ? 'FilledDiary' : 'Diary',
     Setting: focused ? 'FilledSetting' : 'Setting',
     CreateDiary: '' as KeyOfIcons,
   };
@@ -55,13 +55,13 @@ function TabNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName={'Home'}
+      initialRouteName={'PastDiary'}
       screenOptions={({route}: {route: RouteProp<TabNavigatorParamList>}) =>
         getScreenOptions(route, insets)
       }>
       <Tab.Screen
-        name={'Home'}
-        component={HomeScreen}
+        name={'PastDiary'}
+        component={PastDiaryScreen}
         options={{headerTitle: '지난 일기'}}
       />
       <Tab.Screen

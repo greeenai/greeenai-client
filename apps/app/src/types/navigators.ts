@@ -21,7 +21,7 @@ export type CreateDiaryStackNavigatorParamList = {
 
 export type TabNavigatorParamList = {
   CreateDiary: undefined;
-  Home: undefined;
+  PastDiary: undefined;
   Setting: undefined;
 };
 
