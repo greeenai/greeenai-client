@@ -6,7 +6,7 @@ import {formatDateToYYMMDD} from '../../utils/formatDate';
 import {PastDiaryImageResponseDto} from '../../types/dtos/responseDtos/PastDiary';
 import {mockPastDiaryImageList} from '../../constants/mockDatas/pastDiaryImageList';
 
-const CARD_MARGIN = 5;
+const CARD_MARGIN = 7;
 const CARD_WIDTH = (screenWidth - CARD_MARGIN * 3) / 2;
 
 function PastDiaryScreen() {
@@ -45,13 +45,13 @@ export default PastDiaryScreen;
 const pastDiaryScreenStyle = StyleSheet.create({
   imageCardListContainer: {
     width: '100%',
-    padding: 5,
+    padding: 7,
     display: 'flex',
     gap: 10,
   },
   columnWrapper: {
     justifyContent: 'space-between',
-    marginBottom: 5,
+    marginBottom: 7,
   },
   imageContainer: {
     width: CARD_WIDTH,
