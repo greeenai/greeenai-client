@@ -27,10 +27,10 @@ const getScreenOptions = (
   headerShown: false,
   gestureEnabled: true,
   headerTitleStyle: {
-    ...theme.typo['headline-20'],
+    ...theme.typo['body-18'],
   },
   headerStyle: {
-    height: insets.top + 56,
+    height: insets.top + 50,
   },
   headerLeft: () =>
     (routeName === 'RequiredTermsScreen' ||

@@ -33,11 +33,11 @@ const getScreenOptions = (
 ) => ({
   headerShown: true,
   headerShadowVisible: false,
-  headerStyle: {
-    height: insets.top + 56,
-  },
   headerTitleStyle: {
-    ...theme.typo['headline-20'],
+    ...theme.typo['body-18'],
+  },
+  headerStyle: {
+    height: insets.top + 50,
   },
   tabBarStyle: {
     height: 102,
