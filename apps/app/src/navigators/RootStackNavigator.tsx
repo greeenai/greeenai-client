@@ -15,7 +15,7 @@ const screenOptions: NativeStackNavigationOptions = {
   gestureEnabled: true,
 };
 
-function RootNavigator() {
+function RootStackNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -32,4 +32,4 @@ function RootNavigator() {
   );
 }
 
-export default RootNavigator;
+export default RootStackNavigator;

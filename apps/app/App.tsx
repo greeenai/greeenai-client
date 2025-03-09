@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import getPermissions from './src/utils/checkPermissions';
-import RootNavigator from './src/navigators/RootNavigator';
+import RootStackNavigator from './src/navigators/RootStackNavigator';
 import {StyleSheet} from 'react-native';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
@@ -18,7 +18,7 @@ function App() {
     <GestureHandlerRootView style={rootStyle.gestureHandlerRootView}>
       <BottomSheetModalProvider>
         <SafeAreaProvider>
-          <RootNavigator />
+          <RootStackNavigator />
         </SafeAreaProvider>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
