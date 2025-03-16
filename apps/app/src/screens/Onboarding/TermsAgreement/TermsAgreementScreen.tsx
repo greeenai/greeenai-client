@@ -1,10 +1,10 @@
 import {StyleSheet, View} from 'react-native';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
 import Button from '../../../components/@common/Button';
-import TermsAgreementItem from '../../../components/TermsAgreement/TermsAgreementItem';
 import {useState} from 'react';
 import useNavigator from '../../../hooks/useNavigator';
 import {KeyOfOnboardingStackNavigatorParamList} from '../../../types/navigators';
+import TermsAgreementItem from '../../../components/Onboarding/TermsAgreement/TermsAgreementItem';
 
 const initialTermsAgreed = [
   {

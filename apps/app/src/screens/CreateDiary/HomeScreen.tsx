@@ -1,7 +1,16 @@
-import {Text} from 'react-native';
+import ScreenLayout from '../../components/@common/ScreenLayout';
+import Typography from '../../components/@common/Typography';
 
 function HomeScreen() {
-  return <Text>아직 생성된 일기가 없어요! 첫 번째 일기를 만들어보세요.</Text>;
+  return (
+    <ScreenLayout>
+      <Typography>
+        {
+          '그림일기를 만들려면, \n오늘의 일상이 담긴 사진 3장이 필요해요. \n선택하러 가볼까요?'
+        }
+      </Typography>
+    </ScreenLayout>
+  );
 }
 
 export default HomeScreen;

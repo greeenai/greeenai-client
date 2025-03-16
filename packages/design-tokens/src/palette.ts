@@ -3,8 +3,8 @@ export const palette = {
   gray: "#DCDCDC",
   darkGray: "#999999",
   warning: "#FF6161",
-  primary: "#47309C",
-  secondary: "#C3BBE0",
-  tertiary: "#1C133E",
+  primary: "#3F63EB",
+  secondary: "#B2C1F7",
+  tertiary: "#19285F",
   black: "#000000",
 } as const;
