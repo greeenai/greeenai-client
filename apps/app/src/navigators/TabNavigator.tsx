@@ -11,6 +11,7 @@ import {
 import {KeyOfIcons} from '../types/Icon';
 import Icon from '../components/@common/Icon';
 import CreateDiaryScreen from '../screens/Tab/CreateDiaryScreen';
+import CreateDiaryIcon from '../components/BottomTab/CreateDiary/CreateDiaryIcon';
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
@@ -18,10 +19,16 @@ const getTabBarIcon = (
   routeName: KeyOfTabNavigatorParamList,
   focused: boolean,
 ) => {
-  const iconNames: Record<KeyOfTabNavigatorParamList, KeyOfIcons> = {
+  if (routeName === 'CreateDiary') {
+    return null;
+  }
+
+  const iconNames: Record<
+    Exclude<KeyOfTabNavigatorParamList, 'CreateDiary'>,
+    KeyOfIcons
+  > = {
     PastDiary: focused ? 'FilledDiary' : 'Diary',
     Setting: focused ? 'FilledSetting' : 'Setting',
-    CreateDiary: 'FilledSetting',
   };
 
   return <Icon name={iconNames[routeName]} />;
@@ -50,7 +57,11 @@ const getScreenOptions = (
     marginTop: 5,
   },
   tabBarIcon: ({focused}: {focused: boolean}) =>
-    getTabBarIcon(route.name, focused),
+    route.name === 'CreateDiary' ? (
+      <CreateDiaryIcon />
+    ) : (
+      getTabBarIcon(route.name, focused)
+    ),
 });
 
 function TabNavigator() {
