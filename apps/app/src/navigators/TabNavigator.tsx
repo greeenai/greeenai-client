@@ -40,11 +40,15 @@ const getScreenOptions = (
     height: insets.top + 50,
   },
   tabBarStyle: {
-    height: 92,
+    height: 102,
     paddingTop: 14,
     paddingHorizontal: 30,
   },
-  tabBarLabel: '',
+  tabBarLabelStyle: {
+    ...theme.typo['body-12'],
+    color: theme.palette.black,
+    marginTop: 5,
+  },
   tabBarIcon: ({focused}: {focused: boolean}) =>
     getTabBarIcon(route.name, focused),
 });
@@ -61,19 +65,20 @@ function TabNavigator() {
       <Tab.Screen
         name={'PastDiary'}
         component={PastDiaryScreen}
-        options={{headerTitle: '지난 일기'}}
+        options={{headerTitle: '지난 일기', tabBarLabel: '내 일기'}}
       />
       <Tab.Screen
         name={'CreateDiary'}
         component={CreateDiaryScreen}
         options={{
           headerTitle: '일기 생성',
+          tabBarLabel: '일기 생성',
         }}
       />
       <Tab.Screen
         name={'Setting'}
         component={SettingScreen}
-        options={{headerTitle: '설정'}}
+        options={{headerTitle: '설정', tabBarLabel: '설정'}}
       />
     </Tab.Navigator>
   );
