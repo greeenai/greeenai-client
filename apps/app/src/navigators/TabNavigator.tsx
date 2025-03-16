@@ -10,8 +10,8 @@ import {
 } from '../types/navigators';
 import {KeyOfIcons} from '../types/Icon';
 import Icon from '../components/@common/Icon';
-import EmptyScreen from '../screens/CreateDiary/EmptyScreen';
-import CreateDiaryFloatingButton from '../components/BottomTab/CreateDiaryFloatingButton';
+import CreateDiaryScreen from '../screens/Tab/CreateDiaryScreen';
+import CreateDiaryIcon from '../components/BottomTab/CreateDiary/CreateDiaryIcon';
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
@@ -19,10 +19,16 @@ const getTabBarIcon = (
   routeName: KeyOfTabNavigatorParamList,
   focused: boolean,
 ) => {
-  const iconNames: Record<KeyOfTabNavigatorParamList, KeyOfIcons> = {
+  if (routeName === 'CreateDiary') {
+    return null;
+  }
+
+  const iconNames: Record<
+    Exclude<KeyOfTabNavigatorParamList, 'CreateDiary'>,
+    KeyOfIcons
+  > = {
     PastDiary: focused ? 'FilledDiary' : 'Diary',
     Setting: focused ? 'FilledSetting' : 'Setting',
-    CreateDiary: '' as KeyOfIcons,
   };
 
   return <Icon name={iconNames[routeName]} />;
@@ -41,13 +47,21 @@ const getScreenOptions = (
     height: insets.top + 50,
   },
   tabBarStyle: {
-    height: 92,
+    height: 102,
     paddingTop: 14,
     paddingHorizontal: 30,
   },
-  tabBarLabel: '',
+  tabBarLabelStyle: {
+    ...theme.typo['body-12'],
+    color: theme.palette.black,
+    marginTop: 5,
+  },
   tabBarIcon: ({focused}: {focused: boolean}) =>
-    getTabBarIcon(route.name, focused),
+    route.name === 'CreateDiary' ? (
+      <CreateDiaryIcon />
+    ) : (
+      getTabBarIcon(route.name, focused)
+    ),
 });
 
 function TabNavigator() {
@@ -62,20 +76,20 @@ function TabNavigator() {
       <Tab.Screen
         name={'PastDiary'}
         component={PastDiaryScreen}
-        options={{headerTitle: '지난 일기'}}
+        options={{headerTitle: '지난 일기', tabBarLabel: '내 일기'}}
       />
       <Tab.Screen
         name={'CreateDiary'}
-        component={EmptyScreen}
+        component={CreateDiaryScreen}
         options={{
           headerTitle: '일기 생성',
-          tabBarButton: () => <CreateDiaryFloatingButton />,
+          tabBarLabel: '일기 생성',
         }}
       />
       <Tab.Screen
         name={'Setting'}
         component={SettingScreen}
-        options={{headerTitle: '설정'}}
+        options={{headerTitle: '설정', tabBarLabel: '설정'}}
       />
     </Tab.Navigator>
   );

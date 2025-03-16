@@ -9,7 +9,7 @@ export type ViewPastDiariesScreenProps = {
 
 function ViewPastDiariesScreen({onNext}: ViewPastDiariesScreenProps) {
   return (
-    <ScreenLayout isSafeArea>
+    <ScreenLayout>
       <View style={viewPastDiariesScreenStyle.content}>
         <Typography
           type={'headline-20'}
@@ -33,15 +33,15 @@ const viewPastDiariesScreenStyle = StyleSheet.create({
   content: {
     flex: 1,
     width: '100%',
-    paddingVertical: 80,
+    paddingVertical: 120,
     paddingHorizontal: 40,
   },
   mainText: {
     marginBottom: 15,
   },
   bottomButtonContainer: {
-    marginBottom: 20,
     display: 'flex',
     alignItems: 'center',
+    marginBottom: 20,
   },
 });

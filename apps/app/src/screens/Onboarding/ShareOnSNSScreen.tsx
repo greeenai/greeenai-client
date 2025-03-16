@@ -7,7 +7,7 @@ export type ShareOnSNSScreenProps = {onNext: () => void};
 
 function ShareOnSNSScreen({onNext}: ShareOnSNSScreenProps) {
   return (
-    <ScreenLayout isSafeArea>
+    <ScreenLayout>
       <View style={shareOnSNSScreenStyle.content}>
         <Typography type={'headline-20'} style={shareOnSNSScreenStyle.mainText}>
           {'지난 일기도\n다시 볼 수 있어요'}
@@ -29,15 +29,15 @@ const shareOnSNSScreenStyle = StyleSheet.create({
   content: {
     flex: 1,
     width: '100%',
-    paddingVertical: 80,
+    paddingVertical: 120,
     paddingHorizontal: 40,
   },
   mainText: {
     marginBottom: 15,
   },
   bottomButtonContainer: {
-    marginBottom: 20,
     display: 'flex',
     alignItems: 'center',
+    marginBottom: 20,
   },
 });
