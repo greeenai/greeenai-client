@@ -36,7 +36,6 @@ const shareOnSNSScreenStyle = StyleSheet.create({
     marginBottom: 15,
   },
   bottomButtonContainer: {
-    marginBottom: 20,
     display: 'flex',
     alignItems: 'center',
   },
