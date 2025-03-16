@@ -33,7 +33,6 @@ const selectPhotoScreenStyle = StyleSheet.create({
   content: {
     flex: 1,
     width: '100%',
-    borderWidth: 1,
     paddingVertical: 80,
     paddingHorizontal: 40,
   },
