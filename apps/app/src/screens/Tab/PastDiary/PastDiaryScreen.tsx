@@ -17,7 +17,7 @@ function PastDiaryScreen() {
     const formattedDate = formatDateToYYMMDD(createdAt);
 
     const handlePressPastDiaryScreen = () => {
-      pastDiaryStackNavigation.navigate('DiaryContent', {id});
+      pastDiaryStackNavigation.navigate('DiaryContent', {id, createdAt});
     };
 
     return (
