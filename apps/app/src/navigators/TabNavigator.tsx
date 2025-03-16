@@ -1,9 +1,16 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import PastDiaryScreen from '../screens/Tab/PastDiaryScreen';
+import {
+  BottomTabNavigationProp,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import SettingScreen from '../screens/Tab/SettingScreen';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '@greeenai/design-tokens';
-import {RouteProp} from '@react-navigation/native';
+import {
+  EventArg,
+  ParamListBase,
+  RouteProp,
+  TabNavigationState,
+} from '@react-navigation/native';
 import {
   KeyOfTabNavigatorParamList,
   TabNavigatorParamList,
@@ -12,6 +19,7 @@ import {KeyOfIcons} from '../types/Icon';
 import Icon from '../components/@common/Icon';
 import CreateDiaryScreen from '../screens/Tab/CreateDiaryScreen';
 import CreateDiaryIcon from '../components/BottomTab/CreateDiary/CreateDiaryIcon';
+import PastDiaryStackNavigator from './PastDiaryStackNavigator';
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
@@ -27,7 +35,7 @@ const getTabBarIcon = (
     Exclude<KeyOfTabNavigatorParamList, 'CreateDiary'>,
     KeyOfIcons
   > = {
-    PastDiary: focused ? 'FilledDiary' : 'Diary',
+    PastDiaryStackNavigator: focused ? 'FilledDiary' : 'Diary',
     Setting: focused ? 'FilledSetting' : 'Setting',
   };
 
@@ -64,19 +72,42 @@ const getScreenOptions = (
     ),
 });
 
+const pastDiaryStackNavigatorListener = ({
+  navigation,
+}: {
+  navigation: BottomTabNavigationProp<
+    TabNavigatorParamList,
+    'PastDiaryStackNavigator'
+  >;
+  route: TabNavigationState<ParamListBase>['routes'][0];
+}) => ({
+  tabPress: (e: EventArg<'tabPress', true, undefined>) => {
+    e.preventDefault();
+
+    navigation.navigate('PastDiaryStackNavigator', {
+      screen: 'PastDiary',
+    });
+  },
+});
+
 function TabNavigator() {
   const insets = useSafeAreaInsets();
 
   return (
     <Tab.Navigator
-      initialRouteName={'PastDiary'}
+      initialRouteName={'PastDiaryStackNavigator'}
       screenOptions={({route}: {route: RouteProp<TabNavigatorParamList>}) =>
         getScreenOptions(route, insets)
       }>
       <Tab.Screen
-        name={'PastDiary'}
-        component={PastDiaryScreen}
-        options={{headerTitle: '지난 일기', tabBarLabel: '내 일기'}}
+        name={'PastDiaryStackNavigator'}
+        component={PastDiaryStackNavigator}
+        options={{
+          headerShown: false,
+          headerTitle: '지난 일기',
+          tabBarLabel: '내 일기',
+        }}
+        listeners={pastDiaryStackNavigatorListener}
       />
       <Tab.Screen
         name={'CreateDiary'}
