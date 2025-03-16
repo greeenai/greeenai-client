@@ -1,8 +1,8 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {BottomTabNavigationProp, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import SettingScreen from '../screens/Tab/SettingScreen';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '@greeenai/design-tokens';
-import {RouteProp} from '@react-navigation/native';
+import {EventArg, ParamListBase, RouteProp, TabNavigationState} from '@react-navigation/native';
 import {
   KeyOfTabNavigatorParamList,
   TabNavigatorParamList,
@@ -67,6 +67,24 @@ const getScreenOptions = (
 function TabNavigator() {
   const insets = useSafeAreaInsets();
 
+  const pastDiaryStackNavigatorListener = ({
+    navigation,
+  }: {
+    navigation: BottomTabNavigationProp<
+      TabNavigatorParamList,
+      'PastDiaryStackNavigator'
+    >;
+    route: TabNavigationState<ParamListBase>['routes'][0];
+  }) => ({
+    tabPress: (e: EventArg<'tabPress', true, undefined>) => {
+      e.preventDefault();
+
+      navigation.navigate('PastDiaryStackNavigator', {
+        screen: 'PastDiary',
+      });
+    },
+  });
+
   return (
     <Tab.Navigator
       initialRouteName={'PastDiaryStackNavigator'}
@@ -81,6 +99,7 @@ function TabNavigator() {
           headerTitle: '지난 일기',
           tabBarLabel: '내 일기',
         }}
+        listeners={pastDiaryStackNavigatorListener}
       />
       <Tab.Screen
         name={'CreateDiary'}

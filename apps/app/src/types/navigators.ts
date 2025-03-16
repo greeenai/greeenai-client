@@ -16,7 +16,12 @@ export type OnboardingStackNavigatorParamList = {
 
 export type TabNavigatorParamList = {
   CreateDiary: undefined;
-  PastDiaryStackNavigator: undefined;
+  PastDiaryStackNavigator:
+    | undefined
+    | {
+        screen?: keyof PastDiaryStackNavigatorParamList;
+        params?: PastDiaryStackNavigatorParamList[keyof PastDiaryStackNavigatorParamList];
+      };
   Setting: undefined;
 };
 
