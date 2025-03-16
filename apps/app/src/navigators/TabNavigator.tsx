@@ -76,7 +76,11 @@ function TabNavigator() {
       <Tab.Screen
         name={'PastDiaryStackNavigator'}
         component={PastDiaryStackNavigator}
-        options={{headerTitle: '지난 일기', tabBarLabel: '내 일기'}}
+        options={{
+          headerShown: false,
+          headerTitle: '지난 일기',
+          tabBarLabel: '내 일기',
+        }}
       />
       <Tab.Screen
         name={'CreateDiary'}
