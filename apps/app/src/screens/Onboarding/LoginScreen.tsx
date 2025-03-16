@@ -3,6 +3,9 @@ import ScreenLayout from '../../components/@common/ScreenLayout';
 import SocialLoginButton from '../../components/@common/SocialLoginButton';
 // import useAuthStorage from '../../hooks/useAuthStorage';
 import kakaoClient from '../../apis/kakaoClient';
+import {Image} from 'react-native-svg';
+import Icon from '../../components/@common/Icon';
+import Typography from '../../components/@common/Typography';
 
 export type LoginScreenProps = {onNext: () => void};
 
@@ -36,7 +39,10 @@ function LoginScreen({onNext}: LoginScreenProps) {
 
   return (
     <ScreenLayout isSafeArea>
-      <View style={loginScreenStyle.logoContainer} />
+      <View style={loginScreenStyle.logoContainer}>
+        <Icon name={'Logo'} width={100} height={110} />
+        <Typography type={'body-16'}>사진 3장으로 하루를 기록하다</Typography>
+      </View>
       <View style={loginScreenStyle.socialLoginButtonContainer}>
         <SocialLoginButton
           variant={'kakao'}
@@ -57,9 +63,12 @@ export default LoginScreen;
 const loginScreenStyle = StyleSheet.create({
   logoContainer: {
     flex: 1,
-    borderWidth: 1,
     width: '100%',
     marginBottom: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 35,
   },
   socialLoginButtonContainer: {
     display: 'flex',
