@@ -1,5 +1,4 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import PastDiaryScreen from '../screens/Tab/PastDiaryScreen';
 import SettingScreen from '../screens/Tab/SettingScreen';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '@greeenai/design-tokens';
@@ -12,6 +11,7 @@ import {KeyOfIcons} from '../types/Icon';
 import Icon from '../components/@common/Icon';
 import CreateDiaryScreen from '../screens/Tab/CreateDiaryScreen';
 import CreateDiaryIcon from '../components/BottomTab/CreateDiary/CreateDiaryIcon';
+import PastDiaryStackNavigator from './PastDiaryStackNavigator';
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
@@ -27,7 +27,7 @@ const getTabBarIcon = (
     Exclude<KeyOfTabNavigatorParamList, 'CreateDiary'>,
     KeyOfIcons
   > = {
-    PastDiary: focused ? 'FilledDiary' : 'Diary',
+    PastDiaryStackNavigator: focused ? 'FilledDiary' : 'Diary',
     Setting: focused ? 'FilledSetting' : 'Setting',
   };
 
@@ -69,13 +69,13 @@ function TabNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName={'PastDiary'}
+      initialRouteName={'PastDiaryStackNavigator'}
       screenOptions={({route}: {route: RouteProp<TabNavigatorParamList>}) =>
         getScreenOptions(route, insets)
       }>
       <Tab.Screen
-        name={'PastDiary'}
-        component={PastDiaryScreen}
+        name={'PastDiaryStackNavigator'}
+        component={PastDiaryStackNavigator}
         options={{headerTitle: '지난 일기', tabBarLabel: '내 일기'}}
       />
       <Tab.Screen
