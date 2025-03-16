@@ -9,7 +9,7 @@ export type SelectPhotoScreenProps = {
 
 function SelectPhotoScreen({onNext}: SelectPhotoScreenProps) {
   return (
-    <ScreenLayout isSafeArea>
+    <ScreenLayout>
       <View style={selectPhotoScreenStyle.content}>
         <Typography
           type={'headline-20'}
@@ -33,7 +33,7 @@ const selectPhotoScreenStyle = StyleSheet.create({
   content: {
     flex: 1,
     width: '100%',
-    paddingVertical: 80,
+    paddingVertical: 120,
     paddingHorizontal: 40,
   },
   mainText: {
@@ -42,5 +42,6 @@ const selectPhotoScreenStyle = StyleSheet.create({
   bottomButtonContainer: {
     display: 'flex',
     alignItems: 'center',
+    marginBottom: 20,
   },
 });
