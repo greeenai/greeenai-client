@@ -1,7 +1,7 @@
 import ScreenLayout from '../../components/@common/ScreenLayout';
 import Typography from '../../components/@common/Typography';
 
-function HomeScreen() {
+function CreateDiaryScreen() {
   return (
     <ScreenLayout>
       <Typography>
@@ -13,4 +13,4 @@ function HomeScreen() {
   );
 }
 
-export default HomeScreen;
+export default CreateDiaryScreen;

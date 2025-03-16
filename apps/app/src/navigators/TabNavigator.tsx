@@ -10,8 +10,7 @@ import {
 } from '../types/navigators';
 import {KeyOfIcons} from '../types/Icon';
 import Icon from '../components/@common/Icon';
-import EmptyScreen from '../screens/CreateDiary/EmptyScreen';
-import CreateDiaryFloatingButton from '../components/BottomTab/CreateDiaryFloatingButton';
+import CreateDiaryScreen from '../screens/Tab/CreateDiaryScreen';
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
@@ -22,7 +21,7 @@ const getTabBarIcon = (
   const iconNames: Record<KeyOfTabNavigatorParamList, KeyOfIcons> = {
     PastDiary: focused ? 'FilledDiary' : 'Diary',
     Setting: focused ? 'FilledSetting' : 'Setting',
-    CreateDiary: '' as KeyOfIcons,
+    CreateDiary: 'FilledSetting',
   };
 
   return <Icon name={iconNames[routeName]} />;
@@ -66,10 +65,9 @@ function TabNavigator() {
       />
       <Tab.Screen
         name={'CreateDiary'}
-        component={EmptyScreen}
+        component={CreateDiaryScreen}
         options={{
           headerTitle: '일기 생성',
-          tabBarButton: () => <CreateDiaryFloatingButton />,
         }}
       />
       <Tab.Screen

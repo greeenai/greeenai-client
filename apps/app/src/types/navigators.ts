@@ -1,7 +1,6 @@
 export type RootStackNavigatorParamList = {
   Onboarding: undefined;
   Tab: undefined;
-  CreateDiaryStack: undefined;
 };
 
 export type OnboardingStackNavigatorParamList = {
@@ -13,10 +12,6 @@ export type OnboardingStackNavigatorParamList = {
   ChooseAnswerScreen: undefined;
   ViewPastDiariesScreen: undefined;
   ShareOnSNSScreen: undefined;
-};
-
-export type CreateDiaryStackNavigatorParamList = {
-  HomeScreen: undefined;
 };
 
 export type TabNavigatorParamList = {
