@@ -1,8 +1,16 @@
-import {BottomTabNavigationProp, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  BottomTabNavigationProp,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import SettingScreen from '../screens/Tab/SettingScreen';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '@greeenai/design-tokens';
-import {EventArg, ParamListBase, RouteProp, TabNavigationState} from '@react-navigation/native';
+import {
+  EventArg,
+  ParamListBase,
+  RouteProp,
+  TabNavigationState,
+} from '@react-navigation/native';
 import {
   KeyOfTabNavigatorParamList,
   TabNavigatorParamList,
@@ -64,26 +72,26 @@ const getScreenOptions = (
     ),
 });
 
+const pastDiaryStackNavigatorListener = ({
+  navigation,
+}: {
+  navigation: BottomTabNavigationProp<
+    TabNavigatorParamList,
+    'PastDiaryStackNavigator'
+  >;
+  route: TabNavigationState<ParamListBase>['routes'][0];
+}) => ({
+  tabPress: (e: EventArg<'tabPress', true, undefined>) => {
+    e.preventDefault();
+
+    navigation.navigate('PastDiaryStackNavigator', {
+      screen: 'PastDiary',
+    });
+  },
+});
+
 function TabNavigator() {
   const insets = useSafeAreaInsets();
-
-  const pastDiaryStackNavigatorListener = ({
-    navigation,
-  }: {
-    navigation: BottomTabNavigationProp<
-      TabNavigatorParamList,
-      'PastDiaryStackNavigator'
-    >;
-    route: TabNavigationState<ParamListBase>['routes'][0];
-  }) => ({
-    tabPress: (e: EventArg<'tabPress', true, undefined>) => {
-      e.preventDefault();
-
-      navigation.navigate('PastDiaryStackNavigator', {
-        screen: 'PastDiary',
-      });
-    },
-  });
 
   return (
     <Tab.Navigator
