@@ -10,7 +10,7 @@ function ShareOnSNSScreen({onNext}: ShareOnSNSScreenProps) {
     <ScreenLayout>
       <View style={shareOnSNSScreenStyle.content}>
         <Typography type={'headline-20'} style={shareOnSNSScreenStyle.mainText}>
-          {'지난 일기도\n다시 볼 수 있어요'}
+          {'소중한 순간을\n친구들에게 공유해봐요'}
         </Typography>
         <Typography>
           {'사진만으로 읽기 어려운 이야기를 \n객관식으로 답해보아요'}
