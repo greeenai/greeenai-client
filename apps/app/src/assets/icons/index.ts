@@ -15,3 +15,4 @@ export {default as DeleteAccount} from './delete-account.svg';
 export {default as LogOut} from './log-out.svg';
 export {default as TermsAgreement} from './terms-agreement.svg';
 export {default as Plus} from './plus.svg';
+export {default as Logo} from './logo.svg';
