@@ -22,7 +22,9 @@ export type TabNavigatorParamList = {
 
 export type PastDiaryStackNavigatorParamList = {
   PastDiary: undefined;
-  DiaryContent: undefined;
+  DiaryContent: {
+    id: number;
+  };
 };
 
 export type KeyOfRootStackNavigatorParamList =

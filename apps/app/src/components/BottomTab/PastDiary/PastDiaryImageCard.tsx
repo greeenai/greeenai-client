@@ -8,11 +8,18 @@ const CARD_WIDTH = (screenWidth - CARD_MARGIN * 3) / 2;
 type PastDiaryImageCardProps = {
   imageUrl: string;
   date: string;
+  onPress: () => void;
 };
 
-function PastDiaryImageCard({imageUrl, date}: PastDiaryImageCardProps) {
+function PastDiaryImageCard({
+  imageUrl,
+  date,
+  onPress,
+}: PastDiaryImageCardProps) {
   return (
-    <TouchableOpacity style={pastDiaryScreenStyle.imageContainer}>
+    <TouchableOpacity
+      style={pastDiaryScreenStyle.imageContainer}
+      onPress={onPress}>
       <Image source={{uri: imageUrl}} style={pastDiaryScreenStyle.image} />
       <Typography type={'headline-20'} style={pastDiaryScreenStyle.dateText}>
         {date}
