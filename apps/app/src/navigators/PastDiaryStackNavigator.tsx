@@ -1,13 +1,13 @@
 import {PastDiaryStackNavigatorParamList} from '../types/navigators';
-import PastDiaryScreen from '../screens/Tab/PastDiary/PastDiaryScreen';
 import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack';
-import DiaryContentScreen from '../screens/Tab/PastDiary/DiaryContentScreen';
+import DiaryContentScreen from '../screens/BottomTab/PastDiary/DiaryContentScreen';
 import Icon from '../components/@common/Icon';
 import {theme} from '@greeenai/design-tokens';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import PastDiaryScreen from '../screens/BottomTab/PastDiary/PastDiaryScreen';
 
 const Stack = createNativeStackNavigator<PastDiaryStackNavigatorParamList>();
 

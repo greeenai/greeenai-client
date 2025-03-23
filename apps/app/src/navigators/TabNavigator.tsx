@@ -2,7 +2,7 @@ import {
   BottomTabNavigationProp,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import SettingScreen from '../screens/Tab/SettingScreen';
+import SettingScreen from '../screens/BottomTab/SettingScreen';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '@greeenai/design-tokens';
 import {
@@ -17,7 +17,7 @@ import {
 } from '../types/navigators';
 import {KeyOfIcons} from '../types/Icon';
 import Icon from '../components/@common/Icon';
-import CreateDiaryScreen from '../screens/Tab/CreateDiaryScreen';
+import CreateDiaryScreen from '../screens/BottomTab/CreateDiaryScreen';
 import CreateDiaryIcon from '../components/BottomTab/CreateDiary/CreateDiaryIcon';
 import PastDiaryStackNavigator from './PastDiaryStackNavigator';
 
