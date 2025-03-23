@@ -5,8 +5,15 @@ import getPermissions from './src/utils/checkPermissions';
 import RootStackNavigator from './src/navigators/RootStackNavigator';
 import {StyleSheet} from 'react-native';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import SplashScreen from 'react-native-splash-screen';
 
 function App() {
+  useEffect(() => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 500);
+  }, []);
+
   useEffect(() => {
     getPermissions(
       message => console.log('권한 요청 성공:', message),
