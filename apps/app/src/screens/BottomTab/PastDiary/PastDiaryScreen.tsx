@@ -5,6 +5,7 @@ import {PastDiaryImageResponseDto} from '../../../types/dtos/responseDtos/PastDi
 import {mockPastDiaryImageList} from '../../../constants/mockDatas/pastDiaryImageList';
 import PastDiaryImageCard from '../../../components/BottomTab/PastDiary/PastDiaryImageCard';
 import useNavigator from '../../../hooks/useNavigator';
+import EmptyDiary from '../../../components/BottomTab/PastDiary/EmptyDiary';
 
 function PastDiaryScreen() {
   const {pastDiaryStackNavigation} = useNavigator();
@@ -33,11 +34,13 @@ function PastDiaryScreen() {
     <ScreenLayout>
       <FlatList
         style={pastDiaryScreenStyle.imageCardListContainer}
-        data={mockPastDiaryImageList}
+        contentContainerStyle={{flex: 1}}
+        data={[]}
         keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         numColumns={2}
         columnWrapperStyle={pastDiaryScreenStyle.columnWrapper}
+        ListEmptyComponent={EmptyDiary}
       />
     </ScreenLayout>
   );
