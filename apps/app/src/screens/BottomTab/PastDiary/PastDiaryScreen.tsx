@@ -35,7 +35,7 @@ function PastDiaryScreen() {
       <FlatList
         style={pastDiaryScreenStyle.imageCardListContainer}
         contentContainerStyle={{flex: 1}}
-        data={[]}
+        data={mockPastDiaryImageList}
         keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         numColumns={2}
