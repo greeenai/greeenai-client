@@ -9,6 +9,8 @@ import EmptyDiary from '../../../components/BottomTab/PastDiary/EmptyDiary';
 
 function PastDiaryScreen() {
   const {pastDiaryStackNavigation} = useNavigator();
+  const pastDiaryContentContainerStyle =
+    mockPastDiaryImageList.length === 0 ? {flex: 1} : {paddingBottom: 10};
 
   const renderItem = ({
     item: {createdAt, id, imageUrl},
@@ -34,7 +36,7 @@ function PastDiaryScreen() {
     <ScreenLayout>
       <FlatList
         style={pastDiaryScreenStyle.imageCardListContainer}
-        contentContainerStyle={{flex: 1}}
+        contentContainerStyle={pastDiaryContentContainerStyle}
         data={mockPastDiaryImageList}
         keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
