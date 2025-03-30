@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Dz2-oE-c1A">
-                                <rect key="frame" x="-75.5" y="163.5" width="526" height="340"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Dz2-oE-c1A">
+                                <rect key="frame" x="83" y="237" width="209" height="193"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="thin"/>
                             </imageView>
                         </subviews>
