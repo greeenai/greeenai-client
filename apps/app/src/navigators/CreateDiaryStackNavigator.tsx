@@ -1,15 +1,18 @@
-import {CreateDiaryStackNavigatorParamList} from '../types/navigators';
+import {TouchableOpacity} from 'react-native';
 import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack';
 import {theme} from '@greeenai/design-tokens';
+import {CreateDiaryStackNavigatorParamList} from '../types/navigators';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import CreateDiaryScreen from '../screens/BottomTab/CreateDiary/HomeScreen';
 import SelectImageScreen from '../screens/BottomTab/CreateDiary/SelectImageScreen';
 import ConfirmImageScreen from '../screens/BottomTab/CreateDiary/ConfirmImageScreen';
 import SelectEmotionScreen from '../screens/BottomTab/CreateDiary/SelectEmotionScreen';
 import CreatingDiaryScreen from '../screens/BottomTab/CreateDiary/CreatingDiaryScreen';
+import Icon from '../components/@common/Icon';
+import Typography from '../components/@common/Typography';
 
 const Stack = createNativeStackNavigator<CreateDiaryStackNavigatorParamList>();
 
@@ -42,7 +45,25 @@ function CreateDiaryStackNavigator() {
       <Stack.Screen
         name={'SelectImage'}
         component={SelectImageScreen}
-        options={{headerTitle: '사진 선택'}}
+        options={({navigation}) => ({
+          headerTitle: '사진 선택',
+          headerLeft: () => (
+            <Icon
+              name={'LeftChevron'}
+              width={20}
+              height={20}
+              onPress={() => navigation.goBack()}
+            />
+          ),
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ConfirmImage')}>
+              <Typography type={'body-14'} color={'primary'}>
+                다음
+              </Typography>
+            </TouchableOpacity>
+          ),
+        })}
       />
       <Stack.Screen
         name={'ConfirmImage'}
