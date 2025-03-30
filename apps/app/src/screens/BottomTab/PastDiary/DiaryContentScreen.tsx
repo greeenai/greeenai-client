@@ -1,8 +1,18 @@
 import {useLayoutEffect, useRef} from 'react';
-import {Alert, Image, ScrollView, StyleSheet, View} from 'react-native';
+import {
+  Alert,
+  Image,
+  Linking,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
+import Share, {Social} from 'react-native-share';
 import {SCREEN_WIDTH} from '@gorhom/bottom-sheet';
 import {useNavigation, useRoute, RouteProp} from '@react-navigation/native';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
+import {captureRef} from 'react-native-view-shot';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
 import {PastDiaryStackNavigatorParamList} from '../../../types/navigators';
 import {formatDateToYYMMDD} from '../../../utils/formatDate';
@@ -10,7 +20,7 @@ import {mockDiaryContent} from '../../../constants/mockDatas/diaryContent';
 import Typography from '../../../components/@common/Typography';
 import Button from '../../../components/@common/Button';
 import Icon from '../../../components/@common/Icon';
-import {captureRef} from 'react-native-view-shot';
+import {palette} from '../../../../../../packages/design-tokens/src/palette';
 
 function DiaryContentScreen() {
   const navigation = useNavigation();
@@ -25,7 +35,7 @@ function DiaryContentScreen() {
     '$1\n',
   );
 
-  const handlePressSaveDiaryImage = async () => {
+  const captureDiaryContent = async () => {
     try {
       if (scrollViewRef.current) {
         const uri = await captureRef(scrollViewRef, {
@@ -35,12 +45,57 @@ function DiaryContentScreen() {
           snapshotContentContainer: true,
         });
 
-        await CameraRoll.saveAsset(uri, {type: 'photo'});
-        Alert.alert('저장 완료', '이미지가 갤러리에 저장되었습니다.');
+        return uri;
       }
+
+      return '';
+    } catch (error) {
+      console.error('이미지 캡처 실패:', error);
+      Alert.alert('캡처 실패', '이미지를 캡처하는데 실패했습니다.');
+      return '';
+    }
+  };
+
+  const handlePressSaveDiaryImage = async () => {
+    try {
+      const uri = await captureDiaryContent();
+      await CameraRoll.saveAsset(uri, {type: 'photo'});
+      Alert.alert('저장 완료', '이미지가 갤러리에 저장되었습니다.');
     } catch (error) {
       console.error('이미지 저장 실패:', error);
       Alert.alert('저장 실패', '이미지를 갤러리에 저장하는데 실패했습니다.');
+    }
+  };
+
+  const handlePressShareToInstagram = async () => {
+    const uri = await captureDiaryContent();
+
+    if (Platform.OS === 'ios') {
+      const shareOptions = {
+        url: uri,
+        social: Social.InstagramStories,
+        appId: '123456789',
+        backgroundImage: uri,
+        backgroundTopColor: palette.white,
+        backgroundBottomColor: palette.white,
+      };
+
+      await Share.shareSingle(shareOptions);
+      return;
+    }
+
+    const fileUrl = `file://${uri}`;
+    const instagramURL = `instagram://library?AssetPath=${fileUrl}`;
+
+    const canOpenURL = await Linking.canOpenURL(instagramURL);
+
+    if (canOpenURL) {
+      await Linking.openURL(instagramURL);
+    } else {
+      Alert.alert(
+        '인스타그램 앱을 찾을 수 없어요.',
+        '인스타그램 앱이 설치되어 있는지 확인해주세요.',
+      );
     }
   };
 
@@ -79,7 +134,7 @@ function DiaryContentScreen() {
           leftElement={<Icon name={'ShareOnSNS'} width={20} height={20} />}
           size={'sm'}
           backgroundColor="white"
-          onPress={() => {}}>
+          onPress={handlePressShareToInstagram}>
           공유하기
         </Button>
       </View>

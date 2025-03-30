@@ -107,6 +107,9 @@ importers:
       react-native-screens:
         specifier: ^4.5.0
         version: 4.5.0(react-native@0.75.3)(react@18.3.1)
+      react-native-share:
+        specifier: ^12.0.9
+        version: 12.0.9
       react-native-splash-screen:
         specifier: ^3.3.0
         version: 3.3.0(react-native@0.75.3)
@@ -8121,18 +8124,6 @@ packages:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
     dev: true
 
-  /glob@7.0.6:
-    resolution: {integrity: sha512-f8c0rE8JiCxpa52kWPAOa3ZaYEnzofDzCQLCn3Vdk0Z5OVLq3BsRFJI4S4ykpeVW6QMGBUkMeUpoEgWnMTnw5Q==}
-    deprecated: Glob versions prior to v9 are no longer supported
-    dependencies:
-      fs.realpath: 1.0.0
-      inflight: 1.0.6
-      inherits: 2.0.4
-      minimatch: 3.1.2
-      once: 1.4.0
-      path-is-absolute: 1.0.1
-    dev: false
-
   /glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
     deprecated: Glob versions prior to v9 are no longer supported
@@ -10977,6 +10968,11 @@ packages:
       warn-once: 0.1.1
     dev: false
 
+  /react-native-share@12.0.9:
+    resolution: {integrity: sha512-vSuz/9aF+/AZS3I5NC19MrB56h1Yivk2Yz8lf2d8Szv3KuRw2BnDI/AfCTjMWByJLVYr6xgzfkTkAfvbDGzxLQ==}
+    engines: {node: '>=16'}
+    dev: false
+
   /react-native-splash-screen@3.3.0(react-native@0.75.3):
     resolution: {integrity: sha512-rGjt6HkoSXxMqH4SQUJ1gnPQlPJV8+J47+4yhgTIan4bVvAwJhEeJH7wWt9hXSdH4+VfwTS0GTaflj1Tw83IhA==}
     peerDependencies:
@@ -11417,13 +11413,6 @@ packages:
       hash-base: 3.0.5
       inherits: 2.0.4
     dev: true
-
-  /rn-fetch-blob@0.12.0:
-    resolution: {integrity: sha512-+QnR7AsJ14zqpVVUbzbtAjq0iI8c9tCg49tIoKO2ezjzRunN7YL6zFSFSWZm6d+mE/l9r+OeDM3jmb2tBb2WbA==}
-    dependencies:
-      base-64: 0.1.0
-      glob: 7.0.6
-    dev: false
 
   /rollup@4.28.1:
     resolution: {integrity: sha512-61fXYl/qNVinKmGSTHAZ6Yy8I3YIJC/r2m9feHo6SwVAVcLT5MPwOUFe7EuURA/4m0NR8lXG4BBXuo/IZEsjMg==}
