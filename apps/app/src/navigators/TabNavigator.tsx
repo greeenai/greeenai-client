@@ -17,9 +17,9 @@ import {
 } from '../types/navigators';
 import {KeyOfIcons} from '../types/Icon';
 import Icon from '../components/@common/Icon';
-import CreateDiaryScreen from '../screens/BottomTab/CreateDiaryScreen';
 import CreateDiaryIcon from '../components/BottomTab/CreateDiary/CreateDiaryIcon';
 import PastDiaryStackNavigator from './PastDiaryStackNavigator';
+import CreateDiaryStackNavigator from './CreateDiaryStackNavigator';
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
@@ -111,7 +111,7 @@ function TabNavigator() {
       />
       <Tab.Screen
         name={'CreateDiary'}
-        component={CreateDiaryScreen}
+        component={CreateDiaryStackNavigator}
         options={{
           headerTitle: '일기 생성',
           tabBarLabel: '일기 생성',
