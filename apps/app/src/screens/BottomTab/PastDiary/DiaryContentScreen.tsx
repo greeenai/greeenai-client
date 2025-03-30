@@ -1,14 +1,16 @@
-import {Image, ScrollView, StyleSheet, View} from 'react-native';
-import ScreenLayout from '../../../components/@common/ScreenLayout';
+import {useLayoutEffect} from 'react';
+import {Alert, Image, ScrollView, StyleSheet, View} from 'react-native';
 import {SCREEN_WIDTH} from '@gorhom/bottom-sheet';
 import {useNavigation, useRoute, RouteProp} from '@react-navigation/native';
-import {useLayoutEffect} from 'react';
+import {CameraRoll} from '@react-native-camera-roll/camera-roll';
+import ScreenLayout from '../../../components/@common/ScreenLayout';
 import {PastDiaryStackNavigatorParamList} from '../../../types/navigators';
 import {formatDateToYYMMDD} from '../../../utils/formatDate';
 import {mockDiaryContent} from '../../../constants/mockDatas/diaryContent';
 import Typography from '../../../components/@common/Typography';
 import Button from '../../../components/@common/Button';
 import Icon from '../../../components/@common/Icon';
+import {downloadImageToLocal} from '../../../utils/downloadImageInLocal';
 
 function DiaryContentScreen() {
   const navigation = useNavigation();
@@ -20,6 +22,19 @@ function DiaryContentScreen() {
     /([.!?])\s*/g,
     '$1\n',
   );
+
+  const handlePressSaveDiaryImage = async () => {
+    try {
+      const imageUrl = mockDiaryContent.imageUrl;
+      const localImagePath = await downloadImageToLocal(imageUrl);
+
+      await CameraRoll.saveAsset(localImagePath, {type: 'photo'});
+      Alert.alert('저장 완료', '이미지가 갤러리에 저장되었습니다.');
+    } catch (error) {
+      console.error('이미지 저장 실패:', error);
+      Alert.alert('저장 실패', '이미지를 갤러리에 저장하는데 실패했습니다.');
+    }
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -44,7 +59,7 @@ function DiaryContentScreen() {
           <Button
             leftElement={<Icon name={'SaveInGallery'} width={20} height={20} />}
             size={'sm'}
-            onPress={() => {}}>
+            onPress={handlePressSaveDiaryImage}>
             저장하기
           </Button>
           <Button
