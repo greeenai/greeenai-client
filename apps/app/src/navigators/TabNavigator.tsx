@@ -113,6 +113,7 @@ function TabNavigator() {
         name={'CreateDiary'}
         component={CreateDiaryStackNavigator}
         options={{
+          headerShown: false,
           headerTitle: '일기 생성',
           tabBarLabel: '일기 생성',
         }}
