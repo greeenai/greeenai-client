@@ -8,7 +8,7 @@ function CreateDiaryScreen() {
   const {createDiaryStackNavigation} = useNavigator();
 
   const handlePressSelectImage = () => {
-    createDiaryStackNavigation.navigate('SelectImage');
+    createDiaryStackNavigation.navigate('SelectPhoto');
   };
 
   return (
