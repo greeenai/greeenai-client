@@ -112,11 +112,16 @@ function TabNavigator() {
       <Tab.Screen
         name={'CreateDiary'}
         component={CreateDiaryStackNavigator}
-        options={{
+        options={({route}) => ({
           headerShown: false,
           headerTitle: '일기 생성',
           tabBarLabel: '일기 생성',
-        }}
+          tabBarStyle:
+            (route as any).state?.routes[(route as any).state.index]?.name !==
+            'Home'
+              ? {display: 'none'}
+              : {height: 102, paddingTop: 14, paddingHorizontal: 30},
+        })}
       />
       <Tab.Screen
         name={'Setting'}
