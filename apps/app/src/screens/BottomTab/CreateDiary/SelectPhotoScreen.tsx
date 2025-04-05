@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   FlatList,
   View,
+  Alert,
 } from 'react-native';
 import {
   CameraRoll,
@@ -12,12 +13,16 @@ import {
 } from '@react-native-camera-roll/camera-roll';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
 import Loading from '../../../components/@common/Loading';
+import Icon from '../../../components/@common/Icon';
+
+const MAX_SELECTED_PHOTOS = 3;
 
 function SelectPhotoScreen() {
   const [photos, setPhotos] = useState<PhotoIdentifier[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [endCursor, setEndCursor] = useState<string | undefined>(undefined);
   const [hasNextPage, setHasNextPage] = useState(true);
+  const [selectedPhotos, setSelectedPhotos] = useState<PhotoIdentifier[]>([]);
 
   const fetchPhotosFromGallery = async (
     cursor: string | undefined = undefined,
@@ -50,14 +55,56 @@ function SelectPhotoScreen() {
     }
   };
 
-  const renderPhoto = ({item}: {item: PhotoIdentifier}) => (
-    <TouchableOpacity style={selectPhotoScreenStyle.photoContainer}>
-      <Image
-        source={{uri: item.node.image.uri}}
-        style={selectPhotoScreenStyle.photo}
-      />
-    </TouchableOpacity>
-  );
+  const handlePhotoSelect = (photo: PhotoIdentifier) => {
+    const isSelected = selectedPhotos.some(
+      item => item.node.image.uri === photo.node.image.uri,
+    );
+
+    if (isSelected) {
+      setSelectedPhotos(
+        selectedPhotos.filter(
+          item => item.node.image.uri !== photo.node.image.uri,
+        ),
+      );
+      return;
+    }
+
+    if (selectedPhotos.length >= MAX_SELECTED_PHOTOS) {
+      Alert.alert(
+        '알림',
+        `최대 ${MAX_SELECTED_PHOTOS}개의 사진만 선택할 수 있습니다.`,
+      );
+      return;
+    }
+
+    setSelectedPhotos([...selectedPhotos, photo]);
+  };
+
+  const isPhotoSelected = (photo: PhotoIdentifier): boolean => {
+    return selectedPhotos.some(
+      item => item.node.image.uri === photo.node.image.uri,
+    );
+  };
+
+  const renderPhoto = ({item}: {item: PhotoIdentifier}) => {
+    const isSelected = isPhotoSelected(item);
+
+    return (
+      <TouchableOpacity
+        onPress={() => handlePhotoSelect(item)}
+        style={selectPhotoScreenStyle.photoContainer}>
+        <Image
+          source={{uri: item.node.image.uri}}
+          style={selectPhotoScreenStyle.photo}
+        />
+        {isSelected && (
+          <View style={selectPhotoScreenStyle.checkIconContainer}>
+            <Icon name={'FilledCheck'} width={17} height={17} />
+          </View>
+        )}
+      </TouchableOpacity>
+    );
+  };
 
   const renderFooter = () => {
     if (!hasNextPage) return null;
@@ -109,6 +156,7 @@ const selectPhotoScreenStyle = StyleSheet.create({
     width: '24.7%',
     aspectRatio: 1,
     marginRight: '0.4%',
+    position: 'relative',
   },
   photo: {
     width: '100%',
@@ -117,5 +165,10 @@ const selectPhotoScreenStyle = StyleSheet.create({
   footer: {
     padding: 10,
     alignItems: 'center',
+  },
+  checkIconContainer: {
+    position: 'absolute',
+    right: 5,
+    bottom: 5,
   },
 });
