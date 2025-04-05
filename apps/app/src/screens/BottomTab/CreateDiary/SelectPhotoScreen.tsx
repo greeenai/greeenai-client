@@ -13,7 +13,7 @@ import {
 import ScreenLayout from '../../../components/@common/ScreenLayout';
 import Loading from '../../../components/@common/Loading';
 
-function SelectImageScreen() {
+function SelectPhotoScreen() {
   const [photos, setPhotos] = useState<PhotoIdentifier[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [endCursor, setEndCursor] = useState<string | undefined>(undefined);
@@ -51,10 +51,10 @@ function SelectImageScreen() {
   };
 
   const renderPhoto = ({item}: {item: PhotoIdentifier}) => (
-    <TouchableOpacity style={selectImageScreenStyle.photoContainer}>
+    <TouchableOpacity style={selectPhotoScreenStyle.photoContainer}>
       <Image
         source={{uri: item.node.image.uri}}
-        style={selectImageScreenStyle.photo}
+        style={selectPhotoScreenStyle.photo}
       />
     </TouchableOpacity>
   );
@@ -63,7 +63,7 @@ function SelectImageScreen() {
     if (!hasNextPage) return null;
 
     return (
-      <View style={selectImageScreenStyle.footer}>
+      <View style={selectPhotoScreenStyle.footer}>
         <Loading color={'black'} />
       </View>
     );
@@ -83,8 +83,8 @@ function SelectImageScreen() {
           renderItem={renderPhoto}
           keyExtractor={item => item.node.image.uri}
           numColumns={4}
-          contentContainerStyle={selectImageScreenStyle.photoList}
-          columnWrapperStyle={selectImageScreenStyle.row}
+          contentContainerStyle={selectPhotoScreenStyle.photoList}
+          columnWrapperStyle={selectPhotoScreenStyle.row}
           onEndReached={loadMorePhotosFromGallery}
           onEndReachedThreshold={0.3}
           ListEmptyComponent={renderFooter}
@@ -94,9 +94,9 @@ function SelectImageScreen() {
   );
 }
 
-export default SelectImageScreen;
+export default SelectPhotoScreen;
 
-const selectImageScreenStyle = StyleSheet.create({
+const selectPhotoScreenStyle = StyleSheet.create({
   photoList: {
     width: '100%',
     padding: 2,

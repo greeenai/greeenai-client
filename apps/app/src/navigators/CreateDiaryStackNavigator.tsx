@@ -7,7 +7,7 @@ import {theme} from '@greeenai/design-tokens';
 import {CreateDiaryStackNavigatorParamList} from '../types/navigators';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import CreateDiaryScreen from '../screens/BottomTab/CreateDiary/HomeScreen';
-import SelectImageScreen from '../screens/BottomTab/CreateDiary/SelectImageScreen';
+import SelectImageScreen from '../screens/BottomTab/CreateDiary/SelectPhotoScreen';
 import ConfirmImageScreen from '../screens/BottomTab/CreateDiary/ConfirmImageScreen';
 import SelectEmotionScreen from '../screens/BottomTab/CreateDiary/SelectEmotionScreen';
 import CreatingDiaryScreen from '../screens/BottomTab/CreateDiary/CreatingDiaryScreen';
