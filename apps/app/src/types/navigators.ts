@@ -36,7 +36,7 @@ export type PastDiaryStackNavigatorParamList = {
 export type CreateDiaryStackNavigatorParamList = {
   Home: undefined;
   SelectPhoto: undefined;
-  ConfirmImage: {
+  ConfirmPhoto: {
     selectedPhotos: string[];
   };
   SelectEmotion: undefined;

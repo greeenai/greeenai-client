@@ -30,7 +30,7 @@ function SelectPhotoScreen() {
 
   const handleNextButtonPress = () => {
     if (selectedPhotos.length === MAX_SELECTED_PHOTOS) {
-      createDiaryStackNavigation.navigate('ConfirmImage', {
+      createDiaryStackNavigation.navigate('ConfirmPhoto', {
         selectedPhotos: selectedPhotos.map(photo => photo.node.image.uri),
       });
       return;

@@ -7,12 +7,11 @@ import {theme} from '@greeenai/design-tokens';
 import {CreateDiaryStackNavigatorParamList} from '../types/navigators';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import CreateDiaryScreen from '../screens/BottomTab/CreateDiary/HomeScreen';
-import ConfirmImageScreen from '../screens/BottomTab/CreateDiary/ConfirmImageScreen';
 import SelectEmotionScreen from '../screens/BottomTab/CreateDiary/SelectEmotionScreen';
 import CreatingDiaryScreen from '../screens/BottomTab/CreateDiary/CreatingDiaryScreen';
 import Icon from '../components/@common/Icon';
-import Typography from '../components/@common/Typography';
 import SelectPhotoScreen from '../screens/BottomTab/CreateDiary/SelectPhotoScreen';
+import ConfirmPhotoScreen from '../screens/BottomTab/CreateDiary/ConfirmPhotoScreen';
 
 const Stack = createNativeStackNavigator<CreateDiaryStackNavigatorParamList>();
 
@@ -58,8 +57,8 @@ function CreateDiaryStackNavigator() {
         })}
       />
       <Stack.Screen
-        name={'ConfirmImage'}
-        component={ConfirmImageScreen}
+        name={'ConfirmPhoto'}
+        component={ConfirmPhotoScreen}
         options={{headerTitle: '사진 확인'}}
       />
       <Stack.Screen
