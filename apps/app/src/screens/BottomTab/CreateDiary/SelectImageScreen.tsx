@@ -14,7 +14,7 @@ function SelectImageScreen() {
   const fetchPhotosFromGallery = async () => {
     try {
       const result = await CameraRoll.getPhotos({
-        first: 20,
+        first: 28,
         assetType: 'Photos',
       });
 
@@ -62,14 +62,16 @@ export default SelectImageScreen;
 const selectImageScreenStyle = StyleSheet.create({
   photoList: {
     width: '100%',
+    padding: 2,
   },
   row: {
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     marginBottom: 2,
   },
   photoContainer: {
-    width: '24.5%',
+    width: '24.7%',
     aspectRatio: 1,
+    marginRight: '0.4%',
   },
   photo: {
     width: '100%',
