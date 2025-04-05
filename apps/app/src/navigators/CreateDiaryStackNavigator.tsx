@@ -59,7 +59,17 @@ function CreateDiaryStackNavigator() {
       <Stack.Screen
         name={'ConfirmPhoto'}
         component={ConfirmPhotoScreen}
-        options={{headerTitle: '사진 확인'}}
+        options={({navigation}) => ({
+          headerTitle: '사진 확인',
+          headerLeft: () => (
+            <Icon
+              name={'LeftChevron'}
+              width={20}
+              height={20}
+              onPress={() => navigation.goBack()}
+            />
+          ),
+        })}
       />
       <Stack.Screen
         name={'SelectEmotion'}
