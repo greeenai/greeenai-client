@@ -55,14 +55,6 @@ function CreateDiaryStackNavigator() {
               onPress={() => navigation.goBack()}
             />
           ),
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('ConfirmImage')}>
-              <Typography type={'body-14'} color={'primary'}>
-                다음
-              </Typography>
-            </TouchableOpacity>
-          ),
         })}
       />
       <Stack.Screen

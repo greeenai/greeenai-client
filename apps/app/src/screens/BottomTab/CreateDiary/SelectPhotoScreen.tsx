@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useLayoutEffect, useState} from 'react';
 import {
   Image,
   StyleSheet,
@@ -14,6 +14,8 @@ import {
 import ScreenLayout from '../../../components/@common/ScreenLayout';
 import Loading from '../../../components/@common/Loading';
 import Icon from '../../../components/@common/Icon';
+import useNavigator from '../../../hooks/useNavigator';
+import Typography from '../../../components/@common/Typography';
 
 const MAX_SELECTED_PHOTOS = 3;
 
@@ -23,6 +25,24 @@ function SelectPhotoScreen() {
   const [endCursor, setEndCursor] = useState<string | undefined>(undefined);
   const [hasNextPage, setHasNextPage] = useState(true);
   const [selectedPhotos, setSelectedPhotos] = useState<PhotoIdentifier[]>([]);
+
+  const {createDiaryStackNavigation} = useNavigator();
+
+  const handleNextButtonPress = () => {
+    if (selectedPhotos.length === MAX_SELECTED_PHOTOS) {
+      createDiaryStackNavigation.navigate('ConfirmImage', {
+        selectedPhotos: selectedPhotos.map(photo => photo.node.image.uri),
+      });
+      return;
+    }
+
+    Alert.alert('알림', `사진을 ${MAX_SELECTED_PHOTOS}장 선택해주세요.`, [
+      {
+        text: '확인',
+        style: 'default',
+      },
+    ]);
+  };
 
   const fetchPhotosFromGallery = async (
     cursor: string | undefined = undefined,
@@ -72,7 +92,7 @@ function SelectPhotoScreen() {
     if (selectedPhotos.length >= MAX_SELECTED_PHOTOS) {
       Alert.alert(
         '알림',
-        `최대 ${MAX_SELECTED_PHOTOS}개의 사진만 선택할 수 있습니다.`,
+        `최대 ${MAX_SELECTED_PHOTOS}개의 사진만 선택할 수 있어요.`,
       );
       return;
     }
@@ -115,6 +135,18 @@ function SelectPhotoScreen() {
       </View>
     );
   };
+
+  useLayoutEffect(() => {
+    createDiaryStackNavigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={handleNextButtonPress}>
+          <Typography type={'body-14'} color={'primary'}>
+            다음
+          </Typography>
+        </TouchableOpacity>
+      ),
+    });
+  }, [createDiaryStackNavigation, selectedPhotos]);
 
   useEffect(() => {
     fetchPhotosFromGallery();
