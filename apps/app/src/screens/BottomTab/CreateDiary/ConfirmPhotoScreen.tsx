@@ -1,6 +1,6 @@
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
-import Carousel from 'react-native-reanimated-carousel';
+import Carousel, {ICarouselInstance} from 'react-native-reanimated-carousel';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
 import Typography from '../../../components/@common/Typography';
 import {CreateDiaryStackNavigatorParamList} from '../../../types/navigators';
@@ -16,7 +16,7 @@ type ConfirmPhotoRouteProp = RouteProp<
 
 function ConfirmPhotoScreen() {
   const [activeSlide, setActiveSlide] = useState(0);
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<ICarouselInstance | null>(null);
 
   const {createDiaryStackNavigation} = useNavigator();
   const route = useRoute<ConfirmPhotoRouteProp>();
