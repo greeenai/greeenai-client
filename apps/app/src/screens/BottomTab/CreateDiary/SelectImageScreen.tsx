@@ -1,5 +1,11 @@
 import {useEffect, useState} from 'react';
-import {Image, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  View,
+} from 'react-native';
 import {
   CameraRoll,
   PhotoIdentifier,
@@ -10,19 +16,37 @@ import Loading from '../../../components/@common/Loading';
 function SelectImageScreen() {
   const [photos, setPhotos] = useState<PhotoIdentifier[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [endCursor, setEndCursor] = useState<string | undefined>(undefined);
+  const [hasNextPage, setHasNextPage] = useState(true);
 
-  const fetchPhotosFromGallery = async () => {
+  const fetchPhotosFromGallery = async (
+    cursor: string | undefined = undefined,
+  ) => {
     try {
       const result = await CameraRoll.getPhotos({
         first: 28,
         assetType: 'Photos',
+        after: cursor,
       });
 
-      setPhotos(result.edges);
+      if (cursor) {
+        setPhotos(prev => [...prev, ...result.edges]);
+      } else {
+        setPhotos(result.edges);
+      }
+
+      setEndCursor(result.page_info.end_cursor);
+      setHasNextPage(result.page_info.has_next_page);
       setIsLoading(false);
     } catch (error) {
       console.error('Error fetching photos:', error);
       setIsLoading(false);
+    }
+  };
+
+  const loadMorePhotosFromGallery = () => {
+    if (hasNextPage) {
+      fetchPhotosFromGallery(endCursor);
     }
   };
 
@@ -34,6 +58,16 @@ function SelectImageScreen() {
       />
     </TouchableOpacity>
   );
+
+  const renderFooter = () => {
+    if (!hasNextPage) return null;
+
+    return (
+      <View style={selectImageScreenStyle.footer}>
+        <Loading color={'black'} />
+      </View>
+    );
+  };
 
   useEffect(() => {
     fetchPhotosFromGallery();
@@ -51,6 +85,9 @@ function SelectImageScreen() {
           numColumns={4}
           contentContainerStyle={selectImageScreenStyle.photoList}
           columnWrapperStyle={selectImageScreenStyle.row}
+          onEndReached={loadMorePhotosFromGallery}
+          onEndReachedThreshold={0.3}
+          ListEmptyComponent={renderFooter}
         />
       )}
     </ScreenLayout>
@@ -76,5 +113,9 @@ const selectImageScreenStyle = StyleSheet.create({
   photo: {
     width: '100%',
     height: '100%',
+  },
+  footer: {
+    padding: 10,
+    alignItems: 'center',
   },
 });
