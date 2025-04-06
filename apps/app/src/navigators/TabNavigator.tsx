@@ -17,9 +17,9 @@ import {
 } from '../types/navigators';
 import {KeyOfIcons} from '../types/Icon';
 import Icon from '../components/@common/Icon';
-import CreateDiaryScreen from '../screens/BottomTab/CreateDiaryScreen';
 import CreateDiaryIcon from '../components/BottomTab/CreateDiary/CreateDiaryIcon';
 import PastDiaryStackNavigator from './PastDiaryStackNavigator';
+import CreateDiaryStackNavigator from './CreateDiaryStackNavigator';
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
@@ -111,11 +111,17 @@ function TabNavigator() {
       />
       <Tab.Screen
         name={'CreateDiary'}
-        component={CreateDiaryScreen}
-        options={{
+        component={CreateDiaryStackNavigator}
+        options={({route}) => ({
+          headerShown: false,
           headerTitle: '일기 생성',
           tabBarLabel: '일기 생성',
-        }}
+          tabBarStyle:
+            (route as any).state?.routes[(route as any).state.index]?.name !==
+            'Home'
+              ? {display: 'none'}
+              : {height: 102, paddingTop: 14, paddingHorizontal: 30},
+        })}
       />
       <Tab.Screen
         name={'Setting'}

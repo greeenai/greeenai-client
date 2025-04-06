@@ -33,6 +33,16 @@ export type PastDiaryStackNavigatorParamList = {
   };
 };
 
+export type CreateDiaryStackNavigatorParamList = {
+  Home: undefined;
+  SelectPhoto: undefined;
+  ConfirmPhoto: {
+    selectedPhotos: string[];
+  };
+  SelectEmotion: undefined;
+  CreatingDiary: undefined;
+};
+
 export type KeyOfRootStackNavigatorParamList =
   keyof RootStackNavigatorParamList;
 export type KeyOfOnboardingStackNavigatorParamList =

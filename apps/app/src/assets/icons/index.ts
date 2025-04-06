@@ -18,3 +18,4 @@ export {default as Plus} from './plus.svg';
 export {default as Logo} from './logo.svg';
 export {default as SaveInGallery} from './save-in-gallery.svg';
 export {default as ShareOnSNS} from './share-on-sns.svg';
+export {default as FilledCheck} from './filled-check.svg';

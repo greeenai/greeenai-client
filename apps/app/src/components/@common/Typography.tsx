@@ -1,12 +1,12 @@
 import {KeyOfPalette, KeyOfTypo, theme} from '@greeenai/design-tokens';
 import {ReactNode} from 'react';
-import {StyleProp, Text, ViewStyle} from 'react-native';
+import {StyleProp, Text, TextStyle} from 'react-native';
 
 type TypographyProps = {
   children: ReactNode;
   type?: KeyOfTypo;
   color?: KeyOfPalette;
-  style?: StyleProp<ViewStyle>
+  style?: StyleProp<TextStyle>;
 };
 
 function Typography({
