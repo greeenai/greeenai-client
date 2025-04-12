@@ -88,7 +88,7 @@ function CreateDiaryStackNavigator() {
       <Stack.Screen
         name={'CreatingDiary'}
         component={CreatingDiaryScreen}
-        options={{headerTitle: '그림일기 생성'}}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
