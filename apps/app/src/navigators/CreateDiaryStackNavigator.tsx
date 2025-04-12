@@ -1,4 +1,3 @@
-import {TouchableOpacity} from 'react-native';
 import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
@@ -74,7 +73,17 @@ function CreateDiaryStackNavigator() {
       <Stack.Screen
         name={'SelectEmotion'}
         component={SelectEmotionScreen}
-        options={{headerTitle: '감정 선택'}}
+        options={({navigation}) => ({
+          headerTitle: '감정 선택',
+          headerLeft: () => (
+            <Icon
+              name={'LeftChevron'}
+              width={20}
+              height={20}
+              onPress={() => navigation.goBack()}
+            />
+          ),
+        })}
       />
       <Stack.Screen
         name={'CreatingDiary'}
