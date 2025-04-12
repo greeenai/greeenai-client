@@ -27,12 +27,12 @@ const getTabBarIcon = (
   routeName: KeyOfTabNavigatorParamList,
   focused: boolean,
 ) => {
-  if (routeName === 'CreateDiary') {
+  if (routeName === 'CreateDiaryStackNavigator') {
     return null;
   }
 
   const iconNames: Record<
-    Exclude<KeyOfTabNavigatorParamList, 'CreateDiary'>,
+    Exclude<KeyOfTabNavigatorParamList, 'CreateDiaryStackNavigator'>,
     KeyOfIcons
   > = {
     PastDiaryStackNavigator: focused ? 'FilledDiary' : 'Diary',
@@ -65,7 +65,7 @@ const getScreenOptions = (
     marginTop: 5,
   },
   tabBarIcon: ({focused}: {focused: boolean}) =>
-    route.name === 'CreateDiary' ? (
+    route.name === 'CreateDiaryStackNavigator' ? (
       <CreateDiaryIcon />
     ) : (
       getTabBarIcon(route.name, focused)
@@ -110,7 +110,7 @@ function TabNavigator() {
         listeners={pastDiaryStackNavigatorListener}
       />
       <Tab.Screen
-        name={'CreateDiary'}
+        name={'CreateDiaryStackNavigator'}
         component={CreateDiaryStackNavigator}
         options={({route}) => ({
           headerShown: false,
