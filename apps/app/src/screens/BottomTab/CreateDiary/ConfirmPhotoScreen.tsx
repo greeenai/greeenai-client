@@ -24,7 +24,9 @@ function ConfirmPhotoScreen() {
   const selectedPhotos = route.params?.selectedPhotos || [];
 
   const handlePressNextButton = () => {
-    createDiaryStackNavigation.navigate('SelectEmotion');
+    createDiaryStackNavigation.navigate('SelectEmotion', {
+      selectedPhotos,
+    });
   };
 
   const renderItem = ({item}: {item: string}) => {

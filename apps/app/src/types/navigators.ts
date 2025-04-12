@@ -39,7 +39,9 @@ export type CreateDiaryStackNavigatorParamList = {
   ConfirmPhoto: {
     selectedPhotos: string[];
   };
-  SelectEmotion: undefined;
+  SelectEmotion: {
+    selectedPhotos: string[];
+  };
   CreatingDiary: undefined;
 };
 
