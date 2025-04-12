@@ -35,7 +35,7 @@ function PastDiaryStackNavigator() {
       <Stack.Screen
         name={'PastDiary'}
         component={PastDiaryScreen}
-        options={{headerTitle: '지난 일기'}}
+        options={{headerTitle: '지난 일기', headerLeft: () => null}}
       />
       <Stack.Screen
         name={'DiaryContent'}
