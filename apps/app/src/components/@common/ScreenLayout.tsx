@@ -60,6 +60,7 @@ const screenLayoutStyle = StyleSheet.create({
   container: {
     flex: 1,
     display: 'flex',
+    alignItems: 'center',
     paddingVertical: 15,
   },
   keyboardAvoidingView: {
