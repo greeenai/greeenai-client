@@ -15,7 +15,7 @@ export type OnboardingStackNavigatorParamList = {
 };
 
 export type TabNavigatorParamList = {
-  CreateDiary: undefined;
+  CreateDiaryStackNavigator: undefined;
   PastDiaryStackNavigator:
     | undefined
     | {
@@ -39,7 +39,9 @@ export type CreateDiaryStackNavigatorParamList = {
   ConfirmPhoto: {
     selectedPhotos: string[];
   };
-  SelectEmotion: undefined;
+  SelectEmotion: {
+    selectedPhotos: string[];
+  };
   CreatingDiary: undefined;
 };
 
