@@ -1,3 +1,5 @@
+import { NavigatorScreenParams } from "@react-navigation/native";
+
 export type RootStackNavigatorParamList = {
   Onboarding: undefined;
   Tab: undefined;
@@ -15,7 +17,9 @@ export type OnboardingStackNavigatorParamList = {
 };
 
 export type TabNavigatorParamList = {
-  CreateDiaryStackNavigator: undefined;
+  CreateDiaryStackNavigator:
+    | NavigatorScreenParams<CreateDiaryStackNavigatorParamList>
+    | undefined;
   PastDiaryStackNavigator:
     | undefined
     | {

@@ -90,6 +90,24 @@ const pastDiaryStackNavigatorListener = ({
   },
 });
 
+const createDiaryStackNavigatorListener = ({
+  navigation,
+}: {
+  navigation: BottomTabNavigationProp<
+    TabNavigatorParamList,
+    'CreateDiaryStackNavigator'
+  >;
+  route: TabNavigationState<ParamListBase>['routes'][0];
+}) => ({
+  tabPress: (e: EventArg<'tabPress', true, undefined>) => {
+    e.preventDefault();
+
+    navigation.navigate('CreateDiaryStackNavigator', {
+      screen: 'Home',
+    });
+  },
+});
+
 function TabNavigator() {
   const insets = useSafeAreaInsets();
 
@@ -112,6 +130,7 @@ function TabNavigator() {
       <Tab.Screen
         name={'CreateDiaryStackNavigator'}
         component={CreateDiaryStackNavigator}
+        listeners={createDiaryStackNavigatorListener}
         options={({route}) => ({
           headerShown: false,
           headerTitle: '일기 생성',
