@@ -54,7 +54,7 @@ function SelectEmotionScreen() {
       return;
     }
 
-    if (selectedPhotoIndex <= 2) {
+    if (selectedPhotoIndex < 2) {
       // TODO 서버에 답변 보내기
       setSelectedQuestionIndex(null);
       setCustomAnswer('');
