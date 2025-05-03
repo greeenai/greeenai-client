@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {StyleSheet, Animated, View} from 'react-native';
+import {StyleSheet, Animated, View, Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from '../../../components/@common/Icon';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
@@ -49,6 +49,8 @@ function CreatingDiaryScreen() {
           createdAt: '2025-04-13T15:30:00.000Z',
         },
       });
+
+      Alert.alert('생성 완료', '오늘의 일기가 생성되었습니다.');
     }, 60000);
 
     return () => clearTimeout(navigationTimer);
