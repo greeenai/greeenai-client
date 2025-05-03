@@ -88,7 +88,7 @@ const buttonBaseStyle: ViewStyle = {
 };
 
 const sizeStyle: Record<ButtonSize, ViewStyle> = {
-  lg: {height: 49, width: 380},
+  lg: {height: 49, width: 360},
   sm: {height: 33, width: 144},
 };
 

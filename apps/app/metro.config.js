@@ -34,6 +34,7 @@ const config = {
         'node_modules',
         '@babel/runtime',
       ),
+      'react-native': __dirname + '/node_modules/react-native',
     },
     unstable_enableSymlinks: true,
     unstable_enablePackageExports: true,
