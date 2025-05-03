@@ -10,6 +10,11 @@ class MemberApi {
   static async logout() {
     return fetcherInstance.post('/logout');
   }
+
+  // 회원 탈퇴
+  static async withdraw() {
+    return fetcherInstance.delete('/me');
+  }
 }
 
 export default MemberApi;
