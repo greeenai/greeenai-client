@@ -119,7 +119,8 @@ const selectEmotionScreenStyle = StyleSheet.create({
     paddingHorizontal: 25,
     display: 'flex',
     flexDirection: 'column',
-    gap: 15,
+    justifyContent: 'space-between',
+    paddingBottom: 30,
   },
   questionText: {
     alignSelf: 'flex-start',
@@ -159,7 +160,6 @@ const selectEmotionScreenStyle = StyleSheet.create({
   bottomButtonContainer: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: 20,
   },
 });
 
