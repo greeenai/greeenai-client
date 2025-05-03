@@ -131,7 +131,7 @@ function DiaryContentScreen() {
           저장하기
         </Button>
         <Button
-          leftElement={<Icon name={'ShareOnSNS'} width={20} height={20} />}
+          leftElement={<Icon name={'ShareOnSNS'} width={16} height={16} />}
           size={'sm'}
           backgroundColor="white"
           onPress={handlePressShareToInstagram}>
