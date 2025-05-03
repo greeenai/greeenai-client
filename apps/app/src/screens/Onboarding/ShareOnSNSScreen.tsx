@@ -13,7 +13,7 @@ function ShareOnSNSScreen({onNext}: ShareOnSNSScreenProps) {
           {'소중한 순간을\n친구들에게 공유해봐요'}
         </Typography>
         <Typography>
-          {'사진만으로 읽기 어려운 이야기를 \n객관식으로 답해보아요'}
+          {'완성된 일기를 SNS에 올려\n친구들과 추억을 나눠보세요'}
         </Typography>
       </View>
       <View style={shareOnSNSScreenStyle.bottomButtonContainer}>

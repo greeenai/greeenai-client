@@ -17,7 +17,7 @@ function ChooseAnswerScreen({onNext}: ChooseAnswerScreenProps) {
           {'당신의 하루를\n자세히 들려주세요'}
         </Typography>
         <Typography>
-          {'사진만으로 읽기 어려운 이야기를 \n객관식으로 답해보아요'}
+          {'사진만으로 알기 어려운 이야기를 \n객관식으로 답해보아요'}
         </Typography>
       </View>
       <View style={chooseAnswerScreenStyle.bottomButtonContainer}>
