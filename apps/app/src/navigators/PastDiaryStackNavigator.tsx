@@ -40,16 +40,19 @@ function PastDiaryStackNavigator() {
       <Stack.Screen
         name={'DiaryContent'}
         component={DiaryContentScreen}
-        options={({navigation}) => ({
+        options={({navigation, route}) => ({
           headerTitle: '일기 상세',
-          headerLeft: () => (
-            <Icon
-              name={'LeftChevron'}
-              width={20}
-              height={20}
-              onPress={() => navigation.goBack()}
-            />
-          ),
+          headerLeft:
+            route.params?.isPast === false
+              ? () => null
+              : () => (
+                  <Icon
+                    name={'LeftChevron'}
+                    width={20}
+                    height={20}
+                    onPress={() => navigation.goBack()}
+                  />
+                ),
         })}
       />
     </Stack.Navigator>
