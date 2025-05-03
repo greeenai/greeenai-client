@@ -1,4 +1,4 @@
-import { NavigatorScreenParams } from "@react-navigation/native";
+import {NavigatorScreenParams} from '@react-navigation/native';
 
 export type RootStackNavigatorParamList = {
   Onboarding: undefined;
@@ -34,6 +34,7 @@ export type PastDiaryStackNavigatorParamList = {
   DiaryContent: {
     id: number;
     createdAt: string;
+    isPast: boolean;
   };
 };
 

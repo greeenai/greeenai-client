@@ -52,6 +52,7 @@ function CreatingDiaryScreen() {
               params: {
                 id: 1,
                 createdAt: '2025-04-13T15:30:00.000Z',
+                isPast: false,
               },
             },
           },
