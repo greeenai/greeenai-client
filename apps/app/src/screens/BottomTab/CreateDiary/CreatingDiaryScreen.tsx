@@ -42,16 +42,24 @@ function CreatingDiaryScreen() {
 
   useEffect(() => {
     const navigationTimer = setTimeout(() => {
-      navigation.navigate('PastDiaryStackNavigator', {
-        screen: 'DiaryContent',
-        params: {
-          id: 1,
-          createdAt: '2025-04-13T15:30:00.000Z',
-        },
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'PastDiaryStackNavigator',
+            params: {
+              screen: 'DiaryContent',
+              params: {
+                id: 1,
+                createdAt: '2025-04-13T15:30:00.000Z',
+              },
+            },
+          },
+        ],
       });
 
       Alert.alert('생성 완료', '오늘의 일기가 생성되었습니다.');
-    }, 60000);
+    }, 10 * 1000);
 
     return () => clearTimeout(navigationTimer);
   }, []);
