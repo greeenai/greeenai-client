@@ -52,9 +52,22 @@ function useAuth() {
     }
   };
 
+  const logout = async () => {
+    try {
+      await MemberApi.logout();
+    } catch (error) {
+      console.error('logout error:', error);
+      Alert.alert(
+        '알림',
+        '로그아웃 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
+      );
+    }
+  };
+
   return {
     loginWithKakao,
     loginWithApple,
+    logout,
   };
 }
 
