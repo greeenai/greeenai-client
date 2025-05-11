@@ -1,38 +1,17 @@
-import {Alert, Platform, StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import ScreenLayout from '../../components/@common/ScreenLayout';
 import SocialLoginButton from '../../components/@common/SocialLoginButton';
-import useAuthStorage from '../../hooks/useAuthStorage';
-import kakaoClient from '../../apis/kakaoClient';
 import Icon from '../../components/@common/Icon';
 import Typography from '../../components/@common/Typography';
-import MemberApi from '../../apis/member';
+import useLogin from '../../hooks/apis/useLogin';
 
 export type LoginScreenProps = {onNext: () => void};
 
 function LoginScreen({onNext}: LoginScreenProps) {
-  const {setAuthData} = useAuthStorage();
+  const {loginWithKakao} = useLogin();
 
   const handlePressKakaoLoginButton = async () => {
-    await kakaoClient.loginWithKakaoAccount();
-    const {nickname: name, email, id: oauthId} = await kakaoClient.getProfile();
-
-    const userData: LoginRequestBody = {
-      name,
-      email,
-      oauthId: oauthId.toString(),
-      oauthProvider: 'kakao',
-    };
-
-    const response = await MemberApi.login<LoginResponseDto>(userData);
-
-    if (response.status === 200) {
-      const {accessToken, refreshToken} = response.data;
-      setAuthData(accessToken, refreshToken);
-      onNext();
-      return;
-    }
-
-    Alert.alert('알림', '로그인 실패하였습니다. 잠시 후 다시 시도해주세요.');
+    await loginWithKakao(onNext);
   };
 
   const handlePressAppleLoginButton = () => {};
