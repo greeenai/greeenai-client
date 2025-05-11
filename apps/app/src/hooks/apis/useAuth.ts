@@ -52,9 +52,13 @@ function useAuth() {
     }
   };
 
-  const logout = async () => {
+  const logout = async (onSuccess: OnSuccessCallback) => {
     try {
-      await MemberApi.logout();
+      const response = await MemberApi.logout();
+
+      if (response.status === 200) {
+        onSuccess();
+      }
     } catch (error) {
       console.error('logout error:', error);
       Alert.alert(
