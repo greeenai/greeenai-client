@@ -1,38 +1,17 @@
 import {Platform, StyleSheet, View} from 'react-native';
 import ScreenLayout from '../../components/@common/ScreenLayout';
 import SocialLoginButton from '../../components/@common/SocialLoginButton';
-// import useAuthStorage from '../../hooks/useAuthStorage';
-import kakaoClient from '../../apis/kakaoClient';
-import {Image} from 'react-native-svg';
 import Icon from '../../components/@common/Icon';
 import Typography from '../../components/@common/Typography';
+import useAuth from '../../hooks/apis/useAuth';
 
 export type LoginScreenProps = {onNext: () => void};
 
 function LoginScreen({onNext}: LoginScreenProps) {
-  // const {setAuthData} = useAuthStorage();
+  const {loginWithKakao} = useAuth();
 
   const handlePressKakaoLoginButton = async () => {
-    await kakaoClient.loginWithKakaoAccount();
-    const {
-      nickname: username,
-      email: userEmail,
-      id: oauthId,
-    } = await kakaoClient.getProfile();
-
-    const userData = {
-      username,
-      userEmail,
-      oauthId,
-      oauthProvider: 'KAKAO',
-    };
-
-    console.log(userData);
-
-    // TODO: API 연결
-
-    // setAuthData(accessToken, refreshToken);
-    onNext();
+    await loginWithKakao(onNext);
   };
 
   const handlePressAppleLoginButton = () => {};

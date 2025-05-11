@@ -2,5 +2,10 @@ interface LoginRequestBody {
   name: string;
   email: string;
   oauthId: string;
-  oAuthProvider: 'kakao' | 'apple';
+  oauthProvider: 'kakao' | 'apple';
+}
+
+interface LoginResponseDto {
+  accessToken: string;
+  refreshToken: string;
 }

@@ -1,9 +1,13 @@
+import {ApiResponse} from '../api';
 import {fetcherInstance} from '../fetcher';
 
 class MemberApi {
   // 로그인
-  static async login(requestBody: LoginRequestBody) {
-    return fetcherInstance.post('/login', requestBody);
+  static async login<T>(
+    requestBody: LoginRequestBody,
+  ): Promise<ApiResponse<T>> {
+    const response = await fetcherInstance.post('/login', requestBody);
+    return response as ApiResponse<T>;
   }
 
   // 로그아웃
