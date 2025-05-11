@@ -68,9 +68,13 @@ function useAuth() {
     }
   };
 
-  const withdraw = async () => {
+  const withdraw = async (onSuccess: OnSuccessCallback) => {
     try {
-      await MemberApi.withdraw();
+      const response = await MemberApi.withdraw();
+
+      if (response.status === 200) {
+        onSuccess();
+      }
     } catch (error) {
       console.error('logout error:', error);
       Alert.alert(
