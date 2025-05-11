@@ -6,7 +6,6 @@ import kakaoClient from '../../apis/kakaoClient';
 import Icon from '../../components/@common/Icon';
 import Typography from '../../components/@common/Typography';
 import MemberApi from '../../apis/member';
-import {ApiResponse} from '../../apis/api';
 
 export type LoginScreenProps = {onNext: () => void};
 
