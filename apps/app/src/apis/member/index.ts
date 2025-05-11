@@ -1,5 +1,6 @@
 import {ApiResponse} from '../api';
 import {fetcherInstance} from '../fetcher';
+import {LoginRequestBody} from './index.types';
 
 class MemberApi {
   // 로그인

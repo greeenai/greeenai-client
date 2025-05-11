@@ -2,6 +2,10 @@ import {Alert} from 'react-native';
 import kakaoClient from '../../apis/kakaoClient';
 import MemberApi from '../../apis/member';
 import useAuthStorage from '../useAuthStorage';
+import {
+  LoginRequestBody,
+  LoginResponseDto,
+} from '../../apis/member/index.types';
 
 type OnSuccessCallback = (...args: any) => void;
 

@@ -1,11 +1,11 @@
-interface LoginRequestBody {
+export interface LoginRequestBody {
   name: string;
   email: string;
   oauthId: string;
   oauthProvider: 'kakao' | 'apple';
 }
 
-interface LoginResponseDto {
+export interface LoginResponseDto {
   accessToken: string;
   refreshToken: string;
 }
