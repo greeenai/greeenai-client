@@ -5,7 +5,7 @@ import useAuthStorage from '../useAuthStorage';
 
 type OnSuccessCallback = (...args: any) => void;
 
-function useLogin() {
+function useAuth() {
   const {setAuthData} = useAuthStorage();
 
   const loginWithKakao = async (onSuccess: OnSuccessCallback) => {
@@ -58,4 +58,4 @@ function useLogin() {
   };
 }
 
-export default useLogin;
+export default useAuth;

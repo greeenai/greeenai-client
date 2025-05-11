@@ -3,12 +3,12 @@ import ScreenLayout from '../../components/@common/ScreenLayout';
 import SocialLoginButton from '../../components/@common/SocialLoginButton';
 import Icon from '../../components/@common/Icon';
 import Typography from '../../components/@common/Typography';
-import useLogin from '../../hooks/apis/useLogin';
+import useAuth from '../../hooks/apis/useAuth';
 
 export type LoginScreenProps = {onNext: () => void};
 
 function LoginScreen({onNext}: LoginScreenProps) {
-  const {loginWithKakao} = useLogin();
+  const {loginWithKakao} = useAuth();
 
   const handlePressKakaoLoginButton = async () => {
     await loginWithKakao(onNext);
