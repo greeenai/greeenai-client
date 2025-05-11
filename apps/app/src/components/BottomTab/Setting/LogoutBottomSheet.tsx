@@ -1,8 +1,10 @@
-import {ForwardedRef, forwardRef} from 'react';
-import {StyleSheet, View} from 'react-native';
+import React, {ForwardedRef, forwardRef} from 'react';
+import {Alert, StyleSheet, View} from 'react-native';
 import BottomSheet, {BottomSheetRef} from '../../@common/BottomSheet';
 import Typography from '../../@common/Typography';
 import Button from '../../@common/Button';
+import useAuth from '../../../hooks/apis/useAuth';
+import useNavigator from '../../../hooks/useNavigator';
 
 type LogoutBottomSheetProps = {};
 
@@ -10,7 +12,17 @@ function LogoutBottomSheet(
   _: LogoutBottomSheetProps,
   ref: ForwardedRef<BottomSheetRef>,
 ) {
-  const handlePressLogoutButton = () => {};
+  const {onboardingStackNavigation} = useNavigator();
+  const {logout} = useAuth();
+
+  const handleSuccessLogout = () => {
+    Alert.alert('알림', '로그아웃 성공하였습니다!');
+    onboardingStackNavigation.navigate('LoginScreen');
+  };
+
+  const handlePressLogoutButton = async () => {
+    await logout(handleSuccessLogout);
+  };
 
   const handlePressCloseBottomSheetButton = () => {
     if (ref && typeof ref !== 'function' && ref.current) {
