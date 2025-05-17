@@ -7,7 +7,7 @@ function EmptyDiary() {
   const {bottomTabNavigation} = useNavigator();
 
   const handlePressCreateDiary = () => {
-    bottomTabNavigation.navigate('CreateDiary');
+    bottomTabNavigation.navigate('CreateDiaryStackNavigator');
   };
 
   return (
