@@ -42,6 +42,7 @@ function PastDiaryScreen() {
         id,
         entryDate,
         content,
+        imageUrl,
         isPast: true,
       });
     };

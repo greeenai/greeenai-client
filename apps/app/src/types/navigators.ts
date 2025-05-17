@@ -35,6 +35,7 @@ export type PastDiaryStackNavigatorParamList = {
     id: number;
     entryDate: string;
     content: string;
+    imageUrl: string;
     isPast: boolean;
   };
 };
