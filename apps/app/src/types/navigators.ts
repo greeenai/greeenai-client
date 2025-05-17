@@ -33,7 +33,8 @@ export type PastDiaryStackNavigatorParamList = {
   PastDiary: undefined;
   DiaryContent: {
     id: number;
-    createdAt: string;
+    entryDate: string;
+    content: string;
     isPast: boolean;
   };
 };
