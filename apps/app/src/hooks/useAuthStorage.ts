@@ -1,13 +1,9 @@
 import AsyncStorageService from '../utils/AsyncStorageService';
 import {AsyncStorageKey} from '../constants/asyncStorageKey';
-import {useCallback, useEffect, useMemo, useState} from 'react';
-import {isEmptyObject} from '../utils/isEmptyObject';
+import {useCallback, useMemo} from 'react';
 
 function useAuthStorage() {
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-  const [refreshToken, setRefreshToken] = useState<string | null>(null);
-
-  const setAuthData = useCallback(
+  const setToken = useCallback(
     async (newAccessToken: string, newRefreshToken: string) => {
       try {
         await AsyncStorageService.multiSet([
@@ -21,7 +17,7 @@ function useAuthStorage() {
     [],
   );
 
-  const getAuthData = useCallback(async (): Promise<
+  const getToken = useCallback(async (): Promise<
     Record<string, string | null>
   > => {
     try {
@@ -39,10 +35,6 @@ function useAuthStorage() {
   }, []);
 
   const getAccessToken = useCallback(async (): Promise<string | null> => {
-    if (accessToken !== null) {
-      return accessToken;
-    }
-
     try {
       const accessToken: string | null = await AsyncStorageService.getItem(
         AsyncStorageKey.accessToken,
@@ -52,13 +44,9 @@ function useAuthStorage() {
       console.error('액세스 토큰 가져오기 실패:', error);
       return null;
     }
-  }, [accessToken]);
+  }, []);
 
   const getRefreshToken = useCallback(async (): Promise<string | null> => {
-    if (refreshToken !== null) {
-      return refreshToken;
-    }
-
     try {
       const refreshToken: string | null = await AsyncStorageService.getItem(
         AsyncStorageKey.refreshToken,
@@ -68,61 +56,28 @@ function useAuthStorage() {
       console.error('리프레시 토큰 가져오기 실패:', error);
       return null;
     }
-  }, [refreshToken]);
+  }, []);
 
-  const clearAuthData = useCallback(async () => {
+  const clearToken = useCallback(async () => {
     try {
       await AsyncStorageService.multiSet([
         {key: AsyncStorageKey.accessToken, value: null},
         {key: AsyncStorageKey.refreshToken, value: null},
       ]);
-
-      setAccessToken(null);
-      setRefreshToken(null);
     } catch (error) {
       console.error('토큰 삭제 실패:', error);
     }
   }, []);
 
-  useEffect(() => {
-    const loadTokens = async () => {
-      try {
-        const tokens = await getAuthData();
-
-        if (!isEmptyObject(tokens)) {
-          const accessToken = tokens[AsyncStorageKey.accessToken] || null;
-          const refreshToken = tokens[AsyncStorageKey.refreshToken] || null;
-
-          setAccessToken(accessToken);
-          setRefreshToken(refreshToken);
-        }
-      } catch (error) {
-        console.error('토큰 로드 실패:', error);
-      }
-    };
-
-    loadTokens();
-  }, [getAuthData]);
-
   return useMemo(
     () => ({
-      setAuthData,
-      getAuthData,
+      setToken,
+      getToken,
       getAccessToken,
       getRefreshToken,
-      clearAuthData,
-      accessToken,
-      refreshToken,
+      clearToken,
     }),
-    [
-      accessToken,
-      clearAuthData,
-      getAccessToken,
-      getAuthData,
-      getRefreshToken,
-      refreshToken,
-      setAuthData,
-    ],
+    [clearToken, getAccessToken, getToken, getRefreshToken, setToken],
   );
 }
 

@@ -1,16 +1,17 @@
 import {Alert} from 'react-native';
 import kakaoClient from '../../apis/kakaoClient';
 import MemberApi from '../../apis/member';
-import useAuthStorage from '../useAuthStorage';
 import {
   LoginRequestBody,
   LoginResponseDto,
 } from '../../apis/member/index.types';
+import {useContext} from 'react';
+import {AuthDispatchContext} from '../../components/@common/Provider/AuthProvider';
 
 type OnSuccessCallback = (...args: any) => void;
 
 function useAuth() {
-  const {setAuthData} = useAuthStorage();
+  const {setAuthData, clearAuthData} = useContext(AuthDispatchContext);
 
   const loginWithKakao = async (onSuccess: OnSuccessCallback) => {
     try {
@@ -32,7 +33,7 @@ function useAuth() {
 
       if (response.status === 200) {
         const {accessToken, refreshToken} = response.data;
-        setAuthData(accessToken, refreshToken);
+        await setAuthData(accessToken, refreshToken);
         onSuccess();
         return;
       }
@@ -61,6 +62,7 @@ function useAuth() {
       const response = await MemberApi.logout();
 
       if (response.status === 200) {
+        await clearAuthData();
         onSuccess();
       }
     } catch (error) {
@@ -77,6 +79,7 @@ function useAuth() {
       const response = await MemberApi.withdraw();
 
       if (response.status === 200) {
+        await clearAuthData();
         onSuccess();
       }
     } catch (error) {

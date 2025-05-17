@@ -1,12 +1,10 @@
 import {useEffect, useRef} from 'react';
 import {fetcherInstance} from '../../apis/fetcher';
-import useAuthStorage from '../useAuthStorage';
 
-function useAuthInterceptor() {
+function useAuthInterceptor(accessToken: string) {
   const interceptorRef = useRef<
     ((options: RequestInit) => Promise<RequestInit>) | null
   >(null);
-  const {accessToken} = useAuthStorage();
 
   useEffect(() => {
     if (interceptorRef.current) {
