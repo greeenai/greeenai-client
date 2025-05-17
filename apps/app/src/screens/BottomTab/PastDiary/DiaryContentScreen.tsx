@@ -16,7 +16,6 @@ import {captureRef} from 'react-native-view-shot';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
 import {PastDiaryStackNavigatorParamList} from '../../../types/navigators';
 import {formatDateToYYMMDD} from '../../../utils/formatDate';
-import {mockDiaryContent} from '../../../constants/mockDatas/diaryContent';
 import Typography from '../../../components/@common/Typography';
 import Button from '../../../components/@common/Button';
 import Icon from '../../../components/@common/Icon';
@@ -29,11 +28,8 @@ function DiaryContentScreen() {
   const scrollViewRef = useRef(null);
   const contentRef = useRef(null);
 
-  const createdAt = route.params.createdAt;
-  const formattedContent = mockDiaryContent.content.replace(
-    /([.!?])\s*/g,
-    '$1\n',
-  );
+  const {entryDate, content, imageUrl} = route.params;
+  const formattedContent = content.replace(/([.!?])\s*/g, '$1\n');
 
   const captureDiaryContent = async () => {
     try {
@@ -101,9 +97,9 @@ function DiaryContentScreen() {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: `${formatDateToYYMMDD(createdAt)}`,
+      headerTitle: `${formatDateToYYMMDD(entryDate)}`,
     });
-  }, [navigation, createdAt]);
+  }, [navigation, entryDate]);
 
   return (
     <ScreenLayout>
@@ -111,14 +107,12 @@ function DiaryContentScreen() {
         <View collapsable={false} ref={contentRef}>
           <View style={diaryContentScreenStyle.imageContainer}>
             <Image
-              source={{uri: mockDiaryContent.imageUrl}}
+              source={{uri: imageUrl}}
               style={diaryContentScreenStyle.image}
             />
           </View>
           <View style={diaryContentScreenStyle.contentContainer}>
-            <Typography type={'headline-20'}>
-              {mockDiaryContent.title}
-            </Typography>
+            <Typography type={'headline-20'}>{content}</Typography>
             <Typography type={'body-12'}>{formattedContent}</Typography>
           </View>
         </View>
