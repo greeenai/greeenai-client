@@ -11,7 +11,7 @@ import {AuthDispatchContext} from '../../components/@common/Provider/AuthProvide
 type OnSuccessCallback = (...args: any) => void;
 
 function useAuth() {
-  const {setAuthData} = useContext(AuthDispatchContext);
+  const {setAuthData, clearAuthData} = useContext(AuthDispatchContext);
 
   const loginWithKakao = async (onSuccess: OnSuccessCallback) => {
     try {
@@ -62,6 +62,7 @@ function useAuth() {
       const response = await MemberApi.logout();
 
       if (response.status === 200) {
+        await clearAuthData();
         onSuccess();
       }
     } catch (error) {
@@ -78,6 +79,7 @@ function useAuth() {
       const response = await MemberApi.withdraw();
 
       if (response.status === 200) {
+        await clearAuthData();
         onSuccess();
       }
     } catch (error) {
