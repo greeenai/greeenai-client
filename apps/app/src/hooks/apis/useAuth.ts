@@ -25,7 +25,7 @@ function useAuth() {
         name,
         email,
         oauthId: oauthId.toString(),
-        oauthProvider: 'kakao',
+        oAuthProvider: 'KAKAO',
       };
 
       const response = await MemberApi.login<LoginResponseDto>(userData);
