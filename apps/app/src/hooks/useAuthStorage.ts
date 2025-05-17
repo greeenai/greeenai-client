@@ -39,10 +39,6 @@ function useAuthStorage() {
   }, []);
 
   const getAccessToken = useCallback(async (): Promise<string | null> => {
-    if (accessToken !== null) {
-      return accessToken;
-    }
-
     try {
       const accessToken: string | null = await AsyncStorageService.getItem(
         AsyncStorageKey.accessToken,
@@ -52,13 +48,9 @@ function useAuthStorage() {
       console.error('액세스 토큰 가져오기 실패:', error);
       return null;
     }
-  }, [accessToken]);
+  }, []);
 
   const getRefreshToken = useCallback(async (): Promise<string | null> => {
-    if (refreshToken !== null) {
-      return refreshToken;
-    }
-
     try {
       const refreshToken: string | null = await AsyncStorageService.getItem(
         AsyncStorageKey.refreshToken,
@@ -68,7 +60,7 @@ function useAuthStorage() {
       console.error('리프레시 토큰 가져오기 실패:', error);
       return null;
     }
-  }, [refreshToken]);
+  }, []);
 
   const clearToken = useCallback(async () => {
     try {
@@ -76,9 +68,6 @@ function useAuthStorage() {
         {key: AsyncStorageKey.accessToken, value: null},
         {key: AsyncStorageKey.refreshToken, value: null},
       ]);
-
-      setAccessToken(null);
-      setRefreshToken(null);
     } catch (error) {
       console.error('토큰 삭제 실패:', error);
     }
