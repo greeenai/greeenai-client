@@ -1,6 +1,7 @@
 import {ApiResponse} from '../api';
 import {fetcherInstance} from '../fetcher';
 import {
+  DiaryQuestionAnswerRequestBody,
   DiaryQuestionRequestBody,
   DiaryQuestionResponseDto,
   LastDiariesResponse,
@@ -17,6 +18,14 @@ class DiaryApi {
   static async getDiaryQuestions(requestBody: DiaryQuestionRequestBody) {
     const response = await fetcherInstance.post('/diaries', requestBody);
     return response as ApiResponse<DiaryQuestionResponseDto>;
+  }
+
+  // 일기 질문 답변
+  static async putDiaryQuestionAnswers(
+    diaryId: number,
+    requestBody: DiaryQuestionAnswerRequestBody,
+  ) {
+    fetcherInstance.put(`/diaries/${diaryId}/generate-image`, requestBody);
   }
 }
 
