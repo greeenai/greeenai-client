@@ -248,13 +248,24 @@ class Fetcher {
 
   public post<T>(
     url: string,
-    body = {},
+    body: any = {},
     options: RequestInit = {}
   ): Promise<ApiResponse<T>> {
+    const isFormData =
+      typeof FormData !== "undefined" && body instanceof FormData;
+
     return this.request(url, {
       ...options,
       method: "POST",
-      body: JSON.stringify(body),
+      body: isFormData ? body : JSON.stringify(body),
+      headers: isFormData
+        ? {
+            ...options.headers,
+          }
+        : {
+            "Content-Type": "application/json",
+            ...options.headers,
+          },
     });
   }
 
