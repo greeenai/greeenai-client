@@ -12,12 +12,15 @@ function LogoutBottomSheet(
   _: LogoutBottomSheetProps,
   ref: ForwardedRef<BottomSheetRef>,
 ) {
-  const {onboardingStackNavigation} = useNavigator();
+  const {rootStackNavigation} = useNavigator();
   const {logout} = useAuth();
 
   const handleSuccessLogout = () => {
-    Alert.alert('알림', '로그아웃 성공하였습니다!');
-    onboardingStackNavigation.navigate('LoginScreen');
+    if (ref && typeof ref !== 'function' && ref.current) {
+      ref.current.dismiss();
+      Alert.alert('알림', '로그아웃 성공하였습니다!');
+      rootStackNavigation.navigate('Onboarding');
+    }
   };
 
   const handlePressLogoutButton = async () => {
