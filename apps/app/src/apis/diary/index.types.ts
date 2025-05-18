@@ -9,7 +9,9 @@ export interface LastDiary {
 
 export type DiaryQuestionRequestBody = FormData;
 
-export interface DiaryQuestionResponseDto {
+export type DiaryQuestionResponseDto = DiaryQuestion[];
+
+export interface DiaryQuestion {
   id: number;
   content: string;
 }

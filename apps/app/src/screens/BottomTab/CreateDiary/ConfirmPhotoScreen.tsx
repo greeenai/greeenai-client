@@ -28,9 +28,10 @@ function ConfirmPhotoScreen() {
   const handlePressNextButton = async () => {
     const formData = buildDiaryCreateFormData(selectedPhotos);
 
-    const {data} = await DiaryApi.getDiaryQuestions(formData);
+    const {data: diaryQuestions} = await DiaryApi.getDiaryQuestions(formData);
     createDiaryStackNavigation.navigate('SelectEmotion', {
       selectedPhotos,
+      diaryQuestions,
     });
   };
 
