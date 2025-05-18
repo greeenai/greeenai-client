@@ -24,30 +24,31 @@ type SelectEmotionRouteProp = RouteProp<
 function SelectEmotionScreen() {
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [customAnswer, setCustomAnswer] = useState('');
-  const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<
-    number | null
-  >(null);
+  const [selectedQuestionId, setSelectedQuestionId] = useState<number | null>(
+    null,
+  );
 
   const route = useRoute<SelectEmotionRouteProp>();
   const {createDiaryStackNavigation} = useNavigator();
 
   const selectedPhotos = route.params?.selectedPhotos || [];
+  const questionList = route.params?.diaryQuestions || [];
   const currentPhoto = selectedPhotos[selectedPhotoIndex];
 
-  const handleSelectQuestion = (index: number) => {
-    setSelectedQuestionIndex(index);
+  const handleSelectQuestion = (id: number) => {
+    setSelectedQuestionId(id);
     setCustomAnswer('');
   };
 
   const handleChangeCustomAnswerText = (text: string) => {
     setCustomAnswer(text);
     if (text.length > 0) {
-      setSelectedQuestionIndex(null);
+      setSelectedQuestionId(null);
     }
   };
 
   const handlePressNextButton = () => {
-    if (selectedQuestionIndex === null && customAnswer.length === 0) {
+    if (setSelectedQuestionId === null && customAnswer.length === 0) {
       Alert.alert('알림', '질문에 답변해주세요', [
         {text: '확인', style: 'default'},
       ]);
@@ -56,7 +57,7 @@ function SelectEmotionScreen() {
 
     if (selectedPhotoIndex < 2) {
       // TODO 서버에 답변 보내기
-      setSelectedQuestionIndex(null);
+      setSelectedQuestionId(null);
       setCustomAnswer('');
       setSelectedPhotoIndex(prev => prev + 1);
       return;
@@ -82,18 +83,20 @@ function SelectEmotionScreen() {
       </View>
 
       <View style={selectEmotionScreenStyle.questionListContainer}>
-        {mockQuestionList.map(({question}, index) => (
-          <TouchableOpacity
-            key={index}
-            onPress={() => handleSelectQuestion(index)}
-            style={[
-              selectEmotionScreenStyle.questionContainer,
-              selectedQuestionIndex === index &&
-                selectEmotionScreenStyle.selectedQuestion,
-            ]}>
-            <Typography type={'button-14'}>{question}</Typography>
-          </TouchableOpacity>
-        ))}
+        {questionList[selectedPhotoIndex].diaryQuestions.map(
+          ({content, id}) => (
+            <TouchableOpacity
+              key={id}
+              onPress={() => handleSelectQuestion(id)}
+              style={[
+                selectEmotionScreenStyle.questionContainer,
+                selectedQuestionId === id &&
+                  selectEmotionScreenStyle.selectedQuestion,
+              ]}>
+              <Typography type={'button-14'}>{content}</Typography>
+            </TouchableOpacity>
+          ),
+        )}
         <View style={selectEmotionScreenStyle.questionContainer}>
           <TextInput
             style={selectEmotionScreenStyle.customAnswerInput}
@@ -162,18 +165,3 @@ const selectEmotionScreenStyle = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-const mockQuestionList = [
-  {
-    question: '맛있는 음식을 먹을 생각에 기분이 좋았어 😋',
-  },
-  {
-    question: '힘든 하루에 달콤한 디저트를 보니 위로가 되었어 🍧',
-  },
-  {
-    question: '친구와 함께해서 더욱 즐거운 시간이었어 💖',
-  },
-  {
-    question: '음식이 너무 늦게 나와서 기다리기 힘들었어 😮‍💨',
-  },
-];
