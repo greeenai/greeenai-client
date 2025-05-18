@@ -1,4 +1,4 @@
-import React, {ForwardedRef, forwardRef} from 'react';
+import {ForwardedRef, forwardRef} from 'react';
 import {Alert, StyleSheet, View} from 'react-native';
 import BottomSheet, {BottomSheetRef} from '../../@common/BottomSheet';
 import Typography from '../../@common/Typography';
@@ -13,11 +13,14 @@ function DeleteAccountBottomSheet(
   ref: ForwardedRef<BottomSheetRef>,
 ) {
   const {withdraw} = useAuth();
-  const {onboardingStackNavigation} = useNavigator();
+  const {rootStackNavigation} = useNavigator();
 
   const handleDeleteAccountSuccess = () => {
-    Alert.alert('알림', '탈퇴 성공하였습니다.');
-    onboardingStackNavigation.navigate('LoginScreen');
+    if (ref && typeof ref !== 'function' && ref.current) {
+      ref.current.dismiss();
+      Alert.alert('알림', '탈퇴 성공하였습니다.');
+      rootStackNavigation.navigate('Onboarding');
+    }
   };
 
   const handlePressDeleteAccountButton = async () => {
