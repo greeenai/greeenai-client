@@ -15,7 +15,7 @@ import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 import {captureRef} from 'react-native-view-shot';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
 import {PastDiaryStackNavigatorParamList} from '../../../types/navigators';
-import {formatDateToYYMMDD} from '../../../utils/formatDate';
+import {formatDateToYYMMDD} from '../../../utils/common/formatDate';
 import Typography from '../../../components/@common/Typography';
 import Button from '../../../components/@common/Button';
 import Icon from '../../../components/@common/Icon';
