@@ -112,7 +112,6 @@ function DiaryContentScreen() {
             />
           </View>
           <View style={diaryContentScreenStyle.contentContainer}>
-            <Typography type={'headline-20'}>{content}</Typography>
             <Typography type={'body-12'}>{formattedContent}</Typography>
           </View>
         </View>
