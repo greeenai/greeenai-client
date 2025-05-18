@@ -6,3 +6,13 @@ export interface LastDiary {
   imageUrl: string;
   entryDate: string;
 }
+
+export interface DiaryQuestionRequestBody {
+  entryDate: string;
+  photos: Blob[];
+}
+
+export interface DiaryQuestionResponseDto {
+  id: number;
+  content: string;
+}
