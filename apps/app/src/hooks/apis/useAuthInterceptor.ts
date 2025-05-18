@@ -1,11 +1,10 @@
 import {useEffect, useRef} from 'react';
 import {fetcherInstance} from '../../apis/fetcher';
 
-function useAuthInterceptor(accessToken: string) {
+function useAuthInterceptor(accessToken: string, refreshToken: string) {
   const interceptorRef = useRef<
     ((options: RequestInit) => Promise<RequestInit>) | null
   >(null);
-
   useEffect(() => {
     if (interceptorRef.current) {
       fetcherInstance.removeRequestInterceptors(interceptorRef.current);
@@ -23,7 +22,8 @@ function useAuthInterceptor(accessToken: string) {
         ...options,
         headers: {
           ...options.headers,
-          Authorization: `Bearer ${accessToken}`,
+          accessToken,
+          refreshToken,
         },
       };
     };
@@ -37,7 +37,7 @@ function useAuthInterceptor(accessToken: string) {
         interceptorRef.current = null;
       }
     };
-  }, [accessToken]);
+  }, [accessToken, refreshToken]);
 }
 
 export default useAuthInterceptor;

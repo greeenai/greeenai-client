@@ -1,8 +1,12 @@
 import AsyncStorageService from '../utils/AsyncStorageService';
 import {AsyncStorageKey} from '../constants/asyncStorageKey';
-import {useCallback, useMemo} from 'react';
+import {useCallback, useEffect, useMemo, useState} from 'react';
+import {isEmptyObject} from '../utils/isEmptyObject';
 
 function useAuthStorage() {
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
   const setToken = useCallback(
     async (newAccessToken: string, newRefreshToken: string) => {
       try {
@@ -69,6 +73,26 @@ function useAuthStorage() {
     }
   }, []);
 
+  useEffect(() => {
+    const loadTokens = async () => {
+      try {
+        const tokens = await getToken();
+
+        if (!isEmptyObject(tokens)) {
+          const accessToken = tokens[AsyncStorageKey.accessToken] || null;
+          const refreshToken = tokens[AsyncStorageKey.refreshToken] || null;
+
+          setAccessToken(accessToken);
+          setRefreshToken(refreshToken);
+        }
+      } catch (error) {
+        console.error('토큰 로드 실패:', error);
+      }
+    };
+
+    loadTokens();
+  }, [getToken]);
+
   return useMemo(
     () => ({
       setToken,
@@ -76,8 +100,18 @@ function useAuthStorage() {
       getAccessToken,
       getRefreshToken,
       clearToken,
+      accessToken,
+      refreshToken,
     }),
-    [clearToken, getAccessToken, getToken, getRefreshToken, setToken],
+    [
+      accessToken,
+      clearToken,
+      getAccessToken,
+      getRefreshToken,
+      getToken,
+      refreshToken,
+      setToken,
+    ],
   );
 }
 

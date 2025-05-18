@@ -10,13 +10,13 @@ import useAuthStorage from '../../../hooks/useAuthStorage';
 import useAuthInterceptor from '../../../hooks/apis/useAuthInterceptor';
 
 interface Token {
-  accessToken: string | null;
-  refreshToken: string | null;
+  accessToken: string | '';
+  refreshToken: string | '';
 }
 
 interface AuthStateContext {
-  accessToken: string | null;
-  refreshToken: string | null;
+  accessToken: string | '';
+  refreshToken: string | '';
   isLoggedIn: boolean;
 }
 
@@ -26,8 +26,8 @@ interface AuthDispatchContext {
 }
 
 const defaultStateContext: AuthStateContext = {
-  accessToken: null,
-  refreshToken: null,
+  accessToken: '',
+  refreshToken: '',
   isLoggedIn: false,
 };
 
@@ -48,8 +48,8 @@ interface AuthProviderProps {
 
 function AuthProvider({children}: AuthProviderProps) {
   const [tokenState, setTokenState] = useState<Token>({
-    accessToken: null,
-    refreshToken: null,
+    accessToken: '',
+    refreshToken: '',
   });
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const {getToken, setToken, clearToken} = useAuthStorage();
@@ -69,8 +69,8 @@ function AuthProvider({children}: AuthProviderProps) {
   const clearAuthData = useCallback(async () => {
     await clearToken();
     setTokenState({
-      accessToken: null,
-      refreshToken: null,
+      accessToken: '',
+      refreshToken: '',
     });
     setIsLoggedIn(false);
   }, [clearToken]);
@@ -106,7 +106,7 @@ function AuthProvider({children}: AuthProviderProps) {
     loadAuthData();
   }, [getToken, setAuthData]);
 
-  useAuthInterceptor(tokenState.accessToken ?? '');
+  useAuthInterceptor(tokenState.accessToken, tokenState.refreshToken);
 
   return (
     <AuthDispatchContext.Provider value={authDispatchContextValue}>
