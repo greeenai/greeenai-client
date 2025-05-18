@@ -1,7 +1,7 @@
-import AsyncStorageService from '../utils/AsyncStorageService';
+import AsyncStorageService from '../utils/common/AsyncStorageService';
 import {AsyncStorageKey} from '../constants/asyncStorageKey';
 import {useCallback, useEffect, useMemo, useState} from 'react';
-import {isEmptyObject} from '../utils/isEmptyObject';
+import {isEmptyObject} from '../utils/common/isEmptyObject';
 
 function useAuthStorage() {
   const [accessToken, setAccessToken] = useState<string | null>(null);

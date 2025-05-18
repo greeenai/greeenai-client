@@ -1,6 +1,6 @@
 import {FlatList, StyleSheet} from 'react-native';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
-import {formatDateToYYMMDD} from '../../../utils/formatDate';
+import {formatDateToYYMMDD} from '../../../utils/common/formatDate';
 import PastDiaryImageCard from '../../../components/BottomTab/PastDiary/PastDiaryImageCard';
 import useNavigator from '../../../hooks/useNavigator';
 import EmptyDiary from '../../../components/BottomTab/PastDiary/EmptyDiary';

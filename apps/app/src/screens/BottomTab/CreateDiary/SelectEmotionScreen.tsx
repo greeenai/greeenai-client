@@ -16,6 +16,11 @@ import {palette} from '../../../../../../packages/design-tokens/src/palette';
 import Button from '../../../components/@common/Button';
 import useNavigator from '../../../hooks/useNavigator';
 
+export type AnswerPerPhoto = {
+  questionId: number;
+  answerContent: string;
+};
+
 type SelectEmotionRouteProp = RouteProp<
   CreateDiaryStackNavigatorParamList,
   'SelectEmotion'
@@ -24,30 +29,50 @@ type SelectEmotionRouteProp = RouteProp<
 function SelectEmotionScreen() {
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [customAnswer, setCustomAnswer] = useState('');
-  const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<
-    number | null
-  >(null);
+  const [answers, setAnswers] = useState<AnswerPerPhoto[]>([]);
 
   const route = useRoute<SelectEmotionRouteProp>();
   const {createDiaryStackNavigation} = useNavigator();
 
   const selectedPhotos = route.params?.selectedPhotos || [];
+  const questionList = route.params?.diaryQuestions || [];
+  const diaryId = route.params?.diaryId;
   const currentPhoto = selectedPhotos[selectedPhotoIndex];
+  const currentQuestion = questionList[selectedPhotoIndex];
 
-  const handleSelectQuestion = (index: number) => {
-    setSelectedQuestionIndex(index);
+  const handleSelectQuestion = (questionId: number, answerContent: string) => {
+    setAnswers(prevAnswers => {
+      const updatedAnswers = [...prevAnswers];
+      updatedAnswers[selectedPhotoIndex] = {
+        questionId,
+        answerContent,
+      };
+
+      return updatedAnswers;
+    });
     setCustomAnswer('');
   };
 
-  const handleChangeCustomAnswerText = (text: string) => {
-    setCustomAnswer(text);
-    if (text.length > 0) {
-      setSelectedQuestionIndex(null);
+  const handleChangeCustomAnswerText = (
+    questionId: number,
+    answerContent: string,
+  ) => {
+    setCustomAnswer(answerContent);
+    if (answerContent.length > 0) {
+      setAnswers(prevAnswers => {
+        const updatedAnswers = [...prevAnswers];
+        updatedAnswers[selectedPhotoIndex] = {
+          questionId,
+          answerContent,
+        };
+
+        return updatedAnswers;
+      });
     }
   };
 
-  const handlePressNextButton = () => {
-    if (selectedQuestionIndex === null && customAnswer.length === 0) {
+  const handlePressNextButton = async () => {
+    if (answers[selectedPhotoIndex] === null && customAnswer.length === 0) {
       Alert.alert('알림', '질문에 답변해주세요', [
         {text: '확인', style: 'default'},
       ]);
@@ -55,14 +80,15 @@ function SelectEmotionScreen() {
     }
 
     if (selectedPhotoIndex < 2) {
-      // TODO 서버에 답변 보내기
-      setSelectedQuestionIndex(null);
       setCustomAnswer('');
       setSelectedPhotoIndex(prev => prev + 1);
       return;
     }
 
-    createDiaryStackNavigation.navigate('CreatingDiary');
+    createDiaryStackNavigation.navigate('CreatingDiary', {
+      diaryId,
+      diaryQuestionAnswers: answers,
+    });
   };
 
   return (
@@ -70,7 +96,7 @@ function SelectEmotionScreen() {
       <Typography
         type={'headline-20'}
         style={selectEmotionScreenStyle.questionText}>
-        {'이 사진을 찍을 때\n어떤 감정이었나요?'}
+        {currentQuestion.prompt}
       </Typography>
 
       <View style={selectEmotionScreenStyle.imageContainer}>
@@ -82,16 +108,16 @@ function SelectEmotionScreen() {
       </View>
 
       <View style={selectEmotionScreenStyle.questionListContainer}>
-        {mockQuestionList.map(({question}, index) => (
+        {currentQuestion.options.map(({content, id}) => (
           <TouchableOpacity
-            key={index}
-            onPress={() => handleSelectQuestion(index)}
+            key={id}
+            onPress={() => handleSelectQuestion(currentQuestion.id, content)}
             style={[
               selectEmotionScreenStyle.questionContainer,
-              selectedQuestionIndex === index &&
+              answers[selectedPhotoIndex].answerContent === content &&
                 selectEmotionScreenStyle.selectedQuestion,
             ]}>
-            <Typography type={'button-14'}>{question}</Typography>
+            <Typography type={'button-14'}>{content}</Typography>
           </TouchableOpacity>
         ))}
         <View style={selectEmotionScreenStyle.questionContainer}>
@@ -100,7 +126,9 @@ function SelectEmotionScreen() {
             placeholder="나만의 답변 입력하기 ✏️"
             placeholderTextColor={palette.gray}
             value={customAnswer}
-            onChangeText={handleChangeCustomAnswerText}
+            onChangeText={(text: string) =>
+              handleChangeCustomAnswerText(currentQuestion.id, text)
+            }
           />
         </View>
       </View>
@@ -162,18 +190,3 @@ const selectEmotionScreenStyle = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-const mockQuestionList = [
-  {
-    question: '맛있는 음식을 먹을 생각에 기분이 좋았어 😋',
-  },
-  {
-    question: '힘든 하루에 달콤한 디저트를 보니 위로가 되었어 🍧',
-  },
-  {
-    question: '친구와 함께해서 더욱 즐거운 시간이었어 💖',
-  },
-  {
-    question: '음식이 너무 늦게 나와서 기다리기 힘들었어 😮‍💨',
-  },
-];

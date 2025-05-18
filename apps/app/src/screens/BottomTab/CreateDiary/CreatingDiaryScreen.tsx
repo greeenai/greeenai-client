@@ -1,14 +1,27 @@
 import {useState, useEffect} from 'react';
 import {StyleSheet, Animated, View, Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import Icon from '../../../components/@common/Icon';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
 import Typography from '../../../components/@common/Typography';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {TabNavigatorParamList} from '../../../types/navigators';
+import {
+  CreateDiaryStackNavigatorParamList,
+  TabNavigatorParamList,
+} from '../../../types/navigators';
+import DiaryApi from '../../../apis/diary';
+
+type CreatingDiaryScreenRouteProp = RouteProp<
+  CreateDiaryStackNavigatorParamList,
+  'CreatingDiary'
+>;
 
 function CreatingDiaryScreen() {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+  const route = useRoute<CreatingDiaryScreenRouteProp>();
+
+  const {diaryId, diaryQuestionAnswers} = route.params;
   const fadeAnim = useState(new Animated.Value(0))[0];
 
   const navigation =
@@ -41,29 +54,47 @@ function CreatingDiaryScreen() {
   }, [currentMessageIndex, fadeAnim]);
 
   useEffect(() => {
-    const navigationTimer = setTimeout(() => {
-      navigation.reset({
-        index: 0,
-        routes: [
-          {
-            name: 'PastDiaryStackNavigator',
-            params: {
-              screen: 'DiaryContent',
-              params: {
-                id: 1,
-                createdAt: '2025-04-13T15:30:00.000Z',
-                isPast: false,
+    const submitAnswers = async () => {
+      try {
+        const response = await DiaryApi.putDiaryQuestionAnswers(
+          diaryId,
+          diaryQuestionAnswers,
+        );
+
+        if (response.status === 200) {
+          const {imageUrl, content, entryDate} = response.data;
+
+          navigation.reset({
+            index: 0,
+            routes: [
+              {
+                name: 'PastDiaryStackNavigator',
+                params: {
+                  screen: 'DiaryContent',
+                  params: {
+                    id: diaryId,
+                    entryDate,
+                    content,
+                    imageUrl,
+                    isPast: false,
+                  },
+                },
               },
-            },
-          },
-        ],
-      });
+            ],
+          });
 
-      Alert.alert('생성 완료', '오늘의 일기가 생성되었습니다.');
-    }, 10 * 1000);
+          Alert.alert('생성 완료', '오늘의 일기가 생성되었습니다.');
+        } else {
+          Alert.alert('오류', '일기 생성에 실패했습니다. 다시 시도해주세요.');
+        }
+      } catch (error) {
+        Alert.alert('네트워크 오류', '서버와 연결에 실패했습니다.');
+        console.error('putDiaryQuestionAnswers error:', error);
+      }
+    };
 
-    return () => clearTimeout(navigationTimer);
-  }, []);
+    submitAnswers();
+  }, [diaryId, diaryQuestionAnswers, navigation]);
 
   return (
     <ScreenLayout isSafeArea style={creatingDiaryScreenStyle.container}>

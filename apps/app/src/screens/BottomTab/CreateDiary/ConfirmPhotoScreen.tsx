@@ -1,4 +1,4 @@
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Alert, Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import Carousel, {ICarouselInstance} from 'react-native-reanimated-carousel';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
@@ -8,6 +8,8 @@ import Button from '../../../components/@common/Button';
 import useNavigator from '../../../hooks/useNavigator';
 import {useRef, useState} from 'react';
 import {screenWidth} from '../../../constants/screenDimensions';
+import DiaryApi from '../../../apis/diary';
+import {buildDiaryCreateFormData} from '../../../utils/diaryFormDataBuilder';
 
 type ConfirmPhotoRouteProp = RouteProp<
   CreateDiaryStackNavigatorParamList,
@@ -23,9 +25,22 @@ function ConfirmPhotoScreen() {
 
   const selectedPhotos = route.params?.selectedPhotos || [];
 
-  const handlePressNextButton = () => {
+  const handlePressNextButton = async () => {
+    const formData = buildDiaryCreateFormData(selectedPhotos);
+
+    const {data: createdDiary} = await DiaryApi.getDiaryQuestions(formData);
+    if (!createdDiary.id) {
+      Alert.alert(
+        '알림',
+        '질문을 불러오는 데 실패했습니다. 다시 시도해주세요.',
+      );
+      return;
+    }
+
     createDiaryStackNavigation.navigate('SelectEmotion', {
+      diaryId: createdDiary.id,
       selectedPhotos,
+      diaryQuestions: createdDiary.questions,
     });
   };
 
