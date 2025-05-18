@@ -25,7 +25,10 @@ class DiaryApi {
     diaryId: number,
     requestBody: DiaryQuestionAnswerRequestBody,
   ) {
-    fetcherInstance.put(`/diaries/${diaryId}/generate-image`, requestBody);
+    return fetcherInstance.put(
+      `/diaries/${diaryId}/generate-image`,
+      requestBody,
+    );
   }
 }
 

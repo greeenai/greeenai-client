@@ -28,15 +28,19 @@ function ConfirmPhotoScreen() {
   const handlePressNextButton = async () => {
     const formData = buildDiaryCreateFormData(selectedPhotos);
 
-    const {data: diaryQuestions} = await DiaryApi.getDiaryQuestions(formData);
-    if (!diaryQuestions.length) {
-      Alert.alert('알림', '에러가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    const {data: createdDiary} = await DiaryApi.getDiaryQuestions(formData);
+    if (!createdDiary.id) {
+      Alert.alert(
+        '알림',
+        '질문을 불러오는 데 실패했습니다. 다시 시도해주세요.',
+      );
       return;
     }
 
     createDiaryStackNavigation.navigate('SelectEmotion', {
+      diaryId: createdDiary.id,
       selectedPhotos,
-      diaryQuestions,
+      diaryQuestions: createdDiary.questions,
     });
   };
 

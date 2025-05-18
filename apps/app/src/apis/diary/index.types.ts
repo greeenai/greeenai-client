@@ -9,18 +9,21 @@ export interface LastDiary {
 
 export type DiaryQuestionRequestBody = FormData;
 
-export type DiaryQuestionResponseDto = DiaryQuestion[];
-
-export interface DiaryQuestion {
+export type DiaryQuestionResponseDto = {
   id: number;
-  content: string;
-  entryDate: string;
-  diaryQuestions: Question[];
-}
+  questions: Question[];
+};
 
 export interface Question {
   id: number;
+  prompt: string;
+  options: QuestionOption[];
+}
+
+interface QuestionOption {
+  id: number;
   content: string;
+  isAnswer: boolean;
 }
 
 export type DiaryQuestionAnswerRequestBody = QuestionAnswer[];

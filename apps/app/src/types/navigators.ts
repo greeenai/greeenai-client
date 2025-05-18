@@ -1,5 +1,5 @@
 import {NavigatorScreenParams} from '@react-navigation/native';
-import {DiaryQuestion} from '../apis/diary/index.types';
+import {Question} from '../apis/diary/index.types';
 
 export type RootStackNavigatorParamList = {
   Onboarding: undefined;
@@ -48,8 +48,9 @@ export type CreateDiaryStackNavigatorParamList = {
     selectedPhotos: string[];
   };
   SelectEmotion: {
+    diaryId: number;
     selectedPhotos: string[];
-    diaryQuestions: DiaryQuestion[];
+    diaryQuestions: Question[];
   };
   CreatingDiary: undefined;
 };
