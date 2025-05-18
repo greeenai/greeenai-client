@@ -8,6 +8,8 @@ import Button from '../../../components/@common/Button';
 import useNavigator from '../../../hooks/useNavigator';
 import {useRef, useState} from 'react';
 import {screenWidth} from '../../../constants/screenDimensions';
+import DiaryApi from '../../../apis/diary';
+import {buildDiaryCreateFormData} from '../../../utils/diaryFormDataBuilder';
 
 type ConfirmPhotoRouteProp = RouteProp<
   CreateDiaryStackNavigatorParamList,
@@ -23,7 +25,10 @@ function ConfirmPhotoScreen() {
 
   const selectedPhotos = route.params?.selectedPhotos || [];
 
-  const handlePressNextButton = () => {
+  const handlePressNextButton = async () => {
+    const formData = buildDiaryCreateFormData(selectedPhotos);
+
+    const {data} = await DiaryApi.getDiaryQuestions(formData);
     createDiaryStackNavigation.navigate('SelectEmotion', {
       selectedPhotos,
     });

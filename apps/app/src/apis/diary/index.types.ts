@@ -7,10 +7,7 @@ export interface LastDiary {
   entryDate: string;
 }
 
-export interface DiaryQuestionRequestBody {
-  entryDate: string;
-  photos: Blob[];
-}
+export type DiaryQuestionRequestBody = FormData;
 
 export interface DiaryQuestionResponseDto {
   id: number;
