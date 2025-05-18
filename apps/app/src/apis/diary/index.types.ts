@@ -9,10 +9,10 @@ export interface LastDiary {
 
 export type DiaryQuestionRequestBody = FormData;
 
-export type DiaryQuestionResponseDto = {
+export interface DiaryQuestionResponseDto {
   id: number;
   questions: Question[];
-};
+}
 
 export interface Question {
   id: number;
@@ -31,4 +31,11 @@ export type DiaryQuestionAnswerRequestBody = QuestionAnswer[];
 export interface QuestionAnswer {
   questionId: number;
   answerContent: string;
+}
+
+export interface DiaryQuestionAnswersResponseDto {
+  id: number;
+  entryDate: string;
+  content: string;
+  imageUrl: string;
 }

@@ -15,9 +15,8 @@ import {screenWidth} from '../../../constants/screenDimensions';
 import {palette} from '../../../../../../packages/design-tokens/src/palette';
 import Button from '../../../components/@common/Button';
 import useNavigator from '../../../hooks/useNavigator';
-import DiaryApi from '../../../apis/diary';
 
-type AnswerPerPhoto = {
+export type AnswerPerPhoto = {
   questionId: number;
   answerContent: string;
 };
@@ -86,11 +85,10 @@ function SelectEmotionScreen() {
       return;
     }
 
-    const response = await DiaryApi.putDiaryQuestionAnswers(diaryId, answers);
-
-    if (response.status === 200) {
-      createDiaryStackNavigation.navigate('CreatingDiary');
-    }
+    createDiaryStackNavigation.navigate('CreatingDiary', {
+      diaryId,
+      diaryQuestionAnswers: answers,
+    });
   };
 
   return (
