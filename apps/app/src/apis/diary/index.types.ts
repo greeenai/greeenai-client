@@ -11,6 +11,7 @@ export type DiaryQuestionRequestBody = FormData;
 
 export interface DiaryQuestionResponseDto {
   id: number;
+  entryDate: string;
   questions: Question[];
 }
 
@@ -23,7 +24,6 @@ export interface Question {
 interface QuestionOption {
   id: number;
   content: string;
-  isAnswer: boolean;
 }
 
 export type DiaryQuestionAnswerRequestBody = QuestionAnswer[];
