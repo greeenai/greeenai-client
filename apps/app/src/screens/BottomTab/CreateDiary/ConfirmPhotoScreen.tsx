@@ -1,4 +1,4 @@
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Alert, Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import Carousel, {ICarouselInstance} from 'react-native-reanimated-carousel';
 import ScreenLayout from '../../../components/@common/ScreenLayout';
@@ -29,6 +29,11 @@ function ConfirmPhotoScreen() {
     const formData = buildDiaryCreateFormData(selectedPhotos);
 
     const {data: diaryQuestions} = await DiaryApi.getDiaryQuestions(formData);
+    if (!diaryQuestions.length) {
+      Alert.alert('알림', '에러가 발생했습니다. 잠시 후 다시 시도해주세요.');
+      return;
+    }
+
     createDiaryStackNavigation.navigate('SelectEmotion', {
       selectedPhotos,
       diaryQuestions,
