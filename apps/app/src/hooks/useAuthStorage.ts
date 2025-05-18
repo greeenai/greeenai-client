@@ -7,7 +7,7 @@ function useAuthStorage() {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
-  const setAuthData = useCallback(
+  const setToken = useCallback(
     async (newAccessToken: string, newRefreshToken: string) => {
       try {
         await AsyncStorageService.multiSet([
@@ -21,7 +21,7 @@ function useAuthStorage() {
     [],
   );
 
-  const getAuthData = useCallback(async (): Promise<
+  const getToken = useCallback(async (): Promise<
     Record<string, string | null>
   > => {
     try {
@@ -70,7 +70,7 @@ function useAuthStorage() {
     }
   }, [refreshToken]);
 
-  const clearAuthData = useCallback(async () => {
+  const clearToken = useCallback(async () => {
     try {
       await AsyncStorageService.multiSet([
         {key: AsyncStorageKey.accessToken, value: null},
@@ -87,7 +87,7 @@ function useAuthStorage() {
   useEffect(() => {
     const loadTokens = async () => {
       try {
-        const tokens = await getAuthData();
+        const tokens = await getToken();
 
         if (!isEmptyObject(tokens)) {
           const accessToken = tokens[AsyncStorageKey.accessToken] || null;
@@ -102,26 +102,26 @@ function useAuthStorage() {
     };
 
     loadTokens();
-  }, [getAuthData]);
+  }, [getToken]);
 
   return useMemo(
     () => ({
-      setAuthData,
-      getAuthData,
+      setToken,
+      getToken,
       getAccessToken,
       getRefreshToken,
-      clearAuthData,
+      clearToken,
       accessToken,
       refreshToken,
     }),
     [
       accessToken,
-      clearAuthData,
+      clearToken,
       getAccessToken,
-      getAuthData,
       getRefreshToken,
+      getToken,
       refreshToken,
-      setAuthData,
+      setToken,
     ],
   );
 }

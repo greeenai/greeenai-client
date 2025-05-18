@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import getPermissions from './src/utils/checkPermissions';
@@ -6,11 +6,9 @@ import RootStackNavigator from './src/navigators/RootStackNavigator';
 import {StyleSheet} from 'react-native';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import SplashScreen from 'react-native-splash-screen';
-import useAuthInterceptor from './src/hooks/apis/useAuthInterceptor';
+import AuthProvider from './src/components/@common/Provider/AuthProvider';
 
 function App() {
-  useAuthInterceptor();
-
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
@@ -28,7 +26,9 @@ function App() {
     <GestureHandlerRootView style={rootStyle.gestureHandlerRootView}>
       <BottomSheetModalProvider>
         <SafeAreaProvider>
-          <RootStackNavigator />
+          <AuthProvider>
+            <RootStackNavigator />
+          </AuthProvider>
         </SafeAreaProvider>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
