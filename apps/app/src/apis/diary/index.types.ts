@@ -14,4 +14,11 @@ export type DiaryQuestionResponseDto = DiaryQuestion[];
 export interface DiaryQuestion {
   id: number;
   content: string;
+  entryDate: string;
+  diaryQuestions: Question[];
+}
+
+export interface Question {
+  id: number;
+  content: string;
 }
