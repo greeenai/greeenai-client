@@ -26,7 +26,7 @@ function ConfirmPhotoScreen() {
   const selectedPhotos = route.params?.selectedPhotos || [];
 
   const handlePressNextButton = async () => {
-    const formData = buildDiaryCreateFormData(selectedPhotos);
+    const formData = await buildDiaryCreateFormData(selectedPhotos);
 
     const {data: createdDiary} = await DiaryApi.getDiaryQuestions(formData);
     if (!createdDiary.id) {
