@@ -16,7 +16,9 @@ function SelectPhotoScreen({onNext}: SelectPhotoScreenProps) {
           style={selectPhotoScreenStyle.mainText}>
           {'사진 3장이면 \n충분해요'}
         </Typography>
-        <Typography>{'당신의 하루를 보여주는\n사진을 선택해보세요'}</Typography>
+        <Typography>
+          {'딱 세 장의 사진으로\n나만의 일기를 만들어보아요'}
+        </Typography>
       </View>
       <View style={selectPhotoScreenStyle.bottomButtonContainer}>
         <Button onPress={onNext}>다음</Button>
