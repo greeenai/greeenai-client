@@ -114,7 +114,7 @@ function SelectEmotionScreen() {
             onPress={() => handleSelectQuestion(currentQuestion.id, content)}
             style={[
               selectEmotionScreenStyle.questionContainer,
-              answers[selectedPhotoIndex].answerContent === content &&
+              answers[selectedPhotoIndex]?.answerContent === content &&
                 selectEmotionScreenStyle.selectedQuestion,
             ]}>
             <Typography type={'button-14'}>{content}</Typography>
