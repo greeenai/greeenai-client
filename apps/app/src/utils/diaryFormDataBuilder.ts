@@ -49,7 +49,7 @@ export const buildDiaryCreateFormData = async (
           uri: uri,
           name: fileName,
           type: fileType,
-        } as any);
+        });
       });
     } else {
       imageUris.forEach((uri, index) => {
