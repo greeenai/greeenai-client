@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import ScreenLayout from '../../components/@common/ScreenLayout';
 import Button from '../../components/@common/Button';
 import Typography from '../../components/@common/Typography';
@@ -6,6 +6,8 @@ import Typography from '../../components/@common/Typography';
 export type ShareOnSNSScreenProps = {onNext: () => void};
 
 function ShareOnSNSScreen({onNext}: ShareOnSNSScreenProps) {
+  const viewPastDiaryImage = require('../../assets/images/share-sns-onboarding.png');
+
   return (
     <ScreenLayout>
       <View style={shareOnSNSScreenStyle.content}>
@@ -15,6 +17,12 @@ function ShareOnSNSScreen({onNext}: ShareOnSNSScreenProps) {
         <Typography>
           {'혼자 간직해도 좋지만,\n함께 나누면 더 특별해져요'}
         </Typography>
+      </View>
+      <View style={shareOnSNSScreenStyle.imageContainer}>
+        <Image
+          source={viewPastDiaryImage}
+          style={shareOnSNSScreenStyle.image}
+        />
       </View>
       <View style={shareOnSNSScreenStyle.bottomButtonContainer}>
         <Button onPress={onNext}>다음</Button>
@@ -29,11 +37,22 @@ const shareOnSNSScreenStyle = StyleSheet.create({
   content: {
     flex: 1,
     width: '100%',
-    paddingVertical: 120,
+    paddingTop: 120,
     paddingHorizontal: 40,
   },
   mainText: {
     marginBottom: 15,
+  },
+  imageContainer: {
+    width: '100%',
+    marginBottom: 50,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: 320,
+    height: 440,
   },
   bottomButtonContainer: {
     display: 'flex',
