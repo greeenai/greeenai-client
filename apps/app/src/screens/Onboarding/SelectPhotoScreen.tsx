@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import ScreenLayout from '../../components/@common/ScreenLayout';
 import Button from '../../components/@common/Button';
 import Typography from '../../components/@common/Typography';
@@ -8,6 +8,8 @@ export type SelectPhotoScreenProps = {
 };
 
 function SelectPhotoScreen({onNext}: SelectPhotoScreenProps) {
+  const selectPhotoImage = require('../../assets/images/select-photo-onboarding.png');
+
   return (
     <ScreenLayout>
       <View style={selectPhotoScreenStyle.content}>
@@ -19,6 +21,9 @@ function SelectPhotoScreen({onNext}: SelectPhotoScreenProps) {
         <Typography>
           {'딱 세 장의 사진으로\n나만의 일기를 만들어보아요'}
         </Typography>
+      </View>
+      <View style={selectPhotoScreenStyle.imageContainer}>
+        <Image source={selectPhotoImage} style={selectPhotoScreenStyle.image} />
       </View>
       <View style={selectPhotoScreenStyle.bottomButtonContainer}>
         <Button onPress={onNext}>다음</Button>
@@ -33,11 +38,22 @@ const selectPhotoScreenStyle = StyleSheet.create({
   content: {
     flex: 1,
     width: '100%',
-    paddingVertical: 120,
+    paddingTop: 120,
     paddingHorizontal: 40,
   },
   mainText: {
     marginBottom: 15,
+  },
+  imageContainer: {
+    width: '100%',
+    marginBottom: 50,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: 360,
+    height: 440,
   },
   bottomButtonContainer: {
     display: 'flex',
