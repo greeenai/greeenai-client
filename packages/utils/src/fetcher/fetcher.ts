@@ -260,6 +260,7 @@ class Fetcher {
       body: isFormData ? body : JSON.stringify(body),
       headers: isFormData
         ? {
+            "Content-Type": "multipart/form-data",
             ...options.headers,
           }
         : {
