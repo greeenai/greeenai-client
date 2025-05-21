@@ -18,6 +18,7 @@ type ConfirmPhotoRouteProp = RouteProp<
 
 function ConfirmPhotoScreen() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const carouselRef = useRef<ICarouselInstance | null>(null);
 
   const {createDiaryStackNavigation} = useNavigator();
@@ -26,22 +27,34 @@ function ConfirmPhotoScreen() {
   const selectedPhotos = route.params?.selectedPhotos || [];
 
   const handlePressNextButton = async () => {
-    const formData = await buildDiaryCreateFormData(selectedPhotos);
+    try {
+      setIsLoading(true);
+      const formData = await buildDiaryCreateFormData(selectedPhotos);
 
-    const {data: createdDiary} = await DiaryApi.getDiaryQuestions(formData);
-    if (!createdDiary.id) {
+      const {data: createdDiary} = await DiaryApi.getDiaryQuestions(formData);
+
+      if (!createdDiary?.id) {
+        Alert.alert(
+          '알림',
+          '질문을 불러오는 데 실패했습니다. 다시 시도해주세요.',
+        );
+        return;
+      }
+
+      createDiaryStackNavigation.navigate('SelectEmotion', {
+        diaryId: createdDiary.id,
+        selectedPhotos,
+        diaryQuestions: createdDiary.questions,
+      });
+    } catch (error) {
+      console.error('다이어리 질문 로딩 에러:', error);
       Alert.alert(
-        '알림',
-        '질문을 불러오는 데 실패했습니다. 다시 시도해주세요.',
+        '오류',
+        '질문을 불러오는 중 오류가 발생했습니다. 다시 시도해주세요.',
       );
-      return;
+    } finally {
+      setIsLoading(false);
     }
-
-    createDiaryStackNavigation.navigate('SelectEmotion', {
-      diaryId: createdDiary.id,
-      selectedPhotos,
-      diaryQuestions: createdDiary.questions,
-    });
   };
 
   const renderItem = ({item}: {item: string}) => {
@@ -116,7 +129,8 @@ function ConfirmPhotoScreen() {
       </View>
       <Button
         onPress={handlePressNextButton}
-        style={confirmPhotoScreenStyle.button}>
+        style={confirmPhotoScreenStyle.button}
+        isLoading={isLoading}>
         다음
       </Button>
     </ScreenLayout>
