@@ -6,7 +6,7 @@ import Typography from '../../components/@common/Typography';
 export type ShareOnSNSScreenProps = {onNext: () => void};
 
 function ShareOnSNSScreen({onNext}: ShareOnSNSScreenProps) {
-  const viewPastDiaryImage = require('../../assets/images/share-sns-onboarding.png');
+  const shareOnSNSImage = require('../../assets/images/share-sns-onboarding.png');
 
   return (
     <ScreenLayout>
@@ -20,7 +20,7 @@ function ShareOnSNSScreen({onNext}: ShareOnSNSScreenProps) {
       </View>
       <View style={shareOnSNSScreenStyle.imageContainer}>
         <Image
-          source={viewPastDiaryImage}
+          source={shareOnSNSImage}
           style={shareOnSNSScreenStyle.image}
         />
       </View>
