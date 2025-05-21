@@ -6,6 +6,5 @@ export const fetcherInstance = new Fetcher({
   baseUrl,
   defaultHeaders: {
     Accept: 'application/json',
-    'Content-Type': 'application/json',
   },
 });
