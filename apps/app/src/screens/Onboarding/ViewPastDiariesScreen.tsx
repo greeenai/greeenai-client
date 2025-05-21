@@ -53,7 +53,7 @@ const viewPastDiariesScreenStyle = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: 230,
+    width: 320,
     height: 440,
   },
   bottomButtonContainer: {
