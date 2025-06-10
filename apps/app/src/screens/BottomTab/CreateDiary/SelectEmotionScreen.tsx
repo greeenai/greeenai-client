@@ -92,7 +92,7 @@ function SelectEmotionScreen() {
   };
 
   return (
-    <ScreenLayout style={selectEmotionScreenStyle.container}>
+    <ScreenLayout isKeyboardAvoiding style={selectEmotionScreenStyle.container}>
       <Typography
         type={'headline-20'}
         style={selectEmotionScreenStyle.questionText}>
